@@ -13,7 +13,7 @@ export const SocialIcon = ({ link, icon }: SocialIconProps) => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="rounded-full border border-primary p-2 hover:bg-primary/10 transition-colors duration-300"
+      className="rounded-full  bg-primary p-2 hover:scale-105  transition-all duration-300"
     >
       {icon}
     </Link>

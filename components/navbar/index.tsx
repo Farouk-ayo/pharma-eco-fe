@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Button from "../buttons";
-import TopBar from "./topBar";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -44,7 +43,6 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white fixed  top-0 w-full z-[100] ">
-      <TopBar />
       <div className="py-2 flex h-24 justify-between items-center px-5 lg:px-28">
         <Link href={"/"}>
           <div className="relative flex items-center w-48 md:w-52 h-10">
@@ -56,7 +54,7 @@ export default function Navbar() {
             />
           </div>
         </Link>
-        <div className="flex gap-20 items-center">
+        <div className="flex gap-10 items-center">
           <div className="hidden text-textPrimary font-normal md:flex md:space-x-10">
             {navLinks.map((link) => (
               <Link
@@ -73,12 +71,8 @@ export default function Navbar() {
             ))}
           </div>
           <div className="hidden md:flex space-x-6 items-center">
-            <Button
-              href={"/register"}
-              variant="secondary"
-              className="text-black"
-            >
-              Join us Now
+            <Button href={"/register"} variant="secondary" size="sm">
+              Say Hi To PharmaEcoBot
             </Button>
           </div>
         </div>

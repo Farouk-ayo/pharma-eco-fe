@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/buttons";
 import Navbar from "@/components/navbar";
-import TopBar from "@/components/navbar/topBar";
+import TopBar from "@/components/navbar/socialLinks";
 import Image from "next/image";
 
 const NotFound = () => {
