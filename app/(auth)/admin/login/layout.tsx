@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <Link href="/">
                   <div className="relative w-48 md:w-52 h-20 hidden lg:inline-block">
                     <Image
-                      src="/pharmabin-logo.svg"
+                      src="/pharma-eco-logo.svg"
                       alt="pharmabin"
                       fill
                       className="object-contain"

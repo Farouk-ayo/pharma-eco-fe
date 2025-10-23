@@ -16,7 +16,7 @@ const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
         <div className="relative w-56  h-20">
           <Image
             priority
-            src="/pharmabin-logo.svg"
+            src="/pharma-eco-logo.svg"
             alt="pharmabin"
             layout="fill"
           />

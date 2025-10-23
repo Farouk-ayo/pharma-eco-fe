@@ -49,7 +49,7 @@ export default function Navbar() {
         <Link href={"/"}>
           <div className="relative flex items-center w-48 md:w-52 h-10">
             <Image
-              src="/pharmabin-logo.svg"
+              src="/pharma-eco-logo.svg"
               alt="pharmabin"
               className="w-full h-full"
               layout="fill"
@@ -57,14 +57,14 @@ export default function Navbar() {
           </div>
         </Link>
         <div className="flex gap-20 items-center">
-          <div className="hidden text-textPrimary font-semibold md:flex md:space-x-10">
+          <div className="hidden text-textPrimary font-normal md:flex md:space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 className={`transition-colors duration-200 ${
                   isActiveLink(link.href)
-                    ? "text-primary"
-                    : "hover:text-primary text-textPrimary"
+                    ? "text-primary font-semibold"
+                    : "hover:text-primary text-textPrimary hover:font-semibold"
                 }`}
                 href={link.href}
               >
@@ -110,10 +110,10 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  className={`transition-colors font-semibold duration-200 text-lg ${
+                  className={`transition-colors font-normal duration-200 text-lg ${
                     isActiveLink(link.href)
-                      ? "text-primary "
-                      : "hover:text-primary text-textPrimary"
+                      ? "text-primary font-semibold "
+                      : "hover:text-primary text-textPrimary hover:font-semibold"
                   }`}
                   href={link.href}
                 >
