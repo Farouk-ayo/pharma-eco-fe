@@ -40,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
   const sizeClasses = {
     sm: "px-6 py-2 text-base",
     md: "px-6 py-2 text-sm sm:px-8 sm:py-3 sm:text-base",
-    lg: "px-8 py-3 text-base sm:px-10 sm:py-4 sm:text-lg",
+    lg: "px-6 py-2 text-sm sm:px-10 sm:py-4 sm:text-lg",
   };
 
   const combinedStyles = `${baseStyles} ${sizeClasses[size]} ${

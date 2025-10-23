@@ -83,9 +83,9 @@ export default function Navbar() {
             } relative z-30 w-8 h-4 flex flex-col justify-between items-center`}
             onClick={toggleMenu}
           >
-            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-black transition-transform duration-300 ease-in-out origin-center"></span>
-            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-black transition-opacity duration-300 ease-in-out"></span>
-            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-black transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-primaryDark transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-primaryDark transition-opacity duration-300 ease-in-out"></span>
+            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-primaryDark transition-transform duration-300 ease-in-out origin-center"></span>
           </button>
         </div>
         <motion.div
@@ -119,7 +119,7 @@ export default function Navbar() {
                 variant="secondary"
                 className="text-black px-10"
               >
-                Join us Now
+                Say Hi To PharmaEcoBot
               </Button>
             </nav>
           </motion.div>

@@ -13,7 +13,7 @@ export default function Header() {
       <SocialLinks />
 
       <div className="relative w-full   lg:w-[70%] text-left  flex flex-col gap-5">
-        <div className="flex gap-2 items-center text-2xl">
+        <div className="flex gap-2 items-center text-base md:text-2xl">
           <Image
             src="/pharmaecobot.png"
             alt="bot"
@@ -21,7 +21,10 @@ export default function Header() {
             width={40}
             objectFit="cover"
           />
-          <Link className=" underline text-primary text-2xl" href={"/#"}>
+          <Link
+            className=" underline text-primary text-base md:text-2xl"
+            href={"/#"}
+          >
             Say Hi To PharmaEcoBot Now
           </Link>
           👋
