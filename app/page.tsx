@@ -47,68 +47,52 @@ export default function Home() {
     <section>
       <Navbar />
       <Header />
-      <section
-        className="px-4 md:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10"
-        style={{
-          backgroundImage: "url(./bg-waste-land-1.svg)",
-        }}
-      >
-        <div className="md:w-[50%]">
-          <Badge text="About Us" bgColor="bg-tertiary" className="mb-8" />
-          <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-            The Industry Leader In Pharmaceutical Waste Management
-          </h1>
-        </div>
+      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
+        <div className="lg:w-[50%]">
+          <Badge text="Our Story" className="mb-2" />
 
-        <div className="flex flex-col md:flex-row items-end gap-8">
-          <div className="relative w-full md:w-[50%] h-[30rem] md:h-[50rem]">
+          <h1 className="text-3xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
+            How We Are Pioneering The Future Of Pharmaceutical Waste Management{" "}
+          </h1>
+          <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
             <Image
-              src="/drugs.jpeg"
+              src="/drugs.png"
               alt="drugs"
               layout="fill"
               objectFit="cover"
-              className="rounded-lg"
+              className="rounded-b-[120px] rounded-t-[24px]"
             />
           </div>
-          <div className="w-full md:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full flex flex-col justify-between">
+          <div className="w-full gap-5 text-base sm:text-base xl:text-lg h-full flex flex-col ">
             <p className="text-textPrimary leading-relaxed mb-4">
-              <strong>PharmaBin</strong> is an initiative dedicated to solving
-              the pressing issue of pharmaceutical waste management in Nigeria.
-              By integrating technology, community engagement, and environmental
-              sustainability, PharmaBin provides a safe, efficient, and
-              eco-friendly solution for the disposal of expired, unused, or
-              contaminated medications.
+              PharmaEco is a pioneering initiative tackling the growing problem
+              of pharmaceutical waste and packaging disposal in Nigeria. We
+              leverage AI technology, education, and partnerships to create an
+              efficient, safe, and eco-friendly system for the collection,
+              recycling, and disposal of unused, expired, or contaminated
+              medicines and packaging materials including blister packs,
+              cartons, leaflets, plastics, tubes and others.
               <br />
               <br />
-              Our platform connects households, community pharmacies, and
-              regulatory bodies, ensuring proper collection and disposal of
-              pharmaceutical waste while raising awareness about its impact on
-              health and the environment. With a vision to lead responsible
-              waste management practices in Nigeria, <strong>
-                PharmaBin
-              </strong>{" "}
-              is committed to fostering a cleaner, healthier, and more
-              sustainable future.
-              <br />
-              <br /> Through technology-driven tracking and reporting, PharmaBin
-              ensures that collected waste is properly handled, reducing the
-              risks of environmental pollution, water contamination, and
-              medication misuse.
+              Our platform connects households, pharmacies, hospitals, and
+              regulatory bodies to ensure that pharmaceutical waste is properly
+              handled and that recyclable materials are repurposed to reduce
+              pollution and promote circular economy practices. Through
+              PharmaEcoBot, our AI-powered assistant on WhatsApp, users can
+              instantly: Locate nearby collection points, learn how to dispose
+              of waste safely, get instant recycling updates and health
+              education tips and report improper disposal or environmental
+              hazards
               <br />
               <br />
-              Beyond collection, PharmaBin serves as an educational hub,
-              providing communities with vital information on the dangers of
-              improper pharmaceutical waste disposal and promoting best
-              practices for medication management.
-              <br />
-              <br />
-              By bridging the gap between individuals, healthcare facilities,
-              and regulatory bodies, PharmaBin is pioneering a safe, efficient,
-              and eco-friendly approach to pharmaceutical waste disposal.
+              Our vision is to lead Nigeria and Africa toward a future where
+              pharmaceutical waste and packaging are managed responsibly and
+              sustainably fostering a cleaner, healthier, and circular economy.
             </p>
 
             <Button
-              variant="secondary"
+              variant="primary"
+              size="lg"
               className="text-black w-max"
               href="/about-us"
             >
@@ -116,19 +100,22 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
-      <section
-        className="px-4 md:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10"
-        style={{ backgroundImage: "url(/bg-waste-land-1.svg)" }}
-      >
-        <div className="md:w-[50%] ml-auto">
-          <Badge
-            text="Sustainable Development Goals"
-            bgColor="bg-tertiary"
-            className="mb-8"
+        <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
+          <Image
+            src="/drugs.png"
+            alt="drugs"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-b-[120px] rounded-t-[24px]"
           />
-          <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 ">
-            Sustainable Development Goals (SDGs) Addressed By PharmaBin{" "}
+        </div>
+      </section>
+      <section className="px-4 md:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10 bg-primaryLight">
+        <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
+          <Badge text="SUSTAINABLE DEVELOPMENT GOALS" className="mb-2" />{" "}
+          <h1 className="text-3xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
+            How PharmaEco Aligned With The United Nations Sustainable
+            Development Goals (SDGs){" "}
           </h1>
         </div>
         <div className="flex flex-col md:flex-row items-end gap-2">
