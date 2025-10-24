@@ -2,7 +2,6 @@
 import Badge from "@/components/badge";
 import Button from "@/components/buttons";
 import { Card } from "@/components/cards";
-import Carousel from "@/components/carousel";
 import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
 import FaqSection from "@/components/faq";
@@ -13,35 +12,13 @@ import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
 import { DividerIcon } from "@/components/icons/divider";
 import Navbar from "@/components/navbar";
+import { sdgData } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
 import Image from "next/image";
 
 export default function Home() {
   const { data: articles } = useGetArticles();
   const cards = articles?.slice(0, 3) || [];
-  const sdgData = [
-    {
-      id: 3,
-      title: "Good Health and Well-being",
-      description:
-        "By ensuring safe disposal of pharmaceutical waste, PharmaBin prevents drug misuse, reduces antimicrobial resistance, and minimizes health hazards caused by improper disposal.",
-      color: "#157D18",
-    },
-    {
-      id: 6,
-      title: "Clean Water and Sanitation",
-      description:
-        "Pharmaceutical waste, when improperly disposed of, contaminates water bodies. PharmaBin’s structured disposal system helps protect water quality and public health.",
-      color: "#00AED9",
-    },
-    {
-      id: 12,
-      title: "Responsible Consumption and Production",
-      description:
-        "PharmaBin promotes responsible pharmaceutical waste management, reducing environmental pollution and supporting sustainable recycling where applicable.",
-      color: "#CF8D2A",
-    },
-  ];
 
   return (
     <section>
@@ -110,16 +87,36 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="px-4 md:px-28 py-12 md:py-20 top-32 md:top-32 relative z-10 bg-primaryLight">
-        <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
+      <section className="px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32 relative z-10 bg-primaryLight">
+        <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
           <Badge text="SUSTAINABLE DEVELOPMENT GOALS" className="mb-2" />{" "}
-          <h1 className="text-3xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
+          <h1 className="text-3xl lg:text-4xl font-semibold text-tertiary3 mb-6 ">
             How PharmaEco Aligned With The United Nations Sustainable
             Development Goals (SDGs){" "}
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row items-end gap-2">
-          <div className="relative w-full md:w-[50%] h-[30rem] md:h-[30rem]">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 items-center lg:items-start gap-6 lg:gap-4">
+          {/* Left column - first 4 SDGs (desktop only) */}
+          <div className="hidden lg:block lg:space-y-3">
+            {sdgData.slice(0, 4).map((sdg) => (
+              <div
+                key={sdg.id}
+                className="flex items-start gap-2"
+                style={{ borderColor: sdg.color }}
+              >
+                <CheckMark className={`w-16 flex-shrink-0`} fill={sdg.color} />
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    SDG {sdg.id}: {sdg.title}
+                  </h3>
+                  <p className="text-gray-700 mt-2">{sdg.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Center - Image */}
+          <div className="relative w-full h-[25rem] lg:h-[35rem] flex items-center justify-center">
             <Image
               src="/sdg.svg"
               alt="Sustainable Development Goals Infographic"
@@ -128,20 +125,35 @@ export default function Home() {
               className="rounded-lg"
             />
           </div>
-          <div className="w-full md:w-1/2 space-y-3">
-            <p className="text-textPrimary leading-relaxed">
-              <strong>PharmaBin</strong> aligns with the following three United
-              Nations Sustainable Development Goals (SDGs):
-              <br />
-              <br />
-            </p>
+
+          {/* Right column - last 3 SDGs (desktop only) */}
+          <div className="hidden lg:block lg:space-y-3">
+            {sdgData.slice(4).map((sdg) => (
+              <div
+                key={sdg.id}
+                className="flex items-start gap-2"
+                style={{ borderColor: sdg.color }}
+              >
+                <CheckMark className={`w-16 flex-shrink-0`} fill={sdg.color} />
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    SDG {sdg.id}: {sdg.title}
+                  </h3>
+                  <p className="text-gray-700 mt-2">{sdg.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile - All SDGs below image */}
+          <div className="w-full space-y-3 lg:hidden">
             {sdgData.map((sdg) => (
               <div
                 key={sdg.id}
                 className="flex items-start gap-2"
                 style={{ borderColor: sdg.color }}
               >
-                <CheckMark className={`w-16`} fill={sdg.color} />
+                <CheckMark className={`w-16 flex-shrink-0`} fill={sdg.color} />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
                     SDG {sdg.id}: {sdg.title}
@@ -154,10 +166,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="top-32 relative">
-        <Carousel />
-      </section>
-
       <section
         className="px-4 md:px-28 py-20 top-32 bg-white relative z-10"
         style={{
@@ -165,9 +173,9 @@ export default function Home() {
         }}
       >
         <div className="md:w-[50%]">
-          <Badge text="Why PharmaBin" bgColor="bg-tertiary" className="mb-8" />
-          <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-            Why Choose PharmaBin For Your Pharmaceutical Waste Management
+          <Badge text="Why Choose Us" bgColor="bg-tertiary" className="mb-8" />
+          <h1 className="text-3xl md:text-4xl font-semibold text-tertiary3 mb-6">
+            Why Choose PharmaEco For Your Pharmaceutical Waste Management
           </h1>
         </div>
         <DisposalDiagram />

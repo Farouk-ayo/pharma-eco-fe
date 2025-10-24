@@ -1,5 +1,5 @@
 import Badge from "@/components/badge";
-import DisposalDiagram from "@/components/disposalDiagram/disposalDiagram";
+import DisposalDiagram from "@/components/disposalDiagram";
 import FaqSection from "@/components/faq";
 import Header from "@/components/header/header";
 import MVCSection from "@/components/mvc";
