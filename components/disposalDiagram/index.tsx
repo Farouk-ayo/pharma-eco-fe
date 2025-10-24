@@ -47,7 +47,7 @@ const DisposalDiagram = () => {
 
             {/* Middle Circle with Border */}
             <div className=" z-20 absolute flex items-center justify-center w-full h-full">
-              <div className="w-60 h-60 bg-transparent rounded-full border-white border"></div>
+              <div className="w-60 h-60 bg-transparent rounded-full border-white border-2"></div>
             </div>
 
             {/* Foreground Circle */}
@@ -56,7 +56,7 @@ const DisposalDiagram = () => {
                 priority
                 src={"/ellipse-4.svg"}
                 alt="ellipse"
-                className=" scale-125  w-60 h-60 md:w-[30rem] md:h-[30rem] animate-rotateSlow "
+                className=" scale-[1.3] md:w-[30rem] md:h-[30rem]   "
                 layout="fill"
               />
             </div>
@@ -72,7 +72,7 @@ const DisposalDiagram = () => {
           {itemizedReasons.map((item, index) => (
             <button
               key={item.id}
-              className={`absolute w-10 h-10 bg-primaryDark rounded-full lg:flex items-center justify-center text-white border border-white font-semibold transition-all duration-1000 shadow-lg z-30 hidden ${item.className}`}
+              className={`absolute w-8 h-8 bg-primaryDark rounded-full lg:flex items-center justify-center text-white border border-white font-semibold transition-all duration-1000 shadow-lg z-30 hidden ${item.className}`}
               style={{
                 top: "50%",
                 left: "50%",
@@ -81,6 +81,7 @@ const DisposalDiagram = () => {
                 }deg) translate(120px) rotate(-${((index + 3) % 6) * 60}deg)`,
                 marginLeft: "-20px",
                 marginTop: "-20px",
+                backgroundColor: item.color,
               }}
               onClick={() => {
                 setActiveBox(item.id);
