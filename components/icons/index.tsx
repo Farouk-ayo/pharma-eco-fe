@@ -260,10 +260,10 @@ export const ArrowRight = ({
       <path
         d="M27 22.0799L33.52 28.5999C34.29 29.3699 34.29 30.6299 33.52 31.3999L27 37.9199"
         stroke="white"
-        stroke-width="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -289,10 +289,10 @@ export const ArrowLeft = ({
       <path
         d="M33 37.9201L26.48 31.4001C25.71 30.6301 25.71 29.3701 26.48 28.6001L33 22.0801"
         stroke="white"
-        stroke-width="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
