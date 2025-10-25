@@ -1,7 +1,7 @@
 <svg width="844" height="941" viewBox="0 0 844 941" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_26_207)">
 <circle cx="470.5" cy="466.5" r="225.5" fill="#023022"/>
-<circle cx="470.5" cy="466.5" r="224" stroke="white" stroke-width="3"/>
+<circle cx="470.5" cy="466.5" r="224" stroke="white" strokeWidth="3"/>
 </g>
 <defs>
 <filter id="filter0_d_26_207" x="0" y="0" width="941" height="941" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">

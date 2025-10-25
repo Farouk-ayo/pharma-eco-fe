@@ -13,15 +13,21 @@ import LogoSection from "./logoSection";
 
 export const socialLinksData = [
   {
-    name: "facebook",
-    icon: <FacebookIcon2 fill="transparent" width={25} height={25} />,
-    url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
+    name: "LinkedIn",
+    icon: <LinkedInIcon2 />,
+    url: "https://www.linkedin.com/company/pharmabin-ng/",
   },
   {
     name: "Instagram",
     icon: <InstagramIcon width={25} height={25} />,
     url: "https://www.instagram.com/pharmabin?utm_source=qr&igsh=MTc2MTh5MHBjaDR3bg==",
   },
+  {
+    name: "facebook",
+    icon: <FacebookIcon2 fill="transparent" width={25} height={25} />,
+    url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
+  },
+
   {
     name: "TikTok",
     icon: <TikTokIcon fill="transparent" width={25} height={25} />,
@@ -31,11 +37,6 @@ export const socialLinksData = [
     name: "X",
     icon: <TwitterIcon />,
     url: "https://x.com/pharmabin1?t=gHx2rchT87XsIhBxdce0LQ&s=08",
-  },
-  {
-    name: "LinkedIn",
-    icon: <LinkedInIcon2 />,
-    url: "https://www.linkedin.com/company/pharmabin-ng/",
   },
 ];
 

@@ -14,7 +14,7 @@ const Badge: React.FC<BadgeProps> = ({
 }) => {
   return (
     <div
-      className={`inline-block uppercase ${textColor} text-2xl font-semibold rounded-lg ${className}`}
+      className={`inline-block uppercase ${textColor} text-base lg:text-2xl font-semibold rounded-lg ${className}`}
     >
       {text}
     </div>

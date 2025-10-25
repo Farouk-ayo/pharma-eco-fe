@@ -246,27 +246,24 @@ export const ArrowRight = ({
 }: ReactSVGProps & { stroke?: string }) => {
   return (
     <svg
+      width="60"
+      height="60"
+      viewBox="0 0 60 60"
       {...props}
-      width="40"
-      height="40"
-      viewBox="0 0 40 40"
       fill={fill || "none"}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="20"
-        cy="20"
-        r="20"
-        transform="rotate(-180 20 20)"
-        fill="#BB8300"
+      <path
+        d="M0 8C0 3.58172 3.58172 0 8 0H30C46.5685 0 60 13.4315 60 30C60 46.5685 46.5685 60 30 60H8C3.58172 60 0 56.4183 0 52V8Z"
+        fill="#2AA84A"
       />
       <path
-        d="M18 14.72L22.3467 19.0667C22.86 19.58 22.86 20.42 22.3467 20.9334L18 25.28"
+        d="M27 22.0799L33.52 28.5999C34.29 29.3699 34.29 30.6299 33.52 31.3999L27 37.9199"
         stroke="white"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        stroke-width="2"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );
@@ -278,21 +275,24 @@ export const ArrowLeft = ({
 }: ReactSVGProps & { stroke?: string }) => {
   return (
     <svg
-      width="40"
-      height="40"
-      viewBox="0 0 40 40"
+      width="60"
+      height="60"
+      viewBox="0 0 60 60"
       {...props}
       fill={fill || "none"}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="20" cy="20" r="19.5" stroke="#BB8300" />
       <path
-        d="M22 25.28L17.6533 20.9333C17.14 20.42 17.14 19.58 17.6533 19.0666L22 14.72"
-        stroke="#BB8300"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M60 52C60 56.4183 56.4183 60 52 60L30 60C13.4315 60 0 46.5685 0 30C0 13.4315 13.4315 0 30 0L52 0C56.4183 0 60 3.58172 60 8L60 52Z"
+        fill="#2AA84A"
+      />
+      <path
+        d="M33 37.9201L26.48 31.4001C25.71 30.6301 25.71 29.3701 26.48 28.6001L33 22.0801"
+        stroke="white"
+        stroke-width="2"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );
@@ -708,6 +708,56 @@ export const UsersIcon = ({
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+export const RocketIcon = ({
+  fill,
+  ...props
+}: ReactSVGProps & { stroke?: string }) => {
+  return (
+    <svg
+      width="50"
+      height="50"
+      {...props}
+      viewBox="0 0 50 50"
+      fill={fill || "none"}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17.0133 35.4725L13.9231 32.3823"
+        stroke="white"
+        strokeWidth="1.54706"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M34.7577 13.7841C31.4507 13.4127 19.4297 13.1344 15.4716 27.7561L21.652 33.9365C36.223 29.9277 36.057 18.0383 35.7234 14.7498C35.7014 14.5015 35.5927 14.2688 35.4162 14.0923C35.2397 13.9158 35.0066 13.8067 34.7577 13.7841Z"
+        stroke="white"
+        strokeWidth="1.54706"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M21.1419 17.8618L14.4679 18.4496C14.3021 18.4621 14.1417 18.514 14.0002 18.6011C13.8587 18.6881 13.7403 18.8077 13.6547 18.9498L9.4476 25.5004C9.34803 25.6566 9.28992 25.8354 9.27875 26.0201C9.26757 26.2048 9.3037 26.3893 9.38372 26.5562C9.46375 26.7231 9.58504 26.867 9.73621 26.9744C9.88737 27.0817 10.0634 27.149 10.2478 27.1698L15.4694 27.7561"
+        stroke="white"
+        strokeWidth="1.54706"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M31.6125 28.1758L30.9834 34.9632C30.9704 35.1284 30.9178 35.2882 30.8301 35.429C30.7424 35.5698 30.6221 35.6875 30.4793 35.7724L23.8966 39.9474C23.7397 40.0462 23.5601 40.1036 23.3749 40.1142C23.1896 40.1248 23.0047 40.0882 22.8375 40.0079C22.6703 39.9277 22.5263 39.8063 22.4191 39.6553C22.3119 39.5042 22.245 39.3285 22.2246 39.1446L21.6521 33.9368"
+        stroke="white"
+        strokeWidth="1.54706"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M28.9798 20.4822C29.6009 21.1033 29.6 22.1086 28.9771 22.7279C28.3542 23.3472 27.3451 23.3457 26.724 22.7245C26.103 22.1034 26.1051 21.0981 26.7281 20.4788C27.351 19.8597 28.3587 19.8612 28.9798 20.4822Z"
+        fill="white"
+        stroke="white"
+        strokeWidth="0.0966914"
       />
     </svg>
   );

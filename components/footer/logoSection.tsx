@@ -23,11 +23,11 @@ const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
         </div>
       </Link>
       <p className="text-base text-gray-600 my-6">
-        PharmaBin is an initiative dedicated to solving the pressing issue of
-        pharmaceutical waste management in Nigeria. By integrating technology,
-        community engagement, and environmental sustainability, PharmaBin
-        provides a safe, efficient, and eco-friendly solution for the disposal
-        of expired, unused, or contaminated medications.
+        PharmaEco is an AI-driven social enterprise addressing the urgent
+        challenge of pharmaceutical waste and packaging management in Nigeria.
+        We combine innovation, community engagement, and environmental
+        responsibility to ensure the safe collection, recycling, and
+        eco-friendly disposal of pharmaceutical waste.
       </p>
       <div className="flex items-center space-x-4">
         {socialLinks.map((link) => (

@@ -4,13 +4,10 @@ import Button from "@/components/buttons";
 import { Card } from "@/components/cards";
 import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
-import FaqSection from "@/components/faq";
 import Footer from "@/components/footer";
 import CallToAction from "@/components/footer/callToAction";
-import GallerySection from "@/components/gallery";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
-import { DividerIcon } from "@/components/icons/divider";
 import Navbar from "@/components/navbar";
 import { sdgData } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
@@ -28,7 +25,7 @@ export default function Home() {
         <div className="lg:w-[50%]">
           <Badge text="Our Story" className="mb-2" />
 
-          <h1 className="text-3xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
             How We Are Pioneering The Future Of Pharmaceutical Waste Management{" "}
           </h1>
           <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
@@ -90,7 +87,7 @@ export default function Home() {
       <section className="px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32 relative z-10 bg-primaryLight">
         <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
           <Badge text="SUSTAINABLE DEVELOPMENT GOALS" className="mb-2" />{" "}
-          <h1 className="text-3xl lg:text-4xl font-semibold text-tertiary3 mb-6 ">
+          <h1 className="text-2xl   lg:text-4xl font-semibold text-tertiary3 mb-6 ">
             How PharmaEco Aligned With The United Nations Sustainable
             Development Goals (SDGs){" "}
           </h1>
@@ -104,7 +101,7 @@ export default function Home() {
                 className="flex items-start gap-2"
                 style={{ borderColor: sdg.color }}
               >
-                <CheckMark className={`w-16 flex-shrink-0`} fill={sdg.color} />
+                <CheckMark className={`flex-shrink-0`} fill={sdg.color} />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
                     SDG {sdg.id}: {sdg.title}
@@ -134,7 +131,7 @@ export default function Home() {
                 className="flex items-start gap-2"
                 style={{ borderColor: sdg.color }}
               >
-                <CheckMark className={`w-16 flex-shrink-0`} fill={sdg.color} />
+                <CheckMark className={`flex-shrink-0`} fill={sdg.color} />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
                     SDG {sdg.id}: {sdg.title}
@@ -153,7 +150,7 @@ export default function Home() {
                 className="flex items-start gap-2"
                 style={{ borderColor: sdg.color }}
               >
-                <CheckMark className={`w-16 flex-shrink-0`} fill={sdg.color} />
+                <CheckMark className={` flex-shrink-0`} fill={sdg.color} />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">
                     SDG {sdg.id}: {sdg.title}
@@ -166,98 +163,49 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="px-4 md:px-28 py-20 top-32 bg-white relative z-10"
-        style={{
-          backgroundImage: "url(./bg-waste-land-2.svg)",
-        }}
-      >
+      <section className="px-4 md:px-28 py-20 top-32 bg-white relative z-10">
         <div className="md:w-[50%]">
-          <Badge text="Why Choose Us" bgColor="bg-tertiary" className="mb-8" />
-          <h1 className="text-3xl md:text-4xl font-semibold text-tertiary3 mb-6">
+          <Badge text="Why Choose Us" bgColor="bg-tertiary" className="mb-2" />
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6">
             Why Choose PharmaEco For Your Pharmaceutical Waste Management
           </h1>
         </div>
         <DisposalDiagram />
       </section>
-      <section className="top-32 relative z-40 ">
-        <div className="relative">
+
+      <section className="bg-primary/15 relative  px-4 lg:px-28 pt-12 lg:pt-20 top-32 lg:top-32 ">
+        <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
+          <Badge text="TESTIMONIALS" bgColor="bg-tertiary" className="mb-2" />
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6">
+            What People Are Saying About PharmaEco
+          </h1>
+        </div>
+
+        <div className="relative mt-4">
           <div
-            className="h-[50rem] "
+            className="absolute inset-0 w-full h-full object-contain lg:object-none"
             style={{
-              backgroundImage: "url(./injections.png)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
+              backgroundImage: "url(./bg-testimonial.svg)",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#023022E8]/90 via-[#157D18B8]/48 to-[#157D18B8]/90 bg-[#157D18]/60 md:bg-transparent " />
+
+          <TestimonialSection />
         </div>
-        <section className="absolute top-[10%] md:top-[30%] left-[5%] right-[5%] bg-white rounded-lg shadow p-8 md:p-16 flex flex-col md:flex-row items-end gap-8">
-          <div className="relative  w-full md:w-[50%] flex-col flex  ">
-            <Badge
-              text="Nearby Location"
-              bgColor="bg-tertiary"
-              className="mb-8 w-max"
-            />{" "}
-            <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-              Do You Want To Dispose Your Pharmaceutical Waste? Find A
-              Collection Point Near You
-            </h1>
-            <p className="text-base sm:text-base xl:text-lg text-textPrimary leading-relaxed mb-4">
-              PharmaBin is an initiative dedicated to solving the pressing issue
-              of pharmaceutical waste management in Nigeria. By integrating
-              technology, community engagement, and environmental
-              sustainability, PharmaBin provides a safe, efficient, and
-              eco-friendly solution for the disposal of expired, unused, or
-              contaminated medications.
-              <br />
-              Our platform connects households, community pharmacies, and
-              regulatory bodies, ensuring proper collection and disposal of
-              pharmaceutical waste while raising awareness about its impact on
-              health and the environment. With a vision to lead responsible
-              waste management practices in Nigeria, PharmaBin is committed to
-              fostering a cleaner, healthier, and more sustainable future.
-            </p>
-            <Button
-              variant="secondary"
-              className="text-black w-max"
-              href="/collection-points"
-            >
-              View Locations Near You
-            </Button>
-          </div>
-          <div className="relative hidden md:inline-block w-full md:w-[50%] h-[30rem] md:h-[40rem]">
-            <Image
-              src="/drugs-1.png"
-              alt="drugs"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
-              priority
-            />
-          </div>
-        </section>
       </section>
-      <section
-        className="relative pt-[26rem] sm:pt-40 md:pt-96 "
-        style={{
-          backgroundImage: "url(./bg-community.svg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <section className="relative  py-20 top-32 ">
         <div className="container mx-auto px-6">
           <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
             <Badge text="Articles" bgColor="bg-tertiary" className="mb-8" />{" "}
-            <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-              Knowledge On How To Protect Our Communities Together
+            <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6">
+              How We Are Redefining Access To Pharmaceutical Waste Through
+              Knowledge
             </h1>
             <p className="text-base sm:text-base xl:text-lg text-textPrimary leading-relaxed mb-4">
-              Pharmaceutical waste disposal can be complex to navigate, so we
-              work hard to provide answers to the questions you may have. Enter
-              our Articles section to find blog posts, research papers and FAQ’s
-              on compliant and effective pharmaceutical waste management.
+              Explore inspiring stories, innovations, and AI-driven insights on
+              pharmaceutical waste recycling, sustainability, and
+              community-driven environmental action. Pharmaceutical waste safe
+              disposal can be complex to navigate, so we work hard to provide
+              answers to the questions you may have.
             </p>
           </div>
 
@@ -273,41 +221,6 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
-        <div className="py-20 flex flex-col md:flex-row  gap-8 px-4 md:px-28">
-          <div className="w-full md:w-1/2 gap-5 text-base sm:text-base xl:text-lg h-full">
-            <Badge
-              text="Frequently Asked Questions"
-              bgColor="bg-tertiary"
-              className="mb-8"
-            />
-            <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-              Want To Ask PharmaBin Anything? We Have Answers
-            </h1>
-            <p>
-              PharmaBin is an initiative dedicated to solving the pressing issue
-              of pharmaceutical waste management in Nigeria. By integrating
-              technology, community engagement, and environmental
-              sustainability, PharmaBin provides a safe, efficient, and
-              eco-friendly solution for the disposal of expired, unused, or
-              contaminated medications.
-            </p>
-          </div>
-          <FaqSection />
-        </div>
-      </section>
-      <section className="bg-gradient-to-r from-[#157D18]/30 via-[#023022]/20 to-[#023022]/20 bg-[#023022]/10 md:bg-transparent  py-20 px-4 md:px-0 md:pr-28">
-        <div className=" w-full md:w-[70%] mx-auto text-center mb-4">
-          <h1 className="text-2xl md:text-4xl font-bold text-primary mb-6 ">
-            See How Pharmacies Like Yours Are Getting Ride Of Their
-            Pharmaceutical Waste
-          </h1>
-          <DividerIcon />
-        </div>
-
-        <div className="mt-4 flex flex-col md:flex-row md:gap-8">
-          <GallerySection />
-          <TestimonialSection />
         </div>
       </section>
       <CallToAction />
