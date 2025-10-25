@@ -166,7 +166,7 @@ export default function Home() {
       <section className="px-4 md:px-28 py-20 top-32 bg-white relative z-10">
         <div className="md:w-[50%]">
           <Badge text="Why Choose Us" bgColor="bg-tertiary" className="mb-2" />
-          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6">
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
             Why Choose PharmaEco For Your Pharmaceutical Waste Management
           </h1>
         </div>
@@ -176,7 +176,7 @@ export default function Home() {
       <section className="bg-primary/15 relative  px-4 lg:px-28 pt-12 lg:pt-20 top-32 lg:top-32 ">
         <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
           <Badge text="TESTIMONIALS" bgColor="bg-tertiary" className="mb-2" />
-          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6">
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
             What People Are Saying About PharmaEco
           </h1>
         </div>
@@ -192,11 +192,11 @@ export default function Home() {
           <TestimonialSection />
         </div>
       </section>
-      <section className="relative  py-20 top-32 ">
+      <section className="relative  px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32">
         <div className="container mx-auto px-6">
           <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
-            <Badge text="Articles" bgColor="bg-tertiary" className="mb-8" />{" "}
-            <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6">
+            <Badge text="Articles" bgColor="bg-tertiary" className="mb-2" />{" "}
+            <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
               How We Are Redefining Access To Pharmaceutical Waste Through
               Knowledge
             </h1>

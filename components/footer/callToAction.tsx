@@ -3,7 +3,7 @@ import Button from "../buttons";
 
 const CallToAction = () => {
   return (
-    <section className="relative  px-4 lg:px-28   flex items-center overflow-hidden">
+    <section className="relative px-4 lg:px-28 pt-12 lg:pt-20 top-32 lg:top-32   flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full"
         style={{

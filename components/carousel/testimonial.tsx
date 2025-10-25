@@ -43,7 +43,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <div className="relative w-full mx-auto  overflow-x-hidden pb-40">
+    <div className="relative w-full mx-auto  overflow-x-hidden pb-10 sm:pb-40">
       <Swiper
         modules={[Pagination, Autoplay, Navigation]}
         spaceBetween={30}
@@ -90,11 +90,11 @@ const TestimonialSection = () => {
       </Swiper>
 
       <button className="custom-prev absolute left-0 bottom-[30%] lg:bottom-1/2 z-20 p-2 hover:opacity-75 transition-opacity">
-        <ArrowLeft className="w-10 lg:w-max" />
+        <ArrowLeft className="w-10 md:w-max" />
       </button>
       <div className="custom-pagination   !-translate-y-1/2    !-bottom-2 !left-[40%] sm:!left-[47%]  !m-auto  !absolute !w-full   !z-20" />
       <button className="custom-next absolute right-0 bottom-[30%] lg:bottom-1/2 z-20 p-2 hover:opacity-75 transition-opacity">
-        <ArrowRight className="w-10 lg:w-max" />
+        <ArrowRight className="w-10 md:w-max" />
       </button>
     </div>
   );
