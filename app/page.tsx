@@ -1,20 +1,22 @@
 "use client";
 import Badge from "@/components/badge";
 import Button from "@/components/buttons";
-import { Card } from "@/components/cards";
+import { Card } from "@/components/cards/articlesCard";
 import TestimonialSection from "@/components/carousel/testimonial";
 import DisposalDiagram from "@/components/disposalDiagram";
 import Footer from "@/components/footer";
 import CallToAction from "@/components/footer/callToAction";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
+import LoadingSkeleton from "@/components/loadingSkeleton";
 import Navbar from "@/components/navbar";
 import { sdgData } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
 import Image from "next/image";
+import { LineConnector } from "./articles/page";
 
 export default function Home() {
-  const { data: articles } = useGetArticles();
+  const { data: articles, isPending } = useGetArticles();
   const cards = articles?.slice(0, 3) || [];
 
   return (
@@ -209,17 +211,29 @@ export default function Home() {
             </p>
           </div>
 
+          {!isPending && (
+            <div className="hidden lg:grid lg:grid-cols-3 md:mt-20">
+              {cards.slice(0, 3).map((_, index) => (
+                <LineConnector key={index} number={index + 1} />
+              ))}
+            </div>
+          )}
+
           {/* Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cards.map((card, index) => (
-              <Card
-                key={index}
-                id={card._id}
-                image={card.articleImage1Url}
-                title={card.Title}
-                description={card.Caption}
-              />
-            ))}
+            {isPending ? (
+              <LoadingSkeleton type="card" />
+            ) : (
+              cards.map((card, index) => (
+                <Card
+                  key={index}
+                  id={card._id}
+                  image={card.articleImage1Url}
+                  title={card.Title}
+                  description={card.Caption}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>

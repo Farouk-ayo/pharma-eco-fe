@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeftIcon, ArrowRightIcon } from "../icons";
+import { ArrowLeft, ArrowRight } from "../icons";
 
 interface PaginationProps {
   currentPage: number;
@@ -12,64 +12,74 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-
   return (
-    <div className="flex items-center justify-center gap-2 my-4">
+    <div className="flex items-center justify-center gap-3 md:gap-4 my-8 md:my-12">
       {/* Previous Arrow */}
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={`p-2 rounded-full ${
+        className={`transition-all ${
           currentPage === 1
-            ? "text-gray-400 cursor-not-allowed"
-            : "text-gray-700"
+            ? "opacity-40 cursor-not-allowed"
+            : "hover:scale-110"
         }`}
       >
-        <ArrowLeftIcon />
+        <ArrowLeft className="w-10 h-10 md:w-12 md:h-12" />
       </button>
 
       {/* Page Numbers */}
-      {pageNumbers.map((number) => (
-        <button
-          key={number}
-          onClick={() => onPageChange(number)}
-          className={`w-8 h-8 flex items-center justify-center rounded-full ${
-            number === currentPage
-              ? "bg-green-600 text-white font-bold"
-              : "text-gray-700 hover:bg-gray-200"
-          }`}
-        >
-          {number}
-        </button>
-      ))}
+      <div className="flex items-center gap-2">
+        {[...Array(totalPages)].map((_, index) => {
+          const pageNumber = index + 1;
+          // Show first page, last page, current page, and pages around current
+          const showPage =
+            pageNumber === 1 ||
+            pageNumber === totalPages ||
+            (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1);
 
-      {/* Ellipsis if needed */}
-      {totalPages > 5 && currentPage < totalPages - 2 && (
-        <span className="text-gray-700">...</span>
-      )}
+          // Show ellipsis
+          const showEllipsisBefore =
+            pageNumber === currentPage - 2 && currentPage > 3;
+          const showEllipsisAfter =
+            pageNumber === currentPage + 2 && currentPage < totalPages - 2;
 
-      {/* Last Page */}
-      {totalPages > 5 && currentPage < totalPages - 2 && (
-        <button
-          onClick={() => onPageChange(totalPages)}
-          className="w-8 h-8 flex items-center justify-center rounded-full text-gray-700 hover:bg-gray-200"
-        >
-          {totalPages}
-        </button>
-      )}
+          if (showEllipsisBefore || showEllipsisAfter) {
+            return (
+              <span key={pageNumber} className="text-gray-400 px-1 md:px-2">
+                ...
+              </span>
+            );
+          }
+
+          if (!showPage) return null;
+
+          return (
+            <button
+              key={pageNumber}
+              onClick={() => onPageChange(pageNumber)}
+              className={`w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center font-semibold transition-all text-sm md:text-base ${
+                currentPage === pageNumber
+                  ? " text-primary  scale-110"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {pageNumber}
+            </button>
+          );
+        })}
+      </div>
 
       {/* Next Arrow */}
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className={`p-2 rounded-full ${
+        className={`transition-all ${
           currentPage === totalPages
-            ? "text-gray-400 cursor-not-allowed"
-            : "text-gray-700"
+            ? "opacity-40 cursor-not-allowed"
+            : "hover:scale-110"
         }`}
       >
-        <ArrowRightIcon />
+        <ArrowRight className="w-10 h-10 md:w-12 md:h-12" />
       </button>
     </div>
   );

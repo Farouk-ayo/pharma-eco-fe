@@ -1,24 +1,25 @@
 interface HeaderProps {
   title: string;
   description: React.ReactNode;
+  bg: string;
 }
 
-export default function Header({ title, description }: HeaderProps) {
+export default function Header({ title, description, bg }: HeaderProps) {
   return (
-    <div className="relative   top-24 px-4 lg:px-28 py-40 min-h-[600px] flex items-center overflow-hidden">
+    <div className="relative px-4 lg:px-28 py-40 min-h-screen flex items-center overflow-hidden">
       <div
-        className="absolute inset-0 w-full h-full z-10"
+        className="absolute inset-0 w-full h-full bg-black "
         style={{
-          backgroundImage: "url(./header-bg-texture.svg)",
+          backgroundImage: `url(.${bg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       />
-      <div className="absolute inset-0  bg-primary " />
+      <div className="absolute inset-0  bg-primary/75 " />
 
       <div className="relative w-full md:w-[90%] mx-auto p-5 z-20 md:p-10 flex flex-col gap-5 text-center">
-        <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-secondary">
+        <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
           {title}
         </h1>
         {description}

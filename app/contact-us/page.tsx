@@ -48,6 +48,7 @@ const ContactUs = () => {
     <section>
       <Header
         title="Contact Us"
+        bg="/bg-contact-us.jpg"
         description={
           <p className="text-lg text-medium text-white">
             We are really fun to talk to, but if you’re not a big talker and

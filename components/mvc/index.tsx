@@ -1,36 +1,31 @@
-import React from "react";
-import Badge from "../badge";
+import { MissionVisionCard } from "../cards/missionVisionCard";
+import { HorizontalLine } from "../icons";
 
-const Mvc = () => {
+export const MVCSection = () => {
   return (
-    <div className="relative pt-40 py-16 px-6 md:px-20">
-      <div className="max-w-6xl mx-auto text-center">
-        <Badge text="Mission & Vision" bgColor="bg-tertiary mb-4" />
-        <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-20 text-center">
-          See What Is Driving Us - Our Mission & Vision
-        </h1>
+    <section className="px-4 lg:px-28 py-12 lg:py-20 relative">
+      {/* Horizontal line connector */}
+      <div className="hidden lg:block relative w-full mb-8">
+        <HorizontalLine className="w-full" />
       </div>
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-        <div className="bg-[#F7F7F7] shadow-lg rounded-lg p-6 md:p-8 border-l-8 border-primary">
-          <h3 className="text-2xl font-semibold text-primary">Our Mission</h3>
-          <p className="text-gray-700 mt-3 leading-relaxed">
-            To establish a sustainable and innovative system for the safe
-            disposal of pharmaceutical waste in Nigeria, promoting public health
-            and environmental protection while addressing the unique challenges
-            faced by communities.
-          </p>
-        </div>
 
-        <div className="bg-[#F7F7F7] shadow-lg rounded-lg p-6 md:p-8 border-l-8 border-secondary">
-          <h3 className="text-2xl font-semibold text-secondary">Our Vision</h3>
-          <p className="text-gray-700 mt-3 leading-relaxed">
-            To lead a cultural shift towards an eco-friendly and sustainable
-            pharmaceutical waste management in Nigeria.
-          </p>
-        </div>
+      {/* Mission and Vision Cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <MissionVisionCard
+          letter="M"
+          title="Our Mission"
+          description="To build a sustainable, AI-driven system for the collection, recycling, and disposal of pharmaceutical waste and packaging materials by protecting public health, conserving the environment, and fostering circular economy practices in Nigeria."
+          backgroundColor="#1B4D3E"
+          letterColor="#1B4D3E"
+        />
+        <MissionVisionCard
+          letter="V"
+          title="Our Vision"
+          description="To be Africa's leading platform for pharmaceutical waste and packaging recycling, driving environmental responsibility, artificial intelligence, innovation, and public health protection."
+          backgroundColor="#F59E0B"
+          letterColor="#F59E0B"
+        />
       </div>
-    </div>
+    </section>
   );
 };
-
-export default Mvc;

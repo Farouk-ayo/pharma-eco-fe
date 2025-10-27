@@ -9,12 +9,13 @@ const CollectionPoints = () => {
     <section className="">
       <Header
         title="Collection Point Near You"
+        bg="/bg-collection.jpg"
         description={
           <p className="text-lg text-medium text-white">
-            PharmaBin is a big pharmaceutical waste disposal in Nigeria. Through
-            a unique partnership with NAFDAC, PharmaBin is able to increase
-            awareness of your services by including your location on their
-            special consumer medication disposal mapping tool.
+            Our platform connects households, pharmacies, hospitals, and
+            regulatory bodies to ensure that pharmaceutical waste is properly
+            handled and that recyclable materials are repurposed to reduce
+            pollution and promote circular economy practices.
           </p>
         }
       />{" "}

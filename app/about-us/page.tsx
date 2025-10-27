@@ -1,120 +1,81 @@
 import Badge from "@/components/badge";
-import DisposalDiagram from "@/components/disposalDiagram";
 import FaqSection from "@/components/faq";
 import Header from "@/components/header/header";
-import MVCSection from "@/components/mvc";
+import { MVCSection } from "@/components/mvc";
 import Image from "next/image";
 import React from "react";
 
 const AboutUs = () => {
   return (
-    <section
-      className=""
-      style={{
-        backgroundImage: "url(./bg-about-us.svg)",
-      }}
-    >
+    <section>
       <Header
         title="About Us"
+        bg="/bg-about-us.png"
         description={
           <p className="text-lg text-medium text-white">
-            Welcome to PharmaBin, an initiative dedicated to solving the
-            pressing issue of pharmaceutical waste management in Nigeria. By
-            integrating technology, community engagement, and environmental
-            sustainability, PharmaBin provides a safe, efficient, and
-            eco-friendly solution for the disposal of expired, unused, or
-            contaminated medications.
+            At PharmaEco, our vision is to lead Nigeria and Africa toward a
+            future where pharmaceutical waste and packaging are managed
+            responsibly and sustainably while fostering a cleaner, healthier,
+            and circular economy.
           </p>
         }
-      />{" "}
-      <section className="px-4 lg:px-28  py-12 md:py-20 top-32 md:top-32 relative z-10">
-        <div className=" mx-auto space-y-12">
-          <div className=" text-center space-y-6">
-            <Badge text="About Us" bgColor="bg-tertiary" />
-            <h2 className="max-w-4xl text-center mx-auto text-2xl md:text-4xl font-bold text-tertiary3">
-              PharmaBin Is The Industry Leader In Pharmaceutical Waste
-              Management
-            </h2>
-          </div>
+      />
+      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
+        <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
+          <Image
+            src="/drugs.png"
+            alt="drugs"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-b-[120px] rounded-t-[24px]"
+          />
+        </div>
+        <div className="lg:w-[50%]">
+          <Badge text="Our Story" className="mb-2" />
 
-          <div className="space-y-6 text-textPrimary">
-            <p className="text-base md:text-base lg:text-lg text-center">
-              PharmaBin is an initiative dedicated to solving the pressing issue
-              of pharmaceutical waste management in Nigeria. By integrating
-              technology, community engagement, and environmental
-              sustainability, PharmaBin provides a safe, efficient, and
-              eco-friendly solution for the disposal of expired, unused, or
-              contaminated medications.{" "}
-            </p>
-            <p className="text-base md:text-base lg:text-lg text-center">
-              Our platform connects households, community pharmacies, and
-              regulatory bodies, ensuring proper collection and disposal of
-              pharmaceutical waste while raising awareness about its impact on
-              health and the environment. With a vision to lead responsible
-              waste management practices in Nigeria, PharmaBin is committed to
-              fostering a cleaner, healthier, and more sustainable future.{" "}
-            </p>
-
-            <p className="text-base md:text-base lg:text-lg text-center">
-              Through technology-driven tracking and reporting, PharmaBin
-              ensures that collected waste is properly handled, reducing the
-              risks of environmental pollution, water contamination, and
-              medication misuse. Beyond collection, PharmaBin serves as an
-              educational hub, providing communities with vital information on
-              the dangers of improper pharmaceutical waste disposal and
-              promoting best practices for medication management.{" "}
-            </p>
-            <p className="text-base md:text-base lg:text-lg text-center">
-              By bridging the gap between individuals, healthcare facilities,
-              and regulatory bodies, PharmaBin is pioneering a safe, efficient,
-              and eco-friendly approach to pharmaceutical waste disposal.
-            </p>
-          </div>
-
-          {/* Image Section */}
-          <div className="w-full rounded-lg overflow-hidden shadow-xl">
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
+            How We Are Pioneering The Future Of Pharmaceutical Waste Management{" "}
+          </h1>
+          <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
             <Image
-              src="/about-us-1.png"
+              src="/drugs.png"
               alt="drugs"
-              layout="responsive"
+              layout="fill"
               objectFit="cover"
-              className="rounded-lg"
-              priority
-              width={300}
-              height={100}
-            />{" "}
+              className="rounded-b-[120px] rounded-t-[24px]"
+            />
+          </div>
+          <div className="w-full gap-5 text-base sm:text-base xl:text-lg h-full flex flex-col ">
+            <p className="text-textPrimary leading-relaxed mb-4">
+              PharmaEco is a pioneering initiative tackling the growing problem
+              of pharmaceutical waste and packaging disposal in Nigeria. We
+              leverage AI technology, education, and partnerships to create an
+              efficient, safe, and eco-friendly system for the collection,
+              recycling, and disposal of unused, expired, or contaminated
+              medicines and packaging materials including blister packs,
+              cartons, leaflets, plastics, tubes and others.
+              <br />
+              <br />
+              Our platform connects households, pharmacies, hospitals, and
+              regulatory bodies to ensure that pharmaceutical waste is properly
+              handled and that recyclable materials are repurposed to reduce
+              pollution and promote circular economy practices. Through
+              PharmaEcoBot, our AI-powered assistant on WhatsApp, users can
+              instantly: Locate nearby collection points, learn how to dispose
+              of waste safely, get instant recycling updates and health
+              education tips and report improper disposal or environmental
+              hazards
+              <br />
+              <br />
+              Our vision is to lead Nigeria and Africa toward a future where
+              pharmaceutical waste and packaging are managed responsibly and
+              sustainably fostering a cleaner, healthier, and circular economy.
+            </p>
           </div>
         </div>
       </section>
       <MVCSection />
-      <section
-        className="relative "
-        style={{
-          backgroundImage: "url(./bg-community.svg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 py-14">
-          <DisposalDiagram />
-          <div className="text-center my-12 w-full md:w-[90%] mx-auto">
-            <Badge
-              text="Frequently Asked Questions"
-              bgColor="bg-tertiary mb-4"
-            />
-            <h1 className="text-3xl md:text-4xl font-bold text-tertiary3 mb-6">
-              See Answers To Some Frequently Asked Questions
-            </h1>
-            <p className="text-base sm:text-base xl:text-lg text-textPrimary leading-relaxed mb-4">
-              PharmaBin is a big pharmaceutical waste disposal in Nigeria.
-              Through a unique partnership with NAFDAC, PharmaBin is able to
-              increase awareness of your services by including your location on
-              their special consumer medication disposal mapping tool.
-            </p>
-          </div>
-          <FaqSection />
-        </div>
-      </section>
+      <FaqSection />
     </section>
   );
 };
