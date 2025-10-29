@@ -8,12 +8,12 @@ import Footer from "@/components/footer";
 import CallToAction from "@/components/footer/callToAction";
 import Header from "@/components/header";
 import { CheckMark } from "@/components/icons";
+import { LineConnector } from "@/components/lineConnector";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Navbar from "@/components/navbar";
 import { sdgData } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
 import Image from "next/image";
-import { LineConnector } from "./articles/page";
 
 export default function Home() {
   const { data: articles, isPending } = useGetArticles();
