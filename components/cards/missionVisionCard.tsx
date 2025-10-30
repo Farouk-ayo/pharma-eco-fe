@@ -24,6 +24,7 @@ export const MissionVisionCard: React.FC<MissionVisionCardProps> = ({
       className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg z-20 mb-2"
       style={{
         backgroundColor: letterColor,
+        boxShadow: `0 0 0 6px ${letterColor}50 `,
       }}
     >
       {letter}
@@ -35,7 +36,7 @@ export const MissionVisionCard: React.FC<MissionVisionCardProps> = ({
     </div>
 
     {/* Card */}
-    <div className="bg-white rounded-b-[80px] rounded-t-[24px] border overflow-hidden hover:shadow-lg transition w-full">
+    <div className="bg-white rounded-b-[120px] rounded-t-[30px] lg:h-64 border overflow-hidden hover:shadow-lg transition max-w-sm">
       {/* Colored header */}
       <div
         className="px-6 py-4 text-white font-bold text-lg text-center rounded-t-[24px]"

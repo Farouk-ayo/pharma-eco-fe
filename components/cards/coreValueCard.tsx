@@ -9,7 +9,6 @@ interface CoreValueCardProps {
 }
 
 export const CoreValueCard: React.FC<CoreValueCardProps> = ({
-  number,
   title,
   description,
   backgroundColor,
@@ -19,7 +18,7 @@ export const CoreValueCard: React.FC<CoreValueCardProps> = ({
     {position === "top" && (
       <>
         {/* Card first */}
-        <div className="bg-white rounded-b-[80px] rounded-t-[24px] border overflow-hidden hover:shadow-lg transition w-full mb-2">
+        <div className="bg-white rounded-b-[80px] rounded-t-[24px] border overflow-hidden hover:shadow-lg transition w-full mb-4">
           {/* Colored header */}
           <div
             className="px-6 py-4 text-white font-bold text-lg text-center rounded-t-[24px]"
@@ -30,37 +29,21 @@ export const CoreValueCard: React.FC<CoreValueCardProps> = ({
 
           {/* Content */}
           <div className="p-6 text-center text-gray-700">
-            <p className="leading-relaxed">{description}</p>
+            <p className="leading-relaxed text-sm">{description}</p>
           </div>
         </div>
 
-        {/* Vertical line */}
-        <div className="rotate-180 mb-2">
+        {/* Vertical line connector */}
+        <div className="flex justify-center">
           <VerticalLine />
-        </div>
-
-        {/* Numbered circle */}
-        <div
-          className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg z-20"
-          style={{ backgroundColor }}
-        >
-          {number}
         </div>
       </>
     )}
 
     {position === "bottom" && (
       <>
-        {/* Numbered circle */}
-        <div
-          className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg z-20 mb-2"
-          style={{ backgroundColor }}
-        >
-          {number}
-        </div>
-
-        {/* Vertical line */}
-        <div className="mb-2">
+        {/* Vertical line connector */}
+        <div className="flex justify-center mb-4">
           <VerticalLine />
         </div>
 
@@ -76,7 +59,7 @@ export const CoreValueCard: React.FC<CoreValueCardProps> = ({
 
           {/* Content */}
           <div className="p-6 text-center text-gray-700">
-            <p className="leading-relaxed">{description}</p>
+            <p className="leading-relaxed text-sm">{description}</p>
           </div>
         </div>
       </>
