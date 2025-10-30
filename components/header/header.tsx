@@ -14,6 +14,7 @@ export default function Header({ title, description, bg }: HeaderProps) {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
         }}
       />
       <div className="absolute inset-0  bg-primary/75 " />

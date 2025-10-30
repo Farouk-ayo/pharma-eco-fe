@@ -2,6 +2,7 @@ import Badge from "@/components/badge";
 import FaqSection from "@/components/faq";
 import Header from "@/components/header/header";
 import { MVCSection } from "@/components/mvc";
+import { CoreValuesSection } from "@/components/mvc/coreValues";
 import Image from "next/image";
 import React from "react";
 
@@ -75,6 +76,7 @@ const AboutUs = () => {
         </div>
       </section>
       <MVCSection />
+      <CoreValuesSection />
       <FaqSection />
     </section>
   );

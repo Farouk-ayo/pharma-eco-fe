@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { CrossIcon, PlusIcon } from "../icons";
 import { AnimatePresence, motion } from "framer-motion";
+import Badge from "../badge";
 
 interface FaqItem {
   question: string;
@@ -10,41 +11,54 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    question: "What Is PharmaBin?",
+    question: "What Is PharmaEco?",
     answer: `
-   <strong>PharmaBin</strong> is an initiative dedicated to solving the pressing issue of pharmaceutical waste management in Nigeria. By integrating technology, community engagement, and environmental sustainability, <strong>PharmaBin</strong> provides a safe, efficient, and eco-friendly solution for the disposal of expired, unused, or contaminated medications`,
+   PharmaEco is an AI-driven social enterprise addressing the urgent challenge of pharmaceutical waste and packaging management in Nigeria. We combine innovation, community engagement, and environmental responsibility to ensure the safe collection, recycling, and eco-friendly disposal of pharmaceutical waste. `,
   },
   {
-    question: "Why is proper pharmaceutical waste disposal important?",
+    question: "Who can use PharmaEco’s services?",
     answer: `
-   Improper disposal can harm the environment, contribute to antimicrobial resistance, and pose health risks through accidental ingestion or drug misuse.`,
+   Households, pharmacies, hospitals, and healthcare institutions can all use PharmaEco to dispose of expired, unused medications and pharmaceutical packaging.`,
   },
   {
-    question: "Where can I drop off my unused or expired medicines?",
+    question: "How does PharmaEco work?",
     answer: `
-    You can find a registered collection point near you through our website.`,
+    Users locate nearby collection points through our digital platform, where waste is collected, tracked, and transported for proper disposal and recycling.`,
   },
   {
-    question: "What types of pharmaceutical waste can be disposed of?",
+    question: "How can I talk to PharmaEco instantly?",
     answer: `
-    Expired medicines, Leftover drugs, Unused drugs such as blisters, IV fluids, and other pharmaceutical-related waste.`,
+    Simply chat with PharmaEcoBot on WhatsApp for guidance on locating nearby collection points, safe disposal, or recycling education.`,
   },
   {
-    question: "What happens to the collected pharmaceutical waste?",
+    question: "Is there a cost to use PharmaEco?",
     answer: `
-    A licensed waste disposal company collects the waste and ensures safe disposal in line with NAFDAC regulations.`,
+    Basic collection services for individuals are free. Institutional or bulk collections may have structured pricing depending on volume in the nearest future.`,
   },
   {
-    question:
-      "Will incentives be available for me when i return my pharmaceutical waste?",
+    question: "How does PharmaEco ensure environmental safety?",
     answer: `
-   Yes, but for now, there are no incentives. With time we will start to give incentives to those that return their pharmaceutical waste to the nearest pharmaceutical waste collection point.`,
+   We work with certified waste handlers and regulatory agencies to ensure all materials are disposed of responsibly.`,
   },
   {
-    question:
-      "Can I Get to know the nearest participating pharmacies In my environment?",
+    question: "What types of waste does PharmaEco accept?",
     answer: `
-   Yes, you will be able to know the nearest waste collection point in your environment. Just come to the PharmaBin website and you will be able to search for the locations near you.`,
+   We accept expired, unused, or damaged medicines, as well as empty blister packs, cartons, leaflets, plastics, tubes, and other pharmaceutical packaging materials for recycling and safe disposal.`,
+  },
+  {
+    question: "Why is pharmaceutical waste recycling important?",
+    answer: `
+   Recycling prevents toxic waste from contaminating soil and water, reduces landfill burden, and promotes a circular economy that converts packaging waste into reusable materials.`,
+  },
+  {
+    question: "Can I partner with PharmaEco?",
+    answer: `
+   Yes! We welcome collaborations from pharmacies, hospitals, NGOs, and organizations interested in sustainability.`,
+  },
+  {
+    question: "⁠Does PharmaEco operate outside Nigeria?",
+    answer: `
+   Currently, we are focused on Nigeria, but we are exploring partnerships to expand to other African countries.`,
   },
 ];
 
@@ -55,8 +69,23 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="w-full bg-transparent">
-      <div className="">
+    <section className="relative  px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32">
+      <div className="container mx-auto px-6">
+        <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
+          <Badge
+            text="FREQUENTLY ASKED QUESTIONS"
+            bgColor="bg-tertiary"
+            className="mb-2"
+          />{" "}
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
+            Want To Ask PharmaEco Anything? We Have Answers
+          </h1>
+          <p className="text-base sm:text-base xl:text-lg text-textPrimary leading-relaxed mb-4">
+            Get clarity on how PharmaEco helps individuals, pharmacies,
+            hospitals and institutions manage pharmaceutical waste safely and
+            sustainably.
+          </p>
+        </div>
         <div className="">
           {faqData.map((item, index) => (
             <div
