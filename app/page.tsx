@@ -7,8 +7,7 @@ import DisposalDiagram from "@/components/disposalDiagram";
 import Footer from "@/components/footer";
 import CallToAction from "@/components/footer/callToAction";
 import Header from "@/components/header";
-import { CheckMark } from "@/components/icons";
-import { LineConnector } from "@/components/lineConnector";
+import { CheckMark, HorizontalLine } from "@/components/icons";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Navbar from "@/components/navbar";
 import { sdgData } from "@/lib/data";
@@ -212,10 +211,8 @@ export default function Home() {
           </div>
 
           {!isPending && (
-            <div className="hidden lg:grid lg:grid-cols-3 md:mt-20">
-              {cards.slice(0, 3).map((_, index) => (
-                <LineConnector key={index} number={index + 1} />
-              ))}
+            <div className="hidden lg:block relative w-full -mb-8">
+              <HorizontalLine className="w-full" />
             </div>
           )}
 
@@ -226,7 +223,9 @@ export default function Home() {
             ) : (
               cards.map((card, index) => (
                 <Card
+                  backgroundColor="#009D3D"
                   key={index}
+                  num={index+1}
                   id={card._id}
                   image={card.articleImage1Url}
                   title={card.Title}

@@ -75,8 +75,20 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <MVCSection />
-      <CoreValuesSection />
+      <section>
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: `url(./bg-mvc.png)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        <MVCSection />
+        <CoreValuesSection />
+      </section>
+
       <FaqSection />
     </section>
   );

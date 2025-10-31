@@ -9,7 +9,7 @@ export const CoreValuesSection = () => {
       title: "Innovation",
       description:
         "We leverage AI and creative thinking to design modern solutions for pharmaceutical waste management.",
-      backgroundColor: "#1B4D3E",
+      backgroundColor: "#023022",
       position: "bottom" as const,
     },
     {
@@ -17,7 +17,7 @@ export const CoreValuesSection = () => {
       title: "Sustainability",
       description:
         "We are committed to eco-friendly practices that protect our environment for future generations.",
-      backgroundColor: "#F97316",
+      backgroundColor: "#FF8000",
       position: "top" as const,
     },
     {
@@ -25,7 +25,7 @@ export const CoreValuesSection = () => {
       title: "Public Health Advocacy",
       description:
         "We promote community health by preventing the dangers associated with improper pharmaceutical waste disposal.",
-      backgroundColor: "#D946EF",
+      backgroundColor: "#BD01D2",
       position: "bottom" as const,
     },
     {
@@ -33,7 +33,7 @@ export const CoreValuesSection = () => {
       title: "Integrity",
       description:
         "We uphold transparency and ethical standards in all our operations and partnerships.",
-      backgroundColor: "#22C55E",
+      backgroundColor: "#2AA84A",
       position: "top" as const,
     },
     {
@@ -41,7 +41,7 @@ export const CoreValuesSection = () => {
       title: "Collaboration",
       description:
         "We believe in the power of partnerships by working together with individuals, institutions, and governments to achieve impact.",
-      backgroundColor: "#06B6D4",
+      backgroundColor: "#00AED9",
       position: "bottom" as const,
     },
     {
@@ -49,7 +49,7 @@ export const CoreValuesSection = () => {
       title: "Education & Awareness",
       description:
         "Through our AI chatbot and campaigns, we empower communities through knowledge and inspiring behavioral change.",
-      backgroundColor: "#DB2777",
+      backgroundColor: "#B1033E",
       position: "top" as const,
     },
   ];
@@ -70,9 +70,9 @@ export const CoreValuesSection = () => {
       {/* Desktop Layout - Horizontal Timeline */}
       <div className="hidden lg:block">
         {/* Grid Container */}
-        <div className="grid grid-cols-6 gap-8 relative">
+        <div className="grid grid-cols-6  relative">
           {/* Top Row - Cards at top positions */}
-          <div className="col-span-6 grid grid-cols-6 gap-8 mb-4">
+          <div className="col-span-6 grid grid-cols-6 gap-8 ">
             {coreValues.map((value) => (
               <div key={`top-${value.number}`} className="relative">
                 {value.position === "top" && <CoreValueCard {...value} />}
@@ -93,8 +93,11 @@ export const CoreValuesSection = () => {
                   className="flex justify-center"
                 >
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
-                    style={{ backgroundColor: value.backgroundColor }}
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-3xl shadow-lg"
+                    style={{
+                      backgroundColor: value.backgroundColor,
+                      boxShadow: `0 0 0 6px ${value.backgroundColor}50 `,
+                    }}
                   >
                     {value.number}
                   </div>
@@ -104,7 +107,7 @@ export const CoreValuesSection = () => {
           </div>
 
           {/* Bottom Row - Cards at bottom positions */}
-          <div className="col-span-6 grid grid-cols-6 gap-8 mt-4">
+          <div className="col-span-6 grid grid-cols-6 gap-2 ">
             {coreValues.map((value) => (
               <div key={`bottom-${value.number}`} className="relative">
                 {value.position === "bottom" && <CoreValueCard {...value} />}
@@ -123,7 +126,10 @@ export const CoreValuesSection = () => {
           >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg mb-4"
-              style={{ backgroundColor: value.backgroundColor }}
+              style={{
+                backgroundColor: value.backgroundColor,
+                boxShadow: `0 0 0 6px ${value.backgroundColor}50 `,
+              }}
             >
               {value.number}
             </div>

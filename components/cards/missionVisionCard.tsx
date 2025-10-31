@@ -32,7 +32,7 @@ export const MissionVisionCard: React.FC<MissionVisionCardProps> = ({
 
     {/* Vertical line */}
     <div className="mb-2">
-      <VerticalLine />
+      <VerticalLine color={backgroundColor} fill={backgroundColor} />
     </div>
 
     {/* Card */}
