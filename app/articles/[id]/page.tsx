@@ -5,14 +5,13 @@ import Image from "next/image";
 import {
   ArrowRightIcon,
   FacebookIcon2,
-  TwitterIcon,
-  WhatsappIcon,
+  WhatsappIcon2,
+  XIcon2,
 } from "@/components/icons";
 import Button from "@/components/buttons";
 import Link from "next/link";
 import { useGetArticle, useGetArticles } from "@/lib/hooks/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
-import Carousel from "@/components/carousel";
 import { formatDateToString } from "@/lib/util";
 
 const socialLinks = [
@@ -21,23 +20,21 @@ const socialLinks = [
     link: `https://wa.me/?text=${encodeURIComponent(
       "Check this out: " + window.location.href
     )}`,
-    simpleIcon: (
-      <WhatsappIcon stroke="#25D366" fill="#25D366" className="h-5 w-5" />
-    ),
+    simpleIcon: <WhatsappIcon2 />,
   },
   {
     name: "Facebook",
     link: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
       window.location.href
     )}`,
-    simpleIcon: <FacebookIcon2 fill="#0866FF" />,
+    simpleIcon: <FacebookIcon2 />,
   },
   {
     name: "X",
     link: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       "Check this out: " + window.location.href
     )}`,
-    simpleIcon: <TwitterIcon fill="#000000" />,
+    simpleIcon: <XIcon2 />,
   },
 ];
 
@@ -51,19 +48,20 @@ const ArticleDetails = () => {
     return <LoadingSkeleton count={1} type="ArticleID" />;
   }
   return (
-    <section className=" relative  top-28  md:top-40 px-4 lg:px-28 pb-40 items-center overflow-hidden">
-      <div>
-        <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-4 ">
+    <section className=" relative  top-20  md:top-20 px-4 lg:px-28 pb-40 items-center overflow-hidden">
+      <div className="absolute inset-0 w-full h-80 md:h-[60vh] bg-[#ECFFF099] " />
+      <div className="relative z-20">
+        <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-10 ">
           <div className=" hidden md:flex md:items-center text-sm text-textPrimary mb-4">
             <Link className="" href={"/articles"}>
               {" "}
-              <span className="text-primary">Articles</span>
+              <span className="text-primary font-semibold">Articles</span>
             </Link>
             <ArrowRightIcon className="h-2 w-2 mx-2" />
             <span>{article?.Title}</span>
           </div>
           <div className="flex items-center  gap-2">
-            <span className="text-primary">Share via:</span>
+            <span className="text-primary font-semibold">Share via:</span>
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -79,7 +77,7 @@ const ArticleDetails = () => {
           </div>
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+        <h1 className="text-2xl font-semibold md:text-5xl text-primaryDark">
           {article?.Title}
         </h1>
         <p className="text-textPrimary mb-6 ">
@@ -93,7 +91,7 @@ const ArticleDetails = () => {
             Written by {article?.Author}
           </span>
         </p>
-        <div className="w-full aspect-[21/9] md:h-[20rem] relative mb-8 rounded-lg overflow-hidden">
+        <div className="w-full aspect-[21/9] md:h-[40rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
             src={article?.articleImage1Url || "/placeholder.jpg"}
             alt={article?.Title || "Article image"}
@@ -202,14 +200,16 @@ const ArticleDetails = () => {
         {/* Sidebar - Takes up 1 column */}
         <div className="lg:col-span-1 ">
           <div className="mb-8 p-4 border rounded-lg border-gray-300">
-            <h3 className="font-semibold mb-4 md:text-xl ">Related Posts</h3>
+            <h3 className="font-semibold mb-4 md:text-xl text-primaryDark ">
+              Related Posts
+            </h3>
             <ul className="space-y-3">
               {articles &&
                 articles.map((post, index) => (
                   <li key={index} className="border-b border-gray-300">
                     <a
                       href={`/articles/${post._id}`}
-                      className="text-gray-700 hover:text-primary transition-colors block"
+                      className="text-primaryDark hover:text-primary transition-colors block"
                     >
                       {post.Title}
                     </a>
@@ -225,10 +225,6 @@ const ArticleDetails = () => {
             </a>
           </div>
 
-          {/* Testimonial */}
-          <div className="relative rounded-lg overflow-hidden mb-8">
-            <Carousel vertical={true} />
-          </div>
           {/* Newsletter Subscription */}
           <div className="bg-primary/10 p-6 rounded-lg text-center mb-8">
             <h3 className="font-semibold mb-2 text-lg md:text-2xl ">

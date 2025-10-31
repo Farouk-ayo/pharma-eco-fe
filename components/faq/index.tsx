@@ -69,8 +69,8 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="relative  px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32">
-      <div className="container mx-auto px-6">
+    <section className="relative  px-4 lg:px-28 py-12 lg:py-20 ">
+      <div className="container mx-auto ">
         <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
           <Badge
             text="FREQUENTLY ASKED QUESTIONS"

@@ -19,7 +19,7 @@ const CallToAction = () => {
   }, []);
 
   return (
-    <section className="relative mx-4 lg:mx-28 lg:my-20 top-32 flex items-center overflow-hidden bg-primaryDark rounded-3xl">
+    <section className="relative mx-4 lg:mx-28 lg:my-20  flex items-center overflow-hidden bg-primaryDark rounded-3xl">
       <div className="relative w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row lg:gap-4">
           {/* Left side */}

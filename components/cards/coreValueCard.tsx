@@ -18,10 +18,15 @@ export const CoreValueCard: React.FC<CoreValueCardProps> = ({
     {position === "top" && (
       <>
         {/* Card first */}
-        <div className="bg-white rounded-b-[80px] rounded-t-[24px] border overflow-hidden hover:shadow-lg transition w-full mb-4">
+        <div
+          className="bg-white rounded-b-[120px] rounded-t-[30px] overflow-hidden  transition w-64 h-60 "
+          style={{
+            border: `1px solid ${backgroundColor}25`,
+          }}
+        >
           {/* Colored header */}
           <div
-            className="px-6 py-4 text-white font-bold text-lg text-center rounded-t-[24px]"
+            className="px-6 py-4 text-white font-bold text-lg text-center rounded-t-[30px]"
             style={{ backgroundColor }}
           >
             {title}
@@ -34,8 +39,8 @@ export const CoreValueCard: React.FC<CoreValueCardProps> = ({
         </div>
 
         {/* Vertical line connector */}
-        <div className="flex justify-center">
-          <VerticalLine />
+        <div className="flex justify-center rotate-180">
+          <VerticalLine color={backgroundColor} fill={backgroundColor} />
         </div>
       </>
     )}
@@ -43,15 +48,20 @@ export const CoreValueCard: React.FC<CoreValueCardProps> = ({
     {position === "bottom" && (
       <>
         {/* Vertical line connector */}
-        <div className="flex justify-center mb-4">
-          <VerticalLine />
+        <div className="flex justify-center  ">
+          <VerticalLine color={backgroundColor} fill={backgroundColor} />
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-b-[80px] rounded-t-[24px] border overflow-hidden hover:shadow-lg transition w-full">
+        <div
+          className="bg-white rounded-b-[120px] rounded-t-[30px] border overflow-hidden hover:shadow-lg transition w-64 h-60"
+          style={{
+            border: `1px solid ${backgroundColor}25`,
+          }}
+        >
           {/* Colored header */}
           <div
-            className="px-6 py-4 text-white font-bold text-lg text-center rounded-t-[24px]"
+            className="px-6 py-4 text-white font-bold text-lg text-center rounded-t-[30px]"
             style={{ backgroundColor }}
           >
             {title}

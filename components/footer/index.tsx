@@ -1,10 +1,10 @@
 "use client";
 import {
-  FacebookIcon2,
   InstagramIcon,
   LinkedInIcon2,
   TwitterIcon,
   TikTokIcon,
+  FacebookIcon,
 } from "../icons";
 import ContactInfo from "./contactInfo";
 import CopyRight from "./copyRight";
@@ -24,7 +24,7 @@ export const socialLinksData = [
   },
   {
     name: "facebook",
-    icon: <FacebookIcon2 fill="transparent" width={25} height={25} />,
+    icon: <FacebookIcon fill="transparent" width={25} height={25} />,
     url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
   },
 
@@ -80,7 +80,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-bgPrimary px-4 lg:px-28 pt-12 lg:pt-20 top-32 lg:top-32 bg-[#F4F4F4]">
+    <footer className="relative bg-bgPrimary px-4 lg:px-28 pt-12 lg:pt-20 bg-[#F4F4F4]">
       <div className="mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           <LogoSection socialLinks={socialLinksData} />
