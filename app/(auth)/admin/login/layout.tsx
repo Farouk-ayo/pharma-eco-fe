@@ -1,4 +1,4 @@
-import Carousel from "@/components/carousel";
+import TestimonialSection from "@/components/carousel/testimonial";
 import Navbar from "@/components/navbar";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -39,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
           </div>{" "}
           <div className="relative w-full lg:w-1/2 h-[800px] hidden lg:inline-block">
-            <Carousel />
+            <TestimonialSection />
           </div>
         </div>
       </section>
