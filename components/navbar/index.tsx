@@ -43,9 +43,9 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white fixed  top-0 w-full z-[100] ">
-      <div className="py-2 flex h-24 justify-between items-center px-5 lg:px-28">
+      <div className="py-2 flex h-16 md:h-[86px] justify-between items-center px-5 lg:px-28">
         <Link href={"/"}>
-          <div className="relative flex items-center w-48 md:w-52 h-10">
+          <div className="relative flex items-center w-36 h-8 md:w-52 md:h-10">
             <Image
               src="/pharma-eco-logo.svg"
               alt="pharmabin"
@@ -83,9 +83,9 @@ export default function Navbar() {
             } relative z-30 w-8 h-4 flex flex-col justify-between items-center`}
             onClick={toggleMenu}
           >
-            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-primaryDark transition-transform duration-300 ease-in-out origin-center"></span>
-            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-primaryDark transition-opacity duration-300 ease-in-out"></span>
-            <span className="line block w-full h-[0.4px] dark:bg-secondary-color-3 bg-primaryDark transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-[1px] dark:bg-secondary-color-3 bg-primaryDark transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-[1px] dark:bg-secondary-color-3 bg-primaryDark transition-opacity duration-300 ease-in-out"></span>
+            <span className="line block w-full h-[1px] dark:bg-secondary-color-3 bg-primaryDark transition-transform duration-300 ease-in-out origin-center"></span>
           </button>
         </div>
         <motion.div

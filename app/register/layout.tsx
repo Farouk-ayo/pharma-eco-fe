@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Navbar />
       <section className="h-full w-full mb-40 top-24 relative md:px-4 lg:px-28">
         <div className="flex flex-col lg:flex-row-reverse h-full">
-          <div className="w-full lg:w-1/2 bg-white px-4 lg:py-8 lg:p-10 ">
+          <div className="w-full lg:w-1/2 bg-white px-4 p-10">
             <div className="">
               <div className="flex flex-col gap-4 ">
                 <Link href="/">

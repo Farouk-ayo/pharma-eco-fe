@@ -82,7 +82,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-bgPrimary px-4 lg:px-28 pt-12 lg:pt-20 bg-[#F4F4F4]">
       <div className="mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-8 lg:gap-12">
           <LogoSection socialLinks={socialLinksData} />
           <LinkSection title="Quick Links" links={quickLinks} />
           <LinkSection title="Legal Links" links={legalLinks} />
