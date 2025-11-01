@@ -110,7 +110,7 @@ const StepTwoForm = ({
         <input
           {...register("organizationName")}
           placeholder="Enter business name"
-          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
         />
         {errors.organizationName && (
           <span className="text-sm text-red-500">
@@ -127,7 +127,7 @@ const StepTwoForm = ({
           <input
             {...register("City")}
             placeholder="Enter business address"
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
           />
           {errors.City && (
             <span className="text-sm text-red-500">{errors.City.message}</span>
@@ -202,7 +202,7 @@ const StepTwoForm = ({
               e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
             }}
             placeholder="Enter zip code"
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
           />
           {errors.zipCode && (
             <span className="text-sm text-red-500">
