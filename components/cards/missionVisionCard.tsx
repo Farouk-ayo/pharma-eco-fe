@@ -21,10 +21,10 @@ export const MissionVisionCard: React.FC<MissionVisionCardProps> = ({
   <div className="relative flex flex-col items-center w-full">
     {/* Numbered/Lettered circle */}
     <div
-      className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg z-20 mb-2"
+      className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-lg mb-2 relative z-20 "
       style={{
         backgroundColor: letterColor,
-        boxShadow: `0 0 0 6px ${letterColor}50 `,
+        boxShadow: `0 0 0 6px ${backgroundColor}50 `,
       }}
     >
       {letter}
