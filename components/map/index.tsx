@@ -128,11 +128,7 @@ const MapComponent = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="lg:col-span-2 h-[500px] relative">
-        <MapInner center={center} locations={locations} />
-      </div>
-
-      <div className="bg-primary p-6 rounded-lg h-min">
+      <div className="bg-primaryDark p-6 rounded-lg h-min">
         <form onSubmit={handleSearch} className="space-y-4">
           <h2 className="text-white text-base md:text-lg">
             Enter your zip code or city, state abbreviation (e.g. Ife Central,
@@ -148,7 +144,7 @@ const MapComponent = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full" variant="secondary">
+          <Button type="submit" className="w-full" variant="tertiary">
             {isSearching ? "Searching..." : "Search"}
           </Button>
 
@@ -161,6 +157,9 @@ const MapComponent = () => {
             Use My Location
           </button>
         </form>
+      </div>
+      <div className="lg:col-span-2 h-[500px] relative">
+        <MapInner center={center} locations={locations} />
       </div>
     </div>
   );

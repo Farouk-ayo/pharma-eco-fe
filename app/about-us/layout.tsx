@@ -9,7 +9,7 @@ interface LayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: " About Us || Pharmabin",
+  title: " About Us || PharmaEco",
   description: " About Us page",
 };
 

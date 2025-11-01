@@ -35,11 +35,14 @@ const MapInner: React.FC<MapProps> = ({ center, locations }) => {
       // zoomControl={false}
       scrollWheelZoom={false}
     >
-      <TileLayer
+      {/* <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      /> */}
+      <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
       />
-
       {/* User-searched location */}
       <Marker position={center} icon={defaultIcon}>
         <Popup>Your selected location</Popup>
