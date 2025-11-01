@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
     primary: "bg-primary hover:bg-primary/90 text-white",
     secondary:
       "bg-transparent border-primary border text-primary hover:bg-tertiary/5 ",
-    tertiary: "bg-tertiary3 hover:bg-tertiary2",
+    tertiary: "bg-secondary hover:bg-tertiary/50 !rounded-md",
   };
 
   const disabledStyles =

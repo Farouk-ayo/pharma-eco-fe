@@ -51,21 +51,21 @@ const PharmacyDirectory = () => {
   );
 
   return (
-    <div className="mx-auto px-4 lg:px-28 py-8">
+    <div className="py-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div
           className="flex flex-col sm:flex-row md:items-center gap-5 justify-center mx-auto relative"
           ref={dropdownRef}
         >
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          <h1 className="text-2xl sm:text-3xl font-bold text-primaryDark">
             Discover PharmaBin Collection Point In
           </h1>
           <div className="">
             <Button
               variant="primary"
               onClick={() => setIsStateDropdownOpen(!isStateDropdownOpen)}
-              className="bg-primary relative text-white px-4 py-2 rounded-md flex text-left md:items-center gap-2  "
+              className="bg-primary relative text-white px-4 py-2  flex text-left md:items-center gap-2  !rounded-md md:!text-3xl "
             >
               {selectedState}
               <ChevronDown size={20} />
@@ -106,7 +106,7 @@ const PharmacyDirectory = () => {
         {/* Sidebar */}
         <div className="lg:col-span-1">
           <div className="bg-transparent p-4 rounded-lg border">
-            <h2 className="font-semibold mb-4 text-xl border-b md:text-2xl">
+            <h2 className="font-semibold  mb-4 text-xl border-b md:text-2xl">
               Local Governments
             </h2>
             <nav className="space-y-1 ">
@@ -116,7 +116,7 @@ const PharmacyDirectory = () => {
                   onClick={() => setSelectedArea(areaName)}
                   className={`w-full text-left px-3 py-2 rounded-md transition-colors ${
                     selectedArea === areaName
-                      ? "bg-green-100 text-primary font-bold"
+                      ? "bg-primary/15 text-primary font-bold"
                       : "hover:bg-gray-100"
                   }`}
                 >
@@ -136,7 +136,7 @@ const PharmacyDirectory = () => {
               {filteredPharmacies.map((pharmacy) => (
                 <div
                   key={pharmacy._id}
-                  className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                  className=" p-4 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
                 >
                   <h3 className="font-semibold text-primbg-primary mb-2 text-xl">
                     {pharmacy.organizationName}

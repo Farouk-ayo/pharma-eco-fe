@@ -6,7 +6,7 @@ interface LayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: " Article || Pharmabin",
+  title: " Article || PharmaEco",
   description: " Article details page",
 };
 
