@@ -23,14 +23,14 @@ export const MVCSection = () => {
           letter="M"
           title="Our Mission"
           description="To build a sustainable, AI-driven system for the collection, recycling, and disposal of pharmaceutical waste and packaging materials by protecting public health, conserving the environment, and fostering circular economy practices in Nigeria."
-          backgroundColor="#023022E3"
+          backgroundColor="#023022"
           letterColor="#023022E3"
         />
         <MissionVisionCard
           letter="V"
           title="Our Vision"
           description="To be Africa’s leading platform for pharmaceutical waste and packaging recycling, driving environmental responsibility, artificial intelligence,  innovation, and public health protection."
-          backgroundColor="#FFB506ED"
+          backgroundColor="#FFB506"
           letterColor="#FFB506ED"
         />
       </div>
