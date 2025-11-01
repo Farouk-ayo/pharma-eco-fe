@@ -9,11 +9,15 @@ const StepThreeForm = () => {
         <Image priority src="/success.svg" alt="pharmabin" layout="fill" />
       </div>{" "}
       <p className="text-gray-600 text-center">
-        We appreciate your effort in taking time to give the information. Our
-        Representatives will contact you shortly to discuss the full details
+        We appreciate your effort for taking your time to give the information.
+        Our Representative will contact you shortly to discuss the full details
         with you.
       </p>
-      <Button type="button" className="w-full text-white text-center" href="/">
+      <Button
+        type="button"
+        className="w-full text-white text-center !rounded-b-[30px] !rounded-t-[8px]"
+        href="/"
+      >
         Close
       </Button>
     </div>

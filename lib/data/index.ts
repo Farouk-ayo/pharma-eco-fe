@@ -224,3 +224,36 @@ export const itemizedReasons = [
     color: "#4503D2",
   },
 ];
+
+export const testimonials = [
+  {
+    quote:
+      "PharmaEco made it so easy for our hospital to safely dispose of expired medicines. I’m glad there’s finally a structured solution for this in Nigeria",
+    author: "Pharm. Lanre Adebayo",
+    designation: "Principal Pharmacist, Well-Land General Hospital",
+  },
+  {
+    quote:
+      "I never knew throwing unused drugs in the dustbin was dangerous until I found PharmaEco. Now, I just drop them at the nearest collection point",
+    author: "Tunde Balogun",
+    designation: "Resident, Surulere",
+  },
+  {
+    quote:
+      "Our pharmacy joined PharmaEco’s program, and it’s been a smooth process. We also educate our customers about safe disposal",
+    author: "Pharm. (Dr.). Yetunde Olaniyi",
+    designation: "Pharmacy Owner, MediAir Pharmacy, Lekki",
+  },
+  {
+    quote:
+      "The awareness PharmaEco creates about pharmaceutical waste is eye-opening. It’s a great step toward a cleaner Nigeria.",
+    author: "Mr. Femi Ajayi",
+    designation: "Environmental Health Officer, Lagos Mainland",
+  },
+  {
+    quote:
+      "PharmaEco’s collection initiative is a game changer for public health and environmental protection in Lagos",
+    author: "Dr. Segun Adeola",
+    designation: "Public Health Consultant, Victoria Island",
+  },
+];

@@ -27,7 +27,7 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
         <input
           {...register("firstName")}
           placeholder="Enter first name"
-          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
         />
         {errors.firstName && (
           <span className="text-sm text-red-500">
@@ -43,7 +43,7 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
         <input
           {...register("lastName")}
           placeholder="Enter last name"
-          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
         />
         {errors.lastName && (
           <span className="text-sm text-red-500">
@@ -60,7 +60,7 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
           {...register("emailAddress")}
           type="email"
           placeholder="Enter email address"
-          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
         />
         {errors.emailAddress && (
           <span className="text-sm text-red-500">
@@ -77,7 +77,7 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
           {...register("phoneNumber")}
           type="tel"
           placeholder="Enter phone number"
-          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
         />
         {errors.phoneNumber && (
           <span className="text-sm text-red-500">
@@ -89,7 +89,7 @@ const StepOneForm = ({ onNext, defaultValues }: StepOneProps) => {
         variant="primary"
         type="submit"
         isDisabled={isSubmitting}
-        className=" w-full text-white"
+        className=" w-full text-white !rounded-b-[30px] !rounded-t-[8px]"
       >
         Continue
       </Button>

@@ -99,22 +99,29 @@ const Page = () => {
           <React.Fragment key={currentStep}>
             <div
               className={`
-                w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold
+                w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center  font-bold md:text-2xl
                 ${
                   currentStep === step
-                    ? "bg-primary text-white"
+                    ? "bg-primaryDark text-white  "
                     : currentStep < step
                     ? "bg-primary text-white"
-                    : "bg-gray-200 text-black"
+                    : "bg-[#33333340] text-black "
                 }
               `}
+              style={{
+                boxShadow: `0 0 0 6px #02302250 `,
+              }}
             >
               {currentStep}
             </div>
             {currentStep < 3 && (
               <div
                 className={`flex-1 h-0.5 mx-2 border-t-2 font-semibold border-dashed
-                  ${currentStep < step ? "border-primary" : "border-gray-200"}
+                  ${
+                    currentStep < step
+                      ? "border-primaryDark"
+                      : "border-gray-200"
+                  }
                 `}
               />
             )}
