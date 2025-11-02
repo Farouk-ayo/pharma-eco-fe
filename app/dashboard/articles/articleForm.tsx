@@ -247,13 +247,13 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     <div className="mx-auto p-4 md:p-6 bg-gray-50 rounded-lg shadow-md">
       <form onSubmit={handleSubmit}>
         <div className="my-6 flex flex-col md:flex-row gap-5 justify-between md:items-center">
-          <h2 className="text-primary font-semibold text-lg">Add Article</h2>
+          <h2 className="text-primary font-semibold text-lg !rounded-lg">Add Article</h2>
           <div>
             {type === "edit" && (
               <Button
                 type="submit"
                 isLoading={isLoading}
-                className="bg-primaryDark text-white w-40 py-2 rounded-lg"
+                className="bg-primaryDark text-white w-40 py-2 !rounded-lg"
               >
                 Save
               </Button>
@@ -262,7 +262,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
               <Button
                 type="submit"
                 isLoading={isLoading}
-                className="bg-primaryDark text-white w-40 py-2 rounded-lg"
+                className="bg-primaryDark text-white w-40 py-2 !rounded-lg"
               >
                 Add
               </Button>
@@ -272,13 +272,13 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                 <Button
                   type="button"
                   onClick={handleEdit}
-                  className="bg-primaryDark text-white w-40 py-2 rounded-lg"
+                  className="bg-primaryDark text-white w-40 py-2 !rounded-lg"
                 >
                   Edit
                 </Button>
                 <Button
                   type="button"
-                  className="bg-red-600 hover:bg-red-500 text-white w-40 py-2 rounded-lg"
+                  className="bg-red-600 hover:bg-red-500 text-white w-40 py-2 !rounded-lg"
                   onClick={handleDelete}
                 >
                   Delete

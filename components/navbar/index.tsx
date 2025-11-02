@@ -80,12 +80,12 @@ export default function Navbar() {
           <button
             className={`hamburger ${
               isOpen ? "open" : ""
-            } relative z-30 w-8 h-5 flex flex-col justify-between items-center`}
+            } relative z-30 w-6 h-4 flex flex-col justify-between items-center`}
             onClick={toggleMenu}
           >
-            <span className="line block w-full h-[2px] dark:bg-secondary-color-3 bg-black transition-transform duration-300 ease-in-out origin-center"></span>
-            <span className="line block w-full h-[2px] dark:bg-secondary-color-3 bg-black transition-opacity duration-300 ease-in-out"></span>
-            <span className="line block w-full h-[2px] dark:bg-secondary-color-3 bg-black transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-[2px] dark:bg-secondary-color-3 bg-[#157D18] transition-transform duration-300 ease-in-out origin-center"></span>
+            <span className="line block w-full h-[2px] dark:bg-secondary-color-3 bg-[#157D18] transition-opacity duration-300 ease-in-out"></span>
+            <span className="line block w-full h-[2px] dark:bg-secondary-color-3 bg-[#157D18] transition-transform duration-300 ease-in-out origin-center"></span>
           </button>
         </div>
         <motion.div

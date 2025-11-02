@@ -318,7 +318,7 @@ const EditUser: React.FC = () => {
             type="submit"
             isDisabled={isSubmitting}
             isLoading={isPending}
-            className="!bg-black !text-white !px-6 !py-2 rounded-md"
+            className="!bg-black !text-white !px-6 !py-2 !rounded-md"
           >
             Save
           </Button>

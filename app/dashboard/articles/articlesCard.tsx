@@ -32,7 +32,7 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({
         {showAddArticleButton && onAddArticle && (
           <Button
             onClick={onAddArticle}
-            className="!bg-black w-max text-white !px-6 !py-2 rounded-lg shadow-sm focus:outline-none "
+            className="!bg-black w-max text-white !px-6 !py-2 !rounded-lg shadow-sm focus:outline-none "
           >
             + Add Article
           </Button>

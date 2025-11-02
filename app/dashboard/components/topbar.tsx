@@ -23,13 +23,13 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
 
   return (
     <div
-      className={`fixed top-0 h-24 z-50 w-full ${
+      className={`fixed top-0 h-16 z-50 w-full ${
         isMobile ? "left-0 right-0 bg-white" : "left-72 right-0 bg-white"
       } flex items-center justify-between px-4 py-3 border-b`}
     >
       <div className="flex items-center justify-between w-full">
         <Link href={"/"} className="lg:hidden">
-          <div className="relative flex items-center w-48 md:w-52 h-20">
+          <div className="relative flex items-center w-36 h-8 md:w-52 md:h-10">
             <Image
               src="/pharma-eco-logo.svg"
               alt="pharmaeco"
