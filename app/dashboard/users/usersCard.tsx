@@ -1,7 +1,7 @@
 import React from "react";
 import { RegisteredUser } from "@/lib/types";
-import Badge from "@/components/badge";
 import Button from "@/components/buttons";
+import AdminBadge from "@/components/badge/adminBadge";
 
 interface UserCardProps {
   user: RegisteredUser;
@@ -20,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = ({
 }) => {
   return (
     <div className="border rounded-lg relative p-6  mb-4 shadow-sm bg-white">
-      <Badge text={user.organizationName} />
+      <AdminBadge text={user.organizationName} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-x-8 mt-4">
         <div>
           <p className="font-bold text-sm text-gray-700">First Name</p>
@@ -32,14 +32,14 @@ const UserCard: React.FC<UserCardProps> = ({
         </div>
         <div>
           <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation Name
+            Company/Organisation Name
           </p>
           <p className="text-gray-800">{user.organizationName}</p>
         </div>
 
         <div>
           <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation Address/City
+            Company/Organisation Address/City
           </p>
           <p className="text-gray-800">{user.emailAddress}</p>
         </div>
@@ -49,7 +49,7 @@ const UserCard: React.FC<UserCardProps> = ({
         </div>
         <div>
           <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation State
+            Company/Organisation State
           </p>
           <p className="text-gray-800">{user.State}</p>
         </div>
@@ -59,13 +59,13 @@ const UserCard: React.FC<UserCardProps> = ({
         </div>
         <div>
           <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation Local Govt
+            Company/Organisation Local Govt
           </p>
           <p className="text-gray-800">{user.localGovt}</p>
         </div>
         <div>
           <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation Zip Code
+            Company/Organisation Zip Code
           </p>
           <p className="text-gray-800">{user.zipCode}</p>
         </div>
@@ -78,7 +78,7 @@ const UserCard: React.FC<UserCardProps> = ({
         <div className="flex justify-center items-center gap-4 mt-4">
           {edit && (
             <Button
-              className="!bg-black text-white !px-6 !py-2 rounded-lg text-sm"
+              className="!bg-black text-white !px-6 !py-2 !rounded-lg text-sm"
               onClick={() => user && onEdit?.(user)}
             >
               Edit
@@ -86,7 +86,7 @@ const UserCard: React.FC<UserCardProps> = ({
           )}
           {allowDelete && (
             <Button
-              className="bg-red-600 text-white !px-6 !py-2 rounded-lg hover:bg-red-700 text-sm"
+              className="bg-red-600 text-white !px-6 !py-2 !rounded-lg hover:bg-red-700 text-sm"
               onClick={() => user._id && onDelete?.(user._id)}
             >
               Delete

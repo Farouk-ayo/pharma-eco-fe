@@ -65,7 +65,7 @@ const AdminLogin = () => {
                 type="email"
                 {...register("Email")}
                 placeholder="Enter email address"
-                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
               />
               {errors.Email && (
                 <span className="text-red-600">{errors.Email.message}</span>
@@ -78,7 +78,7 @@ const AdminLogin = () => {
                 type="password"
                 {...register("Password")}
                 placeholder="Enter Password"
-                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
               />
               {errors.Password && (
                 <span className="text-red-600">{errors.Password.message}</span>

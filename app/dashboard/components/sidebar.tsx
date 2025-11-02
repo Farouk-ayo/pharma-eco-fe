@@ -42,7 +42,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   };
 
   const navlinks = [
-    { route: "/dashboard", label: "Home" },
+    { route: "/dashboard", label: "Dashboard" },
     { route: "/dashboard/users", label: "Registered Users" },
     { route: "/dashboard/articles", label: "Articles" },
     { route: "/dashboard/feedbacks", label: "Feedbacks" },
@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
     <>
       <div
-        className={`fixed flex flex-col justify-between gap-8 h-full w-58 lg:w-72 bg-white text-gray-500 py-2 px-3 lg:px-6 transition-transform transform overflow-y-auto z-50 border-r ${
+        className={`fixed flex flex-col justify-between gap-8 h-full w-58 lg:w-72 bg-white text-gray-500 py-4 px-3 lg:px-6 transition-transform transform overflow-y-auto z-50 border-r ${
           isMobile && !isOpen ? "-translate-x-full" : "translate-x-0"
         }`}
         style={{ maxHeight: "100vh" }}
@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col gap-8">
           <div className="flex flex-row items-center justify-between ">
             <Link href={"/"}>
-              <div className="relative flex items-center w-48 md:w-52 h-20">
+              <div className="relative flex items-center  w-36 h-8 md:w-52 md:h-10">
                 <Image
                   src="/pharma-eco-logo.svg"
                   alt="pharmaeco"
@@ -79,10 +79,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               </div>
             </Link>
             <button
-              className="absolute top-10 right-5 lg:hidden"
+              className="absolute top-6 right-2 lg:hidden"
               onClick={onClose}
             >
-              <XIcon className="w-5 h-5 text-black" stroke="#fff" />
+              <XIcon className="w-5 h-5 text-black" stroke="#3333" />
             </button>
           </div>
           <ul className="flex flex-col gap-4 text-bodyText">
