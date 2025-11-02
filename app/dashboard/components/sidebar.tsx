@@ -72,7 +72,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <div className="relative flex items-center w-48 md:w-52 h-20">
                 <Image
                   src="/pharma-eco-logo.svg"
-                  alt="pharmabin"
+                  alt="pharmaeco"
                   className="w-full h-full"
                   layout="fill"
                 />

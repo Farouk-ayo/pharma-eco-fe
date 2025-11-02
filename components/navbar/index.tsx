@@ -48,7 +48,7 @@ export default function Navbar() {
           <div className="relative flex items-center w-36 h-8 md:w-52 md:h-10">
             <Image
               src="/pharma-eco-logo.svg"
-              alt="pharmabin"
+              alt="pharmaEco"
               className="w-full h-full"
               layout="fill"
             />

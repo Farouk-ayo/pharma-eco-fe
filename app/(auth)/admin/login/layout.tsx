@@ -10,7 +10,7 @@ interface LayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: " Admin Login Page || Pharmabin",
+  title: " Admin Login Page || PharmaEco",
   description: " Admin Login page",
 };
 
@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <div className="relative w-48 md:w-52 h-20 hidden lg:inline-block">
                     <Image
                       src="/pharma-eco-logo.svg"
-                      alt="pharmabin"
+                      alt="pharmaeco"
                       fill
                       className="object-contain"
                       priority

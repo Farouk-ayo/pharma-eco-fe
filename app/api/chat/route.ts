@@ -16,11 +16,11 @@ type ChatResponse = {
   content: string;
 };
 
-// PharmaBin context for the AI
-const PHARMABIN_CONTEXT = `
-You are a helpful assistant for PharmaBin, a pharmacy service that offers medication disposal, prescription services, and health consultations. Keep all responses brief, direct, and focused on PharmaBin's services.
+// PharmaEco context for the AI
+const PHARMAECO_CONTEXT = `
+You are a helpful assistant for PharmaEco, a pharmacy service that offers medication disposal, prescription services, and health consultations. Keep all responses brief, direct, and focused on PharmaEco's services.
 
-PharmaBin Services:
+PharmaEco Services:
 - Safe medication disposal bins for unused/expired medications
 - Prescription refill and transfer services
 - Medication consultation
@@ -28,7 +28,7 @@ PharmaBin Services:
 - Vaccination services
 - Multiple locations across the country
 
-Always be professional, concise (2-3 sentences max), and helpful. Don't use asterisks or special formatting. Focus on providing practical information about PharmaBin's services.
+Always be professional, concise (2-3 sentences max), and helpful. Don't use asterisks or special formatting. Focus on providing practical information about PharmaEco's services.
 `;
 
 export async function POST(req: NextRequest) {
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
       .map((msg) => `${msg.role}: ${msg.content}`)
       .join("\n");
 
-    const prompt = `${PHARMABIN_CONTEXT}\n\nConversation history:\n${conversationHistory}\n\nUser: ${latestMessage.content}\nAssistant:`;
+    const prompt = `${PHARMAECO_CONTEXT}\n\nConversation history:\n${conversationHistory}\n\nUser: ${latestMessage.content}\nAssistant:`;
 
     // Call the Gemini API
     const res = await fetch(

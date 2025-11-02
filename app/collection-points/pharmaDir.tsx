@@ -59,7 +59,7 @@ const PharmacyDirectory = () => {
           ref={dropdownRef}
         >
           <h1 className="text-2xl sm:text-3xl font-bold text-primaryDark">
-            Discover PharmaBin Collection Point In
+            Discover PharmaEco Collection Point In
           </h1>
           <div className="">
             <Button

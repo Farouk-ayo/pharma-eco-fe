@@ -131,8 +131,8 @@ const MapComponent = () => {
       <div className="bg-primaryDark p-6 rounded-lg h-min">
         <form onSubmit={handleSearch} className="space-y-4">
           <h2 className="text-white text-base md:text-lg">
-            Enter your zip code or city, state abbreviation (e.g. Ife Central,
-            Osun State) to find PharmaBin service locations near you.
+            Enter your zip code or city, state abbreviation (e.g. Ikeja, Lagos
+            State) to find PharmaEco service locations near you.
           </h2>
           <div>
             <input
