@@ -1,4 +1,3 @@
-// utils/toast.ts
 import { toast } from "sonner";
 
 interface ToastOptions {

@@ -1,4 +1,3 @@
-// types/form.ts
 import { z } from "zod";
 
 export const stepOneSchema = z.object({
