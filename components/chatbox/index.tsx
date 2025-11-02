@@ -25,7 +25,7 @@ const Chatbox = () => {
       {
         id: "welcome-1",
         role: "assistant",
-        content: "Welcome to PharmaBin!",
+        content: "Welcome to PharmaEco!",
       },
       {
         id: "welcome-2",
@@ -78,7 +78,7 @@ const Chatbox = () => {
         id: Date.now().toString(),
         role: "assistant",
         content:
-          "We have multiple PharmaBin locations across the country. To find the nearest location, please share your city or postal code.",
+          "We have multiple PharmaEco locations across the country. To find the nearest location, please share your city or postal code.",
       });
     }, 1000);
   };
