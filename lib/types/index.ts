@@ -32,8 +32,8 @@ export interface LoginInputs {
   password: string;
 }
 export interface LoginInputsPayload {
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
 }
 
 // DASHBOARD TYPES
