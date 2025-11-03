@@ -15,28 +15,28 @@ export const socialLinksData = [
   {
     name: "LinkedIn",
     icon: <LinkedInIcon2 />,
-    url: "https://www.linkedin.com/company/pharmabin-ng/",
+    url: "https://www.linkedin.com/company/pharmaeco/",
   },
   {
     name: "Instagram",
     icon: <InstagramIcon width={25} height={25} />,
-    url: "https://www.instagram.com/pharmabin?utm_source=qr&igsh=MTc2MTh5MHBjaDR3bg==",
+    url: "https://www.instagram.com/pharmaeco?utm_source=qr&igsh=MWlxZHd3dXJsb3Fhbw==",
   },
   {
     name: "facebook",
     icon: <FacebookIcon fill="transparent" width={25} height={25} />,
-    url: "https://www.facebook.com/profile.php?id=61572270426064&mibextid=ZbWKwL",
+    url: "https://www.facebook.com/profile.php?id=61583285518583 ",
   },
 
   {
     name: "TikTok",
     icon: <TikTokIcon fill="transparent" width={25} height={25} />,
-    url: "https://vm.tiktok.com/ZMkx6G17D/",
+    url: "https://vm.tiktok.com/ZSHcA1KpEVnCu-lYDxI/",
   },
   {
     name: "X",
     icon: <TwitterIcon />,
-    url: "https://x.com/pharmabin1?t=gHx2rchT87XsIhBxdce0LQ&s=08",
+    url: "https://x.com/pharmaeco1?t=6_0zM48JO0u8ziHxEANwEQ&s=09",
   },
 ];
 

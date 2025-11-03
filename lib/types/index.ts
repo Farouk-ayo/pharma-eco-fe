@@ -5,11 +5,11 @@ export interface RegisteredUser {
   emailAddress: string;
   phoneNumber: string;
   organizationName: string;
-  City: string;
-  State: string;
+  city: string;
+  state: string;
   localGovt: string;
   zipCode: number;
-  Others?: string;
+  others?: string;
   createdAt?: string;
   updatedAt?: string;
   __v?: number;

@@ -6,8 +6,8 @@ export const useGetRegisterUsers = () => {
   return useQuery<RegisteredUser[]>({
     queryKey: ["get-register-user"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/register/get/");
-      return response.data;
+      const response = await axiosInstance.get("/register/get");
+      return response.data.data;
     },
   });
 };
@@ -46,8 +46,8 @@ export const useGetRegisterUser = (id: string) => {
   return useQuery<RegisteredUser>({
     queryKey: ["get-register-user", id],
     queryFn: async () => {
-      const response = await axiosInstance.get(`/register/getuser/${id}`);
-      return response.data;
+      const response = await axiosInstance.get(`/register/get/${id}`);
+      return response.data.data;
     },
   });
 };

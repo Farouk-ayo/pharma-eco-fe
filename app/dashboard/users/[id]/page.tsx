@@ -48,17 +48,17 @@ const EditUser: React.FC = () => {
         emailAddress: user.emailAddress,
         phoneNumber: user.phoneNumber,
         organizationName: user.organizationName,
-        City: user.City,
-        State: user.State,
+        city: user.city,
+        state: user.state,
         localGovt: user.localGovt,
         zipCode: user.zipCode || 0,
-        Others: user.Others,
+        others: user.others,
       });
 
       // Update LGAs based on user's state
-      if (user.State) {
+      if (user.state) {
         const selectedState = nigeriaStates.find(
-          (state) => state.state.name === user.State
+          (state) => state.state.name === user.state
         );
         if (selectedState) {
           setAvailableLGAs(
@@ -72,7 +72,7 @@ const EditUser: React.FC = () => {
     }
   }, [user, reset]);
 
-  const selectedState = watch("State");
+  const selectedState = watch("state");
   useEffect(() => {
     if (selectedState) {
       const stateData = nigeriaStates.find(
@@ -209,12 +209,12 @@ const EditUser: React.FC = () => {
           </label>
           <input
             type="text"
-            {...register("City")}
+            {...register("city")}
             placeholder="Enter business address/city"
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />{" "}
-          {errors.City && (
-            <span className="text-sm text-red-500">{errors.City.message}</span>
+          {errors.city && (
+            <span className="text-sm text-red-500">{errors.city.message}</span>
           )}
         </div>
         {/* Organization State */}
@@ -224,7 +224,7 @@ const EditUser: React.FC = () => {
           </label>
 
           <Controller
-            name="State"
+            name="state"
             control={control}
             render={({ field }) => (
               <Select
@@ -234,15 +234,15 @@ const EditUser: React.FC = () => {
                 styles={customStyles}
                 value={
                   stateOptions.find(
-                    (option) => option.value === watch("State")
+                    (option) => option.value === watch("state")
                   ) || null
                 }
                 onChange={(option) => field.onChange(option?.value)}
               />
             )}
           />
-          {errors.State && (
-            <span className="text-sm text-red-500">{errors.State.message}</span>
+          {errors.state && (
+            <span className="text-sm text-red-500">{errors.state.message}</span>
           )}
         </div>
         {/* Organization Local Govt */}
@@ -301,7 +301,7 @@ const EditUser: React.FC = () => {
             Others (What do you want to dispose? Any special time?)
           </label>
           <textarea
-            {...register("Others")}
+            {...register("others")}
             placeholder="Enter other details"
             rows={3}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"

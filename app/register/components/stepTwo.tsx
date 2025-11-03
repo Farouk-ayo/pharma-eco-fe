@@ -69,7 +69,7 @@ const StepTwoForm = ({
     defaultValues,
   });
 
-  const selectedState = watch("State");
+  const selectedState = watch("state");
 
   useEffect(() => {
     if (selectedState) {
@@ -87,9 +87,9 @@ const StepTwoForm = ({
   }, [selectedState]);
 
   useEffect(() => {
-    if (defaultValues?.State) {
+    if (defaultValues?.state) {
       const selected = nigeriaStates.find(
-        (state) => state.state.name === defaultValues.State
+        (state) => state.state.name === defaultValues.state
       );
       if (selected) {
         const lgaOptions = selected.state.locals.map((lga) => ({
@@ -125,12 +125,12 @@ const StepTwoForm = ({
             Pharmacy Address/City
           </label>
           <input
-            {...register("City")}
+            {...register("city")}
             placeholder="Enter business address"
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
           />
-          {errors.City && (
-            <span className="text-sm text-red-500">{errors.City.message}</span>
+          {errors.city && (
+            <span className="text-sm text-red-500">{errors.city.message}</span>
           )}
         </div>
         <div>
@@ -138,7 +138,7 @@ const StepTwoForm = ({
             Pharmacy State
           </label>
           <Controller
-            name="State"
+            name="state"
             control={control}
             render={({ field }) => (
               <Select
@@ -154,8 +154,8 @@ const StepTwoForm = ({
               />
             )}
           />
-          {errors.State && (
-            <span className="text-sm text-red-500">{errors.State.message}</span>
+          {errors.state && (
+            <span className="text-sm text-red-500">{errors.state.message}</span>
           )}
         </div>
       </div>
@@ -217,7 +217,7 @@ const StepTwoForm = ({
           Others (What do you want to dispose? Any special time?)
         </label>
         <textarea
-          {...register("Others")}
+          {...register("others")}
           className="w-full p-2 border rounded-md resize-none"
           rows={3}
           placeholder="Enter other details"
@@ -235,7 +235,7 @@ const StepTwoForm = ({
         </Button>
         <Button
           onClick={onBack}
-          className="w-full flex items-center gap-2 justify-center text-primaryDark border-none bg-transparent"
+          className="w-full flex items-center gap-2 justify-center !text-primaryDark border-none bg-transparent"
         >
           <ArrowLeftIcon /> Back
         </Button>

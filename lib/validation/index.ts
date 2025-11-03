@@ -9,11 +9,11 @@ export const stepOneSchema = z.object({
 
 export const stepTwoSchema = z.object({
   organizationName: z.string().min(3, "Business name is required"),
-  City: z.string().min(5, "Business address is required"),
-  State: z.string().min(1, "State is required"),
+  city: z.string().min(5, "Business address is required"),
+  state: z.string().min(1, "State is required"),
   localGovt: z.string().min(1, "Local Government is required"),
   zipCode: z.coerce.number().int("Zip code must be an integer").optional(),
-  Others: z.string().optional(),
+  others: z.string().optional(),
 });
 
 export const formSchema = stepOneSchema.merge(stepTwoSchema);
