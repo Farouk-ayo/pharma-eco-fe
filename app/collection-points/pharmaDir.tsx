@@ -47,7 +47,7 @@ const PharmacyDirectory = () => {
 
   const filteredPharmacies = pharmacies.filter(
     (pharmacy) =>
-      pharmacy.State === selectedState && pharmacy.localGovt === selectedArea
+      pharmacy.state === selectedState && pharmacy.localGovt === selectedArea
   );
 
   return (
@@ -143,7 +143,7 @@ const PharmacyDirectory = () => {
                   </h3>
                   <div className="space-y-2 text-base">
                     <div className="flex items-start gap-2">
-                      <p className="text-gray-600">{pharmacy.City}</p>
+                      <p className="text-gray-600">{pharmacy.city}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <p className="text-gray-600  ">

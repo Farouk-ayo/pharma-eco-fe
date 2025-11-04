@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 const ArticlesPage = () => {
   const { data: articles, isPending: isLoadingArticles } = useGetArticles();
+  console.log(articles);
   const router = useRouter();
 
   const handleAddArticle = () => {

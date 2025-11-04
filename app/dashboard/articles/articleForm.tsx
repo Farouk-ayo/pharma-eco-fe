@@ -32,17 +32,17 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     []
   );
   const [formData, setFormData] = useState({
-    Title: "",
-    Author: "",
-    Caption: "",
-    Subtitle1: "",
-    Subtitle2: "",
-    Subtitle3: "",
-    Subtitle4: "",
-    Content1: "",
-    Content2: "",
-    Content3: "",
-    Content4: "",
+    title: "",
+    author: "",
+    caption: "",
+    subtitle1: "",
+    subtitle2: "",
+    subtitle3: "",
+    subtitle4: "",
+    content1: "",
+    content2: "",
+    content3: "",
+    content4: "",
     articleImage1: "",
     articleImage2: "",
     articleImage3: "",
@@ -53,17 +53,17 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
   useEffect(() => {
     if (initialData) {
       setFormData({
-        Title: initialData.Title || "",
-        Author: initialData.Author || "",
-        Caption: initialData.Caption || "",
-        Subtitle1: initialData.Subtitle1 || "",
-        Subtitle2: initialData.Subtitle2 || "",
-        Subtitle3: initialData.Subtitle3 || "",
-        Subtitle4: initialData.Subtitle4 || "",
-        Content1: initialData.Content1 || "",
-        Content2: initialData.Content2 || "",
-        Content3: initialData.Content3 || "",
-        Content4: initialData.Content4 || "",
+        title: initialData.title || "",
+        author: initialData.author || "",
+        caption: initialData.caption || "",
+        subtitle1: initialData.subtitle1 || "",
+        subtitle2: initialData.subtitle2 || "",
+        subtitle3: initialData.subtitle3 || "",
+        subtitle4: initialData.subtitle4 || "",
+        content1: initialData.content1 || "",
+        content2: initialData.content2 || "",
+        content3: initialData.content3 || "",
+        content4: initialData.content4 || "",
         articleImage1: initialData.articleImage1Url || "",
         articleImage2: initialData.articleImage2Url || "",
         articleImage3: initialData.articleImage3Url || "",
@@ -163,10 +163,10 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
 
     try {
       if (
-        !formData.Title ||
-        !formData.Caption ||
-        !formData.Subtitle1 ||
-        !formData.Content1
+        !formData.title ||
+        !formData.caption ||
+        !formData.subtitle1 ||
+        !formData.content1
       ) {
         showToast.error("Please fill in all required fields");
         return;
@@ -177,17 +177,17 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
       }
 
       const payload = {
-        Title: formData.Title,
-        Author: formData.Author,
-        Caption: formData.Caption,
-        Subtitle1: formData.Subtitle1,
-        Subtitle2: formData.Subtitle2,
-        Subtitle3: formData.Subtitle3,
-        Subtitle4: formData.Subtitle4,
-        Content1: formData.Content1,
-        Content2: formData.Content2,
-        Content3: formData.Content3,
-        Content4: formData.Content4,
+        title: formData.title,
+        author: formData.author,
+        caption: formData.caption,
+        subtitle1: formData.subtitle1,
+        subtitle2: formData.subtitle2,
+        subtitle3: formData.subtitle3,
+        subtitle4: formData.subtitle4,
+        content1: formData.content1,
+        content2: formData.content2,
+        content3: formData.content3,
+        content4: formData.content4,
         articleImage1: formData.articleImage1,
         articleImage2: formData.articleImage2,
         articleImage3: formData.articleImage3,
@@ -247,7 +247,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     <div className="mx-auto p-4 md:p-6 bg-gray-50 rounded-lg shadow-md">
       <form onSubmit={handleSubmit}>
         <div className="my-6 flex flex-col md:flex-row gap-5 justify-between md:items-center">
-          <h2 className="text-primary font-semibold text-lg !rounded-lg">Add Article</h2>
+          <h2 className="text-primary font-semibold text-lg !rounded-lg">
+            Add Article
+          </h2>
           <div>
             {type === "edit" && (
               <Button
@@ -343,9 +345,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Author"
+            name="author"
             placeholder="Enter author name"
-            value={formData.Author}
+            value={formData.author}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -355,9 +357,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Title"
+            name="title"
             placeholder="Enter title"
-            value={formData.Title}
+            value={formData.title}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -368,9 +370,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Caption"
+            name="caption"
             placeholder="Enter small caption on the website"
-            value={formData.Caption}
+            value={formData.caption}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -381,9 +383,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Subtitle1"
+            name="subtitle1"
             placeholder="Enter subtitle 1"
-            value={formData.Subtitle1}
+            value={formData.subtitle1}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -394,15 +396,15 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           {type === "view" ? (
             <div
               className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: formData.Content1 }}
+              dangerouslySetInnerHTML={{ __html: formData.content1 }}
             />
           ) : (
             <ReactQuill
               theme="snow"
               modules={modules}
               formats={formats}
-              value={formData.Content1}
-              onChange={(content) => handleEditorChange(content, "Content1")}
+              value={formData.content1}
+              onChange={(content) => handleEditorChange(content, "content1")}
               className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
               placeholder="Enter content 1"
             />
@@ -414,9 +416,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Subtitle2"
+            name="subtitle2"
             placeholder="Enter subtitle 2"
-            value={formData.Subtitle2}
+            value={formData.subtitle2}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -426,15 +428,15 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           {type === "view" ? (
             <div
               className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: formData.Content2 }}
+              dangerouslySetInnerHTML={{ __html: formData.content2 }}
             />
           ) : (
             <ReactQuill
               theme="snow"
               modules={modules}
               formats={formats}
-              value={formData.Content2}
-              onChange={(content) => handleEditorChange(content, "Content2")}
+              value={formData.content2}
+              onChange={(content) => handleEditorChange(content, "content2")}
               className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
               placeholder="Enter content 2"
             />
@@ -446,9 +448,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Subtitle3"
+            name="subtitle3"
             placeholder="Enter subtitle 3"
-            value={formData.Subtitle3}
+            value={formData.subtitle3}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -459,15 +461,15 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           {type === "view" ? (
             <div
               className="w-full  border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: formData.Content3 }}
+              dangerouslySetInnerHTML={{ __html: formData.content3 }}
             />
           ) : (
             <ReactQuill
               theme="snow"
               modules={modules}
               formats={formats}
-              value={formData.Content3}
-              onChange={(content) => handleEditorChange(content, "Content3")}
+              value={formData.content3}
+              onChange={(content) => handleEditorChange(content, "content3")}
               className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
               placeholder="Enter content 3"
             />
@@ -479,9 +481,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           <input
             disabled={type === "view"}
             type="text"
-            name="Subtitle4"
+            name="subtitle4"
             placeholder="Enter subtitle 4"
-            value={formData.Subtitle4}
+            value={formData.subtitle4}
             onChange={handleChange}
             className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
           />
@@ -491,15 +493,15 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           {type === "view" ? (
             <div
               className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
-              dangerouslySetInnerHTML={{ __html: formData.Content4 }}
+              dangerouslySetInnerHTML={{ __html: formData.content4 }}
             />
           ) : (
             <ReactQuill
               theme="snow"
               modules={modules}
               formats={formats}
-              value={formData.Content4}
-              onChange={(content) => handleEditorChange(content, "Content4")}
+              value={formData.content4}
+              onChange={(content) => handleEditorChange(content, "content4")}
               className="bg-white border rounded-md mb-6 px-4 py-2  focus:outline-none focus:ring-1 focus:ring-primary"
               placeholder="Enter content 4"
             />

@@ -228,8 +228,8 @@ export default function Home() {
                   num={index+1}
                   id={card._id}
                   image={card.articleImage1Url}
-                  title={card.Title}
-                  description={card.Caption}
+                  title={card.title}
+                  description={card.caption}
                 />
               ))
             )}

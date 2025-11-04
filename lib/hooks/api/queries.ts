@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/services/axiosInstance";
-import { ArticleResponse, CustomerService, RegisteredUser } from "@/lib/types";
+import { ArticleResponse, FeedbackService, RegisteredUser } from "@/lib/types";
 
 export const useGetRegisterUsers = () => {
   return useQuery<RegisteredUser[]>({
@@ -16,8 +16,8 @@ export const useGetArticles = () => {
   return useQuery<ArticleResponse[]>({
     queryKey: ["get-articles"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/article/get/");
-      return response.data;
+      const response = await axiosInstance.get("/article/get");
+      return response.data.data;
     },
   });
 };
@@ -26,18 +26,18 @@ export const useGetArticle = (id: string) => {
   return useQuery<ArticleResponse>({
     queryKey: ["get-article", id],
     queryFn: async () => {
-      const response = await axiosInstance.get(`/article/${id}`);
-      return response.data;
+      const response = await axiosInstance.get(`/article/get/${id}`);
+      return response.data.data;
     },
   });
 };
 
-export const useGetCustomer = () => {
-  return useQuery<CustomerService[]>({
-    queryKey: ["get-customer"],
+export const useGetFeedback = () => {
+  return useQuery<FeedbackService[]>({
+    queryKey: ["get-feedbacks"],
     queryFn: async () => {
-      const response = await axiosInstance.get("/customer/get/");
-      return response.data;
+      const response = await axiosInstance.get("/feedback/get");
+      return response.data.data;
     },
   });
 };

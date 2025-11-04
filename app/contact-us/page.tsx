@@ -6,21 +6,22 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 import { showToast } from "@/lib/util";
 import { useForm } from "react-hook-form";
-import { customerServiceSchema } from "@/lib/validation";
+import { feedbackSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePostCustomer } from "@/lib/hooks/api/mutations";
-import { CustomerService } from "@/lib/types";
+import { usePostFeedback } from "@/lib/hooks/api/mutations";
+import { FeedbackService } from "@/lib/types";
 import { HorizontalLine } from "@/components/icons";
 
 const ContactUs = () => {
-  const postCustomer = usePostCustomer();
-  const initialFormData: CustomerService = {
+  const postFeedback = usePostFeedback();
+  const initialFormData: FeedbackService = {
     firstName: "",
     lastName: "",
     emailAddress: "",
     phoneNumber: "",
     organizationName: "",
-    Message: "",
+    message: "",
+    newsUpdates: false,
   };
 
   const {
@@ -28,13 +29,15 @@ const ContactUs = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<CustomerService>({
-    resolver: zodResolver(customerServiceSchema),
+  } = useForm<FeedbackService>({
+    resolver: zodResolver(feedbackSchema),
     defaultValues: initialFormData,
   });
 
-  const onSubmit = async (data: CustomerService) => {
-    postCustomer.mutate(data, {
+  const onSubmit = async (data: FeedbackService) => {
+    console.log("yes");
+
+    postFeedback.mutate(data, {
       onSuccess: () => {
         showToast.success("Message sent successfully");
         reset(initialFormData);
@@ -62,8 +65,8 @@ const ContactUs = () => {
         <div className="container mx-auto px-4">
           <div className=" relative grid grid-cols-1 lg:grid-cols-2 gap-20">
             {/* Form Section */}
-            <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+            <div className="space-y-6 relative z-50">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary z-50 relative">
                 Do You Have Something Special To Tell Us?
               </h2>
               <p>
@@ -156,14 +159,14 @@ const ContactUs = () => {
                     Others (Any special time?)
                   </label>
                   <textarea
-                    {...register("Message")}
+                    {...register("message")}
                     placeholder="Enter what you need help for"
                     className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
                     rows={4}
                   ></textarea>
-                  {errors.Message && (
+                  {errors.message && (
                     <span className="text-red-600">
-                      {errors.Message.message}
+                      {errors.message.message}
                     </span>
                   )}
                 </div>
@@ -171,6 +174,7 @@ const ContactUs = () => {
                   <input
                     type="checkbox"
                     id="news-updates"
+                    {...register("newsUpdates")}
                     className="text-primary focus:ring-primary rounded accent-primary"
                   />
                   <label
@@ -192,11 +196,11 @@ const ContactUs = () => {
               </form>
             </div>
             {/* vertical line  */}
-            <div className="hidden lg:block absolute left-1/2 top-28 bottom-0 -translate-x-1/2 scale-75">
-              <HorizontalLine className="rotate-90 h-[80%]" />
+            <div className="hidden lg:flex  absolute left-1/2 top-28 bottom-0 -translate-x-1/2 scale-75 !z-10">
+              <HorizontalLine className="rotate-90 h-[80%] relative !z-10" />
             </div>
             {/* Customer Service Section */}
-            <div className="space-y-6">
+            <div className="space-y-6  relative z-50">
               <h2 className="text-2xl md:text-3xl font-bold text-primary">
                 We Really Want To Hear From You
               </h2>

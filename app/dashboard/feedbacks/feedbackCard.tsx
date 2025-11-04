@@ -1,10 +1,10 @@
 import React from "react";
-import { CustomerService } from "@/lib/types";
+import { FeedbackService } from "@/lib/types";
 import Button from "@/components/buttons";
 import AdminBadge from "@/components/badge/adminBadge";
 
 interface FeedbackCardProps {
-  feedback: CustomerService;
+  feedback: FeedbackService;
   delete?: boolean;
   onDelete?: (_id: string) => void;
 }
@@ -27,19 +27,6 @@ const FeedbackCard: React.FC<FeedbackCardProps> = ({
           <p className="text-gray-800">{feedback.lastName}</p>
         </div>
         <div>
-          <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation Name
-          </p>
-          <p className="text-gray-800">{feedback.organizationName}</p>
-        </div>
-
-        <div>
-          <p className="font-bold text-sm text-gray-700">
-            Pharmacy/Company/Organisation Address/City
-          </p>
-          <p className="text-gray-800">{feedback.emailAddress}</p>
-        </div>
-        <div>
           <p className="font-bold text-sm text-gray-700">Email Address</p>
           <p className="text-gray-800">{feedback.emailAddress}</p>
         </div>
@@ -48,9 +35,15 @@ const FeedbackCard: React.FC<FeedbackCardProps> = ({
           <p className="font-bold text-sm text-gray-700">Phone Number</p>
           <p className="text-gray-800">{feedback.phoneNumber}</p>
         </div>
+        <div>
+          <p className="font-bold text-sm text-gray-700">
+            Company/Organisation Name
+          </p>
+          <p className="text-gray-800">{feedback.organizationName}</p>
+        </div>
         <div className="md:col-span-2">
           <p className="font-bold text-sm text-gray-700">Message</p>
-          <p className="text-gray-800">{feedback.Message}</p>
+          <p className="text-gray-800">{feedback.message}</p>
         </div>
       </div>
       {allowDelete && (

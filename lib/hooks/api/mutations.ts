@@ -1,6 +1,6 @@
 import {
   ArticleCard,
-  CustomerService,
+  FeedbackService,
   LoginInputsPayload,
   RegisteredUser,
 } from "@/lib/types";
@@ -19,11 +19,11 @@ export const usePostRegister = () => {
   return mutationDetails;
 };
 
-export const usePostCustomer = () => {
+export const usePostFeedback = () => {
   const mutationDetails = useMutation({
-    mutationKey: ["post-customer"],
-    mutationFn: (customerServiceDetails: CustomerService) => {
-      return axiosInstance.post("/customer/add", customerServiceDetails);
+    mutationKey: ["post-feedback"],
+    mutationFn: (feedbackServiceDetails: FeedbackService) => {
+      return axiosInstance.post("/feedback/add", feedbackServiceDetails);
     },
   });
   return mutationDetails;
@@ -39,15 +39,15 @@ export const usePostAdmin = () => {
   return mutationDetails;
 };
 
-export const useDeleteCustomerFeedback = () => {
+export const useDeleteFeedback = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: ["delete-customer-feedback"],
+    mutationKey: ["delete-feedback"],
     mutationFn: (id: string) => {
-      return axiosInstance.delete(`/customer/${id}`);
+      return axiosInstance.delete(`/feedback/${id}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["get-customer"] });
+      queryClient.invalidateQueries({ queryKey: ["get-feedbacks"] });
     },
     onError: (error) => {
       showToast.error(error.message);

@@ -58,7 +58,7 @@ const ArticleDetails = () => {
               <span className="text-primary font-semibold">Articles</span>
             </Link>
             <ArrowRightIcon className="h-2 w-2 mx-2" />
-            <span>{article?.Title}</span>
+            <span>{article?.title}</span>
           </div>
           <div className="flex items-center  gap-2">
             <span className="text-primary font-semibold">Share via:</span>
@@ -78,7 +78,7 @@ const ArticleDetails = () => {
         </div>
 
         <h1 className="text-2xl font-semibold md:text-5xl text-primaryDark">
-          {article?.Title}
+          {article?.title}
         </h1>
         <p className="text-textPrimary mb-6 ">
           {" "}
@@ -88,13 +88,13 @@ const ArticleDetails = () => {
           </span>
           <span>-</span>{" "}
           <span className="text-primary font-semibold block md:inline ">
-            Written by {article?.Author}
+            Written by {article?.author}
           </span>
         </p>
         <div className="w-full aspect-[21/9] md:h-[40rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
             src={article?.articleImage1Url || "/placeholder.jpg"}
-            alt={article?.Title || "Article image"}
+            alt={article?.title || "Article image"}
             fill
             priority
             className="object-cover object-left md:object-center rounded-lg h-full w-full"
@@ -111,29 +111,29 @@ const ArticleDetails = () => {
         <div className="lg:col-span-2">
           <div className="prose max-w-none  mt-6">
             <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-              {article?.Subtitle1}
+              {article?.subtitle1}
             </h2>
             <div
               className="text-gray-700 mb-8"
-              dangerouslySetInnerHTML={{ __html: article?.Content1 || "" }}
+              dangerouslySetInnerHTML={{ __html: article?.content1 || "" }}
             />{" "}
           </div>
 
-          {article?.Content2 && (
+          {article?.content2 && (
             <div className="prose max-w-none  mt-6">
               <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-                {article?.Subtitle2}
+                {article?.subtitle2}
               </h2>
 
               <div
                 className="text-gray-700 "
-                dangerouslySetInnerHTML={{ __html: article?.Content2 || "" }}
+                dangerouslySetInnerHTML={{ __html: article?.content2 || "" }}
               />
               {article?.articleImage2Url && (
                 <div className="relative w-full  overflow-hidden h-[20rem] rounded-lg">
                   <Image
                     src={article?.articleImage2Url || "/placeholder.jpg"}
-                    alt={article?.Title || "Article image"}
+                    alt={article?.title || "Article image"}
                     fill
                     priority
                     className="object-contain sm:object-cover rounded-lg h-full w-full"
@@ -147,15 +147,15 @@ const ArticleDetails = () => {
               )}
             </div>
           )}
-          {article?.Content3 && (
+          {article?.content3 && (
             <div className="prose max-w-none  mt-6">
               <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-                {article?.Subtitle3}
+                {article?.subtitle3}
               </h2>
 
               <div
                 className="text-gray-700 mb-8"
-                dangerouslySetInnerHTML={{ __html: article?.Content3 || "" }}
+                dangerouslySetInnerHTML={{ __html: article?.content3 || "" }}
               />
               {/* Waste Bins Image */}
               {article?.articleImage3Url && (
@@ -171,15 +171,15 @@ const ArticleDetails = () => {
               )}
             </div>
           )}
-          {article?.Content4 && (
+          {article?.content4 && (
             <div className="prose max-w-none  mt-6">
               <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-                {article?.Subtitle4}
+                {article?.subtitle4}
               </h2>
 
               <div
                 className="text-gray-700 mb-8"
-                dangerouslySetInnerHTML={{ __html: article?.Content4 || "" }}
+                dangerouslySetInnerHTML={{ __html: article?.content4 || "" }}
               />
               {/* Waste Bins Image */}
               {article?.articleImage4Url && (
@@ -211,7 +211,7 @@ const ArticleDetails = () => {
                       href={`/articles/${post._id}`}
                       className="text-primaryDark hover:text-primary transition-colors block"
                     >
-                      {post.Title}
+                      {post.title}
                     </a>
                   </li>
                 ))}
