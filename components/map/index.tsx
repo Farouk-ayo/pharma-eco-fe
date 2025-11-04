@@ -52,7 +52,7 @@ const MapComponent = () => {
     const fetchLocations = async () => {
       try {
         const locationPromises = (users || []).map(async (user) => {
-          const query = `${user.City}, ${user.State}, Nigeria`;
+          const query = `${user.city}, ${user.state}, Nigeria`;
           try {
             const res = await fetch(
               `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
@@ -67,7 +67,7 @@ const MapComponent = () => {
                 name: user.organizationName,
                 lat: parseFloat(data[0].lat),
                 lng: parseFloat(data[0].lon),
-                address: `${user.City}, ${user.State}, ${user.zipCode}`,
+                address: `${user.city}, ${user.state}, ${user.zipCode}`,
               };
             }
           } catch (error) {
