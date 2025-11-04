@@ -3,21 +3,21 @@
 import React, { useState } from "react";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import FeedbackCard from "./feedbackCard";
-import { useGetCustomer } from "@/lib/hooks/api/queries";
+import { useGetFeedback } from "@/lib/hooks/api/queries";
 import Pagination from "@/components/pagination";
-import { useDeleteCustomerFeedback } from "@/lib/hooks/api/mutations";
+import { useDeleteFeedback } from "@/lib/hooks/api/mutations";
 import Modal from "@/components/modal/modalConfirmation";
 import { showToast } from "@/lib/util";
 
 const FeedbackPage = () => {
-  const { data: customerService, isPending: isLoadingArticles } =
-    useGetCustomer();
+  const { data: feedbackService, isPending: isLoadingArticles } =
+    useGetFeedback();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [feedbackIdToDelete, setFeedbackIdToDelete] = useState<string | null>(
     null
   );
   const [isDeleting, setIsDeleting] = useState(false);
-  const { mutate: deleteFeedback } = useDeleteCustomerFeedback();
+  const { mutate: deleteFeedback } = useDeleteFeedback();
 
   const handleDelete = (id: string) => {
     setFeedbackIdToDelete(id);
@@ -46,7 +46,7 @@ const FeedbackPage = () => {
       {isLoadingArticles ? (
         <LoadingSkeleton count={10} type="table" />
       ) : (
-        customerService?.map((feedback) => (
+        feedbackService?.map((feedback) => (
           <FeedbackCard
             key={feedback._id}
             feedback={feedback}

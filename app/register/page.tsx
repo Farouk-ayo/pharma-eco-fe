@@ -15,11 +15,11 @@ const Page = () => {
     emailAddress: "",
     phoneNumber: "",
     organizationName: "",
-    City: "",
-    State: "",
+    city: "",
+    state: "",
     localGovt: "",
     zipCode: 0 || undefined,
-    Others: "",
+    others: "",
   });
   const postRegister = usePostRegister();
 
@@ -77,11 +77,11 @@ const Page = () => {
             isLoading={postRegister.isPending}
             defaultValues={{
               organizationName: formData.organizationName,
-              City: formData.City,
-              State: formData.State,
+              city: formData.city,
+              state: formData.state,
               localGovt: formData.localGovt,
               zipCode: formData.zipCode,
-              Others: formData.Others,
+              others: formData.others,
             }}
           />
         );
@@ -104,7 +104,7 @@ const Page = () => {
                   currentStep === step
                     ? "bg-primaryDark text-white  "
                     : currentStep < step
-                    ? "bg-primary text-white"
+                    ? "bg-primaryDark text-white"
                     : "bg-[#33333340] text-black "
                 }
               `}

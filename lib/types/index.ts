@@ -5,24 +5,25 @@ export interface RegisteredUser {
   emailAddress: string;
   phoneNumber: string;
   organizationName: string;
-  City: string;
-  State: string;
+  city: string;
+  state: string;
   localGovt: string;
   zipCode: number;
-  Others?: string;
+  others?: string;
   createdAt?: string;
   updatedAt?: string;
   __v?: number;
 }
 
-export interface CustomerService {
+export interface FeedbackService {
   _id?: string;
   firstName: string;
   lastName: string;
   emailAddress: string;
   phoneNumber: string;
   organizationName: string;
-  Message: string;
+  message: string;
+  newsUpdates: false;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -32,8 +33,8 @@ export interface LoginInputs {
   password: string;
 }
 export interface LoginInputsPayload {
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
 }
 
 // DASHBOARD TYPES
@@ -56,17 +57,17 @@ export interface SidebarProps {
 }
 export type ArticleResponse = {
   _id: string;
-  Title: string;
-  Author: string;
-  Caption: string;
-  Subtitle1: string;
-  Content1: string;
-  Subtitle2: string;
-  Content2: string;
-  Subtitle3?: string;
-  Content3?: string;
-  Subtitle4?: string;
-  Content4?: string;
+  title: string;
+  author: string;
+  caption: string;
+  subtitle1: string;
+  content1: string;
+  subtitle2: string;
+  content2: string;
+  subtitle3?: string;
+  content3?: string;
+  subtitle4?: string;
+  content4?: string;
   articleImage1Url: string;
   articleImage1Id: string;
   articleImage2Url: string;
@@ -81,17 +82,17 @@ export type ArticleResponse = {
 };
 
 export type ArticleCard = {
-  Title: string;
-  Author: string;
-  Caption: string;
-  Subtitle1?: string;
-  Subtitle2?: string;
-  Subtitle3?: string;
-  Subtitle4?: string;
-  Content1?: string;
-  Content2?: string;
-  Content3?: string;
-  Content4?: string;
+  title: string;
+  author: string;
+  caption: string;
+  subtitle1?: string;
+  subtitle2?: string;
+  subtitle3?: string;
+  subtitle4?: string;
+  content1?: string;
+  content2?: string;
+  content3?: string;
+  content4?: string;
   articleImage1?: string;
   articleImage2?: string;
   articleImage3?: string;

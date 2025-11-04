@@ -23,8 +23,8 @@ const AdminLogin = () => {
   } = useForm<LoginFormmInputs>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      Email: "",
-      Password: "",
+      email: "",
+      password: "",
     },
   });
 
@@ -34,8 +34,8 @@ const AdminLogin = () => {
         onSuccess: (response) => {
           router.push("/dashboard");
           reset();
-          if (response?.data?.token) {
-            Cookies.set("authToken", response.data.token, { expires: 1 });
+          if (response?.data?.data?.token) {
+            Cookies.set("authToken", response.data.data.token, { expires: 1 });
             showToast.success("Login successful");
             router.push("/dashboard");
             reset();
@@ -63,12 +63,12 @@ const AdminLogin = () => {
               </label>
               <input
                 type="email"
-                {...register("Email")}
+                {...register("email")}
                 placeholder="Enter email address"
                 className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
               />
-              {errors.Email && (
-                <span className="text-red-600">{errors.Email.message}</span>
+              {errors.email && (
+                <span className="text-red-600">{errors.email.message}</span>
               )}
             </div>
 
@@ -76,12 +76,12 @@ const AdminLogin = () => {
               <label className="block text-black font-semibold">Password</label>
               <input
                 type="password"
-                {...register("Password")}
+                {...register("password")}
                 placeholder="Enter Password"
                 className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
               />
-              {errors.Password && (
-                <span className="text-red-600">{errors.Password.message}</span>
+              {errors.password && (
+                <span className="text-red-600">{errors.password.message}</span>
               )}
             </div>
 

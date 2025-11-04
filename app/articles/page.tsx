@@ -53,8 +53,8 @@ const Articles = () => {
                   backgroundColor="#009D3D"
                   key={index}
                   image={item.articleImage1Url}
-                  title={item.Title}
-                  description={item.Caption}
+                  title={item.title}
+                  description={item.caption}
                   num={index + 1}
                   id={item._id}
                 />{" "}

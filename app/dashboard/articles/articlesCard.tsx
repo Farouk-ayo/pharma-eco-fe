@@ -67,9 +67,9 @@ const ArticlesSection: React.FC<ArticlesSectionProps> = ({
                       alt={article.articleImage1Id || "Article Image"}
                     />
                   </div>
-                  <div>{article.Title}</div>
+                  <div>{article.title}</div>
                 </td>
-                <td className="px-4 py-2">{article.Subtitle1}</td>
+                <td className="px-4 py-2">{article.subtitle1}</td>
                 <td className="px-4 py-2">
                   <button
                     className="text-yellow-600 font-semibold hover:underline"

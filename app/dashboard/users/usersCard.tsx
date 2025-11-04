@@ -39,7 +39,7 @@ const UserCard: React.FC<UserCardProps> = ({
 
         <div>
           <p className="font-bold text-sm text-gray-700">
-            Company/Organisation Address/City
+            Company/Organisation email Address
           </p>
           <p className="text-gray-800">{user.emailAddress}</p>
         </div>
@@ -51,7 +51,13 @@ const UserCard: React.FC<UserCardProps> = ({
           <p className="font-bold text-sm text-gray-700">
             Company/Organisation State
           </p>
-          <p className="text-gray-800">{user.State}</p>
+          <p className="text-gray-800">{user.state}</p>
+        </div>
+        <div>
+          <p className="font-bold text-sm text-gray-700">
+            Company/Organisation City
+          </p>
+          <p className="text-gray-800">{user.city}</p>
         </div>
         <div>
           <p className="font-bold text-sm text-gray-700">Phone Number</p>
@@ -71,7 +77,7 @@ const UserCard: React.FC<UserCardProps> = ({
         </div>
         <div className="md:col-span-2">
           <p className="font-bold text-sm text-gray-700">Others</p>
-          <p className="text-gray-800">{user.Others}</p>
+          <p className="text-gray-800">{user.others}</p>
         </div>
       </div>
       {(edit || allowDelete) && (
