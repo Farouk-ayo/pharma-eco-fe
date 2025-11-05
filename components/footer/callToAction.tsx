@@ -59,8 +59,8 @@ const CallToAction = () => {
           </div>
 
           {/* Right side */}
-          <div className="relative w-full hidden md:flex items-center justify-center py-8 lg:py-0 xl:mt-6">
-            <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 lg:px-0">
+          <div className="relative w-full hidden xl:flex items-center justify-center py-8 xl:py-0 xl:mt-6">
+            <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 xl:px-0">
               <Image
                 src="/pharma-eco-bot.webp"
                 alt="PharmaEcoBot Assistant"
@@ -69,14 +69,16 @@ const CallToAction = () => {
               />
             </div>
           </div>
-          <div className="relative w-full flex md:hidden items-center justify-center py-8 lg:py-0 xl:mt-6">
-            <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 lg:px-0">
-              <Image
-                src="/pharma-eco-bot-m.webp"
-                alt="PharmaEcoBot Assistant"
-                fill
-                className="object-contain"
-              />
+          <div className="relative flex overflow-hidden xl:hidden items-center justify-center h-[20rem] w-full ">
+            <div className="relative w-full h-full">
+              <div className="absolute w-full h-full">
+                <Image
+                  src="/pharma-eco-bot-m.webp"
+                  alt="PharmaEcoBot Assistant"
+                  fill
+                  className="object-cover w-full h-full overflow-hidden"
+                />
+              </div>
             </div>
           </div>
         </div>
