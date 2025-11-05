@@ -34,20 +34,25 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
   const [formData, setFormData] = useState({
     title: "",
     author: "",
-    caption: "",
+    references: "",
+    introduction: "",
     subtitle1: "",
     subtitle2: "",
     subtitle3: "",
     subtitle4: "",
+    subtitle5: "",
     content1: "",
     content2: "",
     content3: "",
     content4: "",
+    content5: "",
     articleImage1: "",
     articleImage2: "",
     articleImage3: "",
     articleImage4: "",
-    images: [null, null, null, null] as (File | null)[],
+    articleImage5: "",
+
+    images: [null, null, null, null, null] as (File | null)[],
   });
 
   useEffect(() => {
@@ -55,26 +60,31 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
       setFormData({
         title: initialData.title || "",
         author: initialData.author || "",
-        caption: initialData.caption || "",
+        references: initialData.references || "",
+        introduction: initialData.introduction || "",
         subtitle1: initialData.subtitle1 || "",
         subtitle2: initialData.subtitle2 || "",
         subtitle3: initialData.subtitle3 || "",
         subtitle4: initialData.subtitle4 || "",
+        subtitle5: initialData.subtitle5 || "",
         content1: initialData.content1 || "",
         content2: initialData.content2 || "",
         content3: initialData.content3 || "",
         content4: initialData.content4 || "",
+        content5: initialData.content5 || "",
         articleImage1: initialData.articleImage1Url || "",
         articleImage2: initialData.articleImage2Url || "",
         articleImage3: initialData.articleImage3Url || "",
         articleImage4: initialData.articleImage4Url || "",
-        images: [null, null, null, null] as (File | null)[],
+        articleImage5: initialData.articleImage5Url || "",
+        images: [null, null, null, null, null] as (File | null)[],
       });
       setPreviewUrls([
         initialData.articleImage1Url || null,
         initialData.articleImage2Url || null,
         initialData.articleImage3Url || null,
         initialData.articleImage4Url || null,
+        initialData.articleImage5Url || null,
       ]);
     }
   }, [initialData]);
@@ -164,7 +174,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     try {
       if (
         !formData.title ||
-        !formData.caption ||
+        !formData.references ||
         !formData.subtitle1 ||
         !formData.content1
       ) {
@@ -179,19 +189,23 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
       const payload = {
         title: formData.title,
         author: formData.author,
-        caption: formData.caption,
+        references: formData.references,
+        introduction: formData.introduction,
         subtitle1: formData.subtitle1,
         subtitle2: formData.subtitle2,
         subtitle3: formData.subtitle3,
         subtitle4: formData.subtitle4,
+        subtitle5: formData.subtitle5,
         content1: formData.content1,
         content2: formData.content2,
         content3: formData.content3,
         content4: formData.content4,
+        content5: formData.content5,
         articleImage1: formData.articleImage1,
         articleImage2: formData.articleImage2,
         articleImage3: formData.articleImage3,
         articleImage4: formData.articleImage4,
+        articleImage5: formData.articleImage5,
       };
 
       console.log(payload);
@@ -317,7 +331,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                 <div className="absolute inset-0 bg-black opacity-50 flex items-center justify-center w-full h-full"></div>
                 <div className="w-20 h-20 relative z-30 flex items-center justify-center">
                   <Image
-                    src={"/camera.webp"}
+                    src={"/camera.svg"}
                     alt="Camera Icon"
                     layout="fill"
                     objectFit="cover"
@@ -365,17 +379,26 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
           />
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
-            Caption
+            Introduction
           </label>
-          <input
-            disabled={type === "view"}
-            type="text"
-            name="caption"
-            placeholder="Enter small caption on the website"
-            value={formData.caption}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+          {type === "view" ? (
+            <div
+              className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.introduction }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.introduction}
+              onChange={(content) =>
+                handleEditorChange(content, "introduction")
+              }
+              className="bg-white border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary mb-6"
+              placeholder="Enter Introduction"
+            />
+          )}
 
           <label className="block  mt-4  text-sm font-semibold text-gray-700">
             Subtitle 1
@@ -506,6 +529,57 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
               placeholder="Enter content 4"
             />
           )}
+
+          <label className="block  mt-4  text-sm font-semibold text-gray-700">
+            Subtitle 5 (Optional)
+          </label>
+          <input
+            disabled={type === "view"}
+            type="text"
+            name="subtitle5"
+            placeholder="Enter subtitle 5"
+            value={formData.subtitle5}
+            onChange={handleChange}
+            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+          />
+          <label className="block  mt-4  text-sm font-semibold text-gray-700">
+            Content 5 (Optional)
+          </label>
+          {type === "view" ? (
+            <div
+              className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.content5 }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.content5}
+              onChange={(content) => handleEditorChange(content, "content5")}
+              className="bg-white border rounded-md mb-6 px-4 py-2  focus:outline-none focus:ring-1 focus:ring-primary"
+              placeholder="Enter content 5"
+            />
+          )}
+          <label className="block  mt-4  text-sm font-semibold text-gray-700">
+            References
+          </label>
+          {type === "view" ? (
+            <div
+              className="w-full border px-4 py-2 rounded-md bg-gray-50 prose max-w-none"
+              dangerouslySetInnerHTML={{ __html: formData.references }}
+            />
+          ) : (
+            <ReactQuill
+              theme="snow"
+              modules={modules}
+              formats={formats}
+              value={formData.references}
+              onChange={(content) => handleEditorChange(content, "references")}
+              className="bg-white border rounded-md mb-6 px-4 py-2  focus:outline-none focus:ring-1 focus:ring-primary"
+              placeholder="Enter content 5"
+            />
+          )}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-6 mt-6">
@@ -537,7 +611,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                     <div className="absolute inset-0 bg-black opacity-50 flex items-center justify-center w-full h-full"></div>
                     <div className="w-10 h-10 relative z-30 flex items-center justify-center">
                       <Image
-                        src={"/camera.webp"}
+                        src={"/camera.svg"}
                         alt="Camera Icon"
                         layout="fill"
                         objectFit="cover"

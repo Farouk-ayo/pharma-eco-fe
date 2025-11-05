@@ -6,9 +6,9 @@ interface HeaderProps {
 
 export default function Header({ title, description, bg }: HeaderProps) {
   return (
-    <div className="relative px-4 lg:px-16 py-40 min-h-[600px]flex items-center overflow-hidden">
+    <div className="relative px-4 lg:px-16 py-20 md:py-32 min-h-[537px] flex items-center overflow-hidden">
       <div
-        className="absolute inset-0 w-full h-full bg-black "
+        className="absolute inset-0 w-full h-full "
         style={{
           backgroundImage: `url(.${bg})`,
           backgroundSize: "cover",
