@@ -8,7 +8,6 @@ import {
   WhatsappIcon2,
   XIcon2,
 } from "@/components/icons";
-import Button from "@/components/buttons";
 import Link from "next/link";
 import { useGetArticle, useGetArticles } from "@/lib/hooks/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
@@ -48,11 +47,11 @@ const ArticleDetails = () => {
     return <LoadingSkeleton count={1} type="ArticleID" />;
   }
   return (
-    <section className=" relative  top-20  md:top-20 px-4 lg:px-16 pb-40 items-center overflow-hidden">
-      <div className="absolute inset-0 w-full h-80 md:h-[60vh] bg-[#ECFFF099] " />
-      <div className="relative z-20">
+    <section className=" relative  top-20  md:top-20  pb-40 items-center overflow-hidden">
+      <div className="absolute inset-0 w-full h-80 md:h-[60vh] bg-[#ECFFF099] px-4 lg:px-20 " />
+      <div className="relative z-20 px-4 lg:px-20">
         <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-10 ">
-          <div className=" hidden md:flex md:items-center text-sm text-textPrimary mb-4">
+          <div className=" hidden md:flex md:items-center text-lg text-textPrimary mb-4">
             <Link className="" href={"/articles"}>
               {" "}
               <span className="text-primary font-semibold">Articles</span>
@@ -93,112 +92,32 @@ const ArticleDetails = () => {
         </p>
         <div className="w-full aspect-[21/9] md:h-[40rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
-            src={article?.articleImage1Url || "/placeholder.webp"}
+            src={article?.articleImage1Url || "/placeholder.jpg"}
             alt={article?.title || "Article image"}
             fill
             priority
-            className="object-cover object-left md:object-center rounded-lg h-full w-full"
+            className="object-cover object-top md:object-top rounded-lg h-full w-full"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
-              target.src = "/placeholder.webp";
+              target.src = "/placeholder.jpg";
             }}
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className=" px-4 lg:px-20 relative grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <div className="prose max-w-none  mt-6">
-            <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-              {article?.subtitle1}
-            </h2>
             <div
-              className="text-gray-700 mb-8"
-              dangerouslySetInnerHTML={{ __html: article?.content1 || "" }}
-            />{" "}
+              className="text-gray-700 text-base md:text-xl mb-8 leading-8"
+              dangerouslySetInnerHTML={{ __html: article?.introduction || "" }}
+            />
           </div>
-
-          {article?.content2 && (
-            <div className="prose max-w-none  mt-6">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-                {article?.subtitle2}
-              </h2>
-
-              <div
-                className="text-gray-700 "
-                dangerouslySetInnerHTML={{ __html: article?.content2 || "" }}
-              />
-              {article?.articleImage2Url && (
-                <div className="relative w-full  overflow-hidden h-[20rem] rounded-lg">
-                  <Image
-                    src={article?.articleImage2Url || "/placeholder.webp"}
-                    alt={article?.title || "Article image"}
-                    fill
-                    priority
-                    className="object-contain sm:object-cover rounded-lg h-full w-full"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "/placeholder.webp";
-                    }}
-                  />
-                </div>
-              )}
-            </div>
-          )}
-          {article?.content3 && (
-            <div className="prose max-w-none  mt-6">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-                {article?.subtitle3}
-              </h2>
-
-              <div
-                className="text-gray-700 mb-8"
-                dangerouslySetInnerHTML={{ __html: article?.content3 || "" }}
-              />
-              {/* Waste Bins Image */}
-              {article?.articleImage3Url && (
-                <div className="relative bg-sky-100 w-full h-[28rem] rounded-lg mb-8">
-                  <Image
-                    src={article?.articleImage3Url || "/"}
-                    alt="Hands-Free Waste Disposal"
-                    layout="fill"
-                    priority
-                    objectFit="cover"
-                  />
-                </div>
-              )}
-            </div>
-          )}
-          {article?.content4 && (
-            <div className="prose max-w-none  mt-6">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
-                {article?.subtitle4}
-              </h2>
-
-              <div
-                className="text-gray-700 mb-8"
-                dangerouslySetInnerHTML={{ __html: article?.content4 || "" }}
-              />
-              {/* Waste Bins Image */}
-              {article?.articleImage4Url && (
-                <div className="relative bg-sky-100 w-full h-[28rem] rounded-lg mb-8">
-                  <Image
-                    src={article?.articleImage4Url || "/"}
-                    alt="Hands-Free Waste Disposal"
-                    layout="fill"
-                    priority
-                    objectFit="cover"
-                  />
-                </div>
-              )}
-            </div>
-          )}
         </div>
 
         {/* Sidebar - Takes up 1 column */}
-        <div className="lg:col-span-1 ">
+        <div className="lg:col-span-1 hidden md:inline-block">
           <div className="mb-8 p-4 border rounded-lg border-gray-300">
             <h3 className="font-semibold mb-4 md:text-xl text-primaryDark ">
               Related Posts
@@ -224,25 +143,162 @@ const ArticleDetails = () => {
               <span className="ml-2 text-primary ">&rarr;</span>
             </a>
           </div>
+        </div>
+      </div>
+      {article?.content1 && (
+        <div className="prose max-w-none  mt-6 px-4 lg:px-20">
+          <h2 className="text-xl md:text-4xl font-semibold text-primary mb-4">
+            {article?.subtitle1}
+          </h2>
+          <div
+            className="text-gray-700 text-base md:text-xl leading-8 font-normal "
+            dangerouslySetInnerHTML={{ __html: article?.content1 || "" }}
+          />
+        </div>
+      )}
+      {article?.content2 && (
+        <div className="prose max-w-none  mt-6 py-10 bg-[#F1F1F180] px-4 lg:px-20">
+          <h2 className="text-xl md:text-4xl font-semibold text-primary mb-4">
+            {article?.subtitle2}
+          </h2>
 
-          {/* Newsletter Subscription */}
-          <div className="bg-primary/10 p-6 rounded-lg text-center mb-8">
-            <h3 className="font-semibold mb-2 text-lg md:text-2xl ">
-              Subscribe to Our Newsletter
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
-              Tips, stories, and new approaches to work management,
-              collaboration, and productivity. Get them weekly to your inbox.
-            </p>
-            <input
-              type="email"
-              placeholder="Enter email address"
-              className="w-full p-2 mb-2 border rounded"
+          <div
+            className="text-gray-700 text-base md:text-xl leading-8 font-normal  "
+            dangerouslySetInnerHTML={{ __html: article?.content2 || "" }}
+          />
+        </div>
+      )}
+      {article?.content3 && (
+        <div className="prose px-4 lg:px-20 max-w-none  mt-6 flex flex-col-reverse lg:flex-row-reverse gap-10">
+          <div className="lg:w-[60%] ">
+            {" "}
+            <h2 className="text-xl md:text-4xl font-semibold text-primary mb-4">
+              {article?.subtitle3}
+            </h2>
+            <div
+              className="text-gray-700 text-base md:text-xl leading-8 font-normal "
+              dangerouslySetInnerHTML={{ __html: article?.content3 || "" }}
             />
-            <Button variant="primary" className="w-full text-white">
-              Subscribe Now
-            </Button>
           </div>
+          <div className="relative lg:w-[40%]  h-full overflow-hidden">
+            {article?.articleImage2Url && (
+              <div className="relative bg-sky-100 w-full h-[28rem] rounded-md mb-8">
+                <Image
+                  src={article?.articleImage2Url || "/"}
+                  alt="Hands-Free Waste Disposal"
+                  layout="fill"
+                  priority
+                  className=" rounded-md"
+                  objectFit="cover"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      {article?.content4 && (
+        <div className="prose px-4 lg:px-20 max-w-none  mt-6 flex flex-col-reverse lg:flex-row gap-10">
+          <div className="lg:w-[60%] ">
+            {" "}
+            <h2 className="text-xl md:text-4xl font-semibold text-primary mb-4">
+              {article?.subtitle4}
+            </h2>
+            <div
+              className="text-gray-700 text-base md:text-xl leading-8 font-normal "
+              dangerouslySetInnerHTML={{ __html: article?.content4 || "" }}
+            />
+          </div>
+          <div className="relative lg:w-[40%]  h-full overflow-hidden">
+            {article?.articleImage3Url && (
+              <div className="relative bg-sky-100 w-full h-[28rem] rounded-md mb-8">
+                <Image
+                  src={article?.articleImage3Url || "/"}
+                  alt="Hands-Free Waste Disposal"
+                  layout="fill"
+                  priority
+                  className=" rounded-md"
+                  objectFit="cover"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      <div className=" px-4 lg:px-20">
+        {article?.articleImage4Url && (
+          <div className="relative bg-sky-100 w-full h-[20rem] md:h-[49rem] rounded-lg my-8">
+            <Image
+              src={article?.articleImage4Url || "/"}
+              alt="Hands-Free Waste Disposal"
+              layout="fill"
+              priority
+              className="rounded-md"
+              objectFit="cover"
+            />
+          </div>
+        )}
+      </div>
+
+      {article?.content5 && (
+        <div className="prose max-w-none px-4 lg:px-20  mt-6">
+          <h2 className="text-xl md:text-4xl font-semibold text-primary mb-4">
+            {article?.subtitle5}
+          </h2>
+
+          <div
+            className="text-gray-700 text-base md:text-xl leading-8 font-normal "
+            dangerouslySetInnerHTML={{ __html: article?.content5 || "" }}
+          />
+          {/* Waste Bins Image */}
+          {article?.articleImage5Url && (
+            <div className="relative bg-sky-100 w-full h-[20rem] rounded-lg mb-8">
+              <Image
+                src={article?.articleImage5Url || "/"}
+                alt="Hands-Free Waste Disposal"
+                layout="fill"
+                priority
+                objectFit="cover"
+              />
+            </div>
+          )}
+        </div>
+      )}
+      {article?.references && (
+        <div className="prose max-w-none  mt-6  px-4 lg:px-20">
+          <h2 className="text-xl md:text-xl font-semibold text-primary mb-4">
+            Reference(s)
+          </h2>
+
+          <div
+            className="text-gray-700 text-base md:text-xl leading-8 font-normal "
+            dangerouslySetInnerHTML={{ __html: article?.references || "" }}
+          />
+        </div>
+      )}
+      <div className=" md:hidden inline-block">
+        <div className="mb-8 p-4 border rounded-lg border-gray-300">
+          <h3 className="font-semibold mb-4 md:text-xl text-primaryDark ">
+            Related Posts
+          </h3>
+          <ul className="space-y-3">
+            {articles &&
+              articles.map((post, index) => (
+                <li key={index} className="border-b border-gray-300">
+                  <a
+                    href={`/articles/${post._id}`}
+                    className="text-primaryDark hover:text-primary transition-colors block"
+                  >
+                    {post.title}
+                  </a>
+                </li>
+              ))}
+          </ul>
+          <a
+            href={`/articles`}
+            className="text-primary font-semibold hover:underline flex items-center mt-2"
+          >
+            See More Articles <span className="ml-2 text-primary ">&rarr;</span>
+          </a>
         </div>
       </div>
     </section>

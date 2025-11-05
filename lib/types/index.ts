@@ -54,11 +54,13 @@ export interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 export type ArticleResponse = {
   _id: string;
   title: string;
   author: string;
-  caption: string;
+  references: string;
+  introduction: string;
   subtitle1: string;
   content1: string;
   subtitle2: string;
@@ -67,6 +69,8 @@ export type ArticleResponse = {
   content3?: string;
   subtitle4?: string;
   content4?: string;
+  subtitle5?: string;
+  content5?: string;
   articleImage1Url: string;
   articleImage1Id: string;
   articleImage2Url: string;
@@ -75,6 +79,8 @@ export type ArticleResponse = {
   articleImage3Id?: string;
   articleImage4Url?: string;
   articleImage4Id?: string;
+  articleImage5Url?: string;
+  articleImage5Id?: string;
 
   createdAt: string;
   __v: number;
@@ -83,17 +89,23 @@ export type ArticleResponse = {
 export type ArticleCard = {
   title: string;
   author: string;
-  caption: string;
+  references: string;
+  introduction: string;
   subtitle1?: string;
   subtitle2?: string;
   subtitle3?: string;
   subtitle4?: string;
+  subtitle5?: string;
+
   content1?: string;
   content2?: string;
   content3?: string;
   content4?: string;
+  content5?: string;
+
   articleImage1?: string;
   articleImage2?: string;
   articleImage3?: string;
   articleImage4?: string;
+  articleImage5?: string;
 };

@@ -11,7 +11,7 @@ const Articles = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data: articles, isPending } = useGetArticles();
   const itemsPerPage = 12;
-  const totalPages = Math.ceil((articles?.length ?? 0) / itemsPerPage);
+  const totalPages = Math.ceil(articles?.length || 0 / itemsPerPage);
 
   const currentData = articles
     ? articles.slice(
@@ -24,7 +24,7 @@ const Articles = () => {
     <section className="">
       <Header
         title="Articles"
-        bg="/bg-articles.webp"
+        bg="/bg-articles.jpg"
         description={
           <p className="text-lg text-medium text-white">
             Explore inspiring stories, innovations, and insights on
@@ -35,7 +35,7 @@ const Articles = () => {
           </p>
         }
       />{" "}
-      <section className="px-4  py-12 lg:px-16 md:py-20 relative z-10 my-10">
+      <section className="px-4  py-12 lg:px-28 md:py-20 relative z-10 my-32">
         {" "}
         {!isPending && (
           <div className="hidden lg:block relative w-full -mb-8">
@@ -53,7 +53,7 @@ const Articles = () => {
                   key={index}
                   image={item.articleImage1Url}
                   title={item.title}
-                  description={item.caption}
+                  description={item.introduction}
                   num={index + 1}
                   id={item._id}
                 />{" "}
