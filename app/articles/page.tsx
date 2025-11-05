@@ -24,7 +24,7 @@ const Articles = () => {
   return (
     <section className="">
       <Header
-        title="Read Articles"
+        title="Articles"
         bg="/bg-articles.jpg"
         description={
           <p className="text-lg text-medium text-white">
@@ -36,7 +36,7 @@ const Articles = () => {
           </p>
         }
       />{" "}
-      <section className="px-4  py-12 lg:px-28 md:py-20 relative z-10 my-32">
+      <section className="px-4  py-12 lg:px-16 md:py-20 relative z-10 my-10">
         {" "}
         {!isPending && (
           <div className="hidden lg:block relative w-full -mb-8">

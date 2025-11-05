@@ -58,7 +58,7 @@ const faqData: FaqItem[] = [
   {
     question: "⁠Does PharmaEco operate outside Nigeria?",
     answer: `
-   Currently, we are focused on Nigeria, but we are exploring partnerships to expand to other African countries.`,
+   Currently, we are focused in Nigeria, but we are exploring partnerships to expand to other African countries.`,
   },
 ];
 
@@ -69,7 +69,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="relative  px-4 lg:px-28 py-12 lg:py-20 ">
+    <section className="relative  px-4 lg:px-16 py-12 lg:py-20 ">
       <div className="container mx-auto ">
         <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
           <Badge

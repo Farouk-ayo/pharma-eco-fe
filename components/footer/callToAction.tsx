@@ -18,7 +18,7 @@ const CallToAction = () => {
   }, []);
 
   return (
-    <section className="relative mx-4 my-8 lg:mx-28 lg:my-20 flex items-center overflow-hidden bg-primaryDark rounded-3xl">
+    <section className="relative mx-4 my-8 lg:mx-28  flex items-center overflow-hidden bg-primaryDark rounded-3xl">
       <div className="relative w-full overflow-hidden">
         <div className="flex flex-col xl:flex-row xl:gap-4">
           {/* Left side */}
@@ -59,10 +59,20 @@ const CallToAction = () => {
           </div>
 
           {/* Right side */}
-          <div className="relative w-full flex items-center justify-center py-8 lg:py-0 xl:mt-6">
+          <div className="relative w-full hidden md:flex items-center justify-center py-8 lg:py-0 xl:mt-6">
             <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 lg:px-0">
               <Image
                 src="/pharma-eco-bot.png"
+                alt="PharmaEcoBot Assistant"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+          <div className="relative w-full flex md:hidden items-center justify-center py-8 lg:py-0 xl:mt-6">
+            <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 lg:px-0">
+              <Image
+                src="/pharma-eco-bot-m.png"
                 alt="PharmaEcoBot Assistant"
                 fill
                 className="object-contain"

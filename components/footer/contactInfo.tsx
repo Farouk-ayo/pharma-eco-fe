@@ -2,9 +2,8 @@ import { RocketIcon } from "../icons";
 
 const ContactInfo = () => {
   return (
-    <div>
-      <h3 className="text-xl font-semibold text-primaryDark mb-4">
-        {" "}
+    <div className="lg:col-span-3">
+      <h3 className="text-xl md:text-2xl font-semibold text-primaryDark mb-4 ">
         Subscribe To Our Newsletter
       </h3>
 

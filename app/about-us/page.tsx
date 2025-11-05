@@ -21,7 +21,7 @@ const AboutUs = () => {
           </p>
         }
       />
-      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
+      <section className="px-4 lg:px-16 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
         <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
           <Image
             src="/drugs.png"

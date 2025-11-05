@@ -48,7 +48,7 @@ const ArticleDetails = () => {
     return <LoadingSkeleton count={1} type="ArticleID" />;
   }
   return (
-    <section className=" relative  top-20  md:top-20 px-4 lg:px-28 pb-40 items-center overflow-hidden">
+    <section className=" relative  top-20  md:top-20 px-4 lg:px-16 pb-40 items-center overflow-hidden">
       <div className="absolute inset-0 w-full h-80 md:h-[60vh] bg-[#ECFFF099] " />
       <div className="relative z-20">
         <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-10 ">

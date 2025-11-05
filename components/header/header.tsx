@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export default function Header({ title, description, bg }: HeaderProps) {
   return (
-    <div className="relative px-4 lg:px-28 py-40 min-h-screen flex items-center overflow-hidden">
+    <div className="relative px-4 lg:px-16 py-40 min-h-[600px]flex items-center overflow-hidden">
       <div
         className="absolute inset-0 w-full h-full bg-black "
         style={{
@@ -17,13 +17,13 @@ export default function Header({ title, description, bg }: HeaderProps) {
           backgroundAttachment: "fixed",
         }}
       />
-      <div className="absolute inset-0  bg-primary/75 " />
+      <div className="absolute inset-0  bg-primary/80 " />
 
       <div className="relative w-full md:w-[90%] mx-auto p-5 z-20 md:p-10 flex flex-col gap-5 text-center">
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
           {title}
         </h1>
-        {description}
+        <p className="font-semibold"> {description}</p>{" "}
       </div>
     </div>
   );

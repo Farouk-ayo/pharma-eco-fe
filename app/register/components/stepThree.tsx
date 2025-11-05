@@ -15,6 +15,7 @@ const StepThreeForm = () => {
       </p>
       <Button
         type="button"
+        size="lg"
         className="w-full text-white text-center !rounded-b-[30px] !rounded-t-[8px]"
         href="/"
       >

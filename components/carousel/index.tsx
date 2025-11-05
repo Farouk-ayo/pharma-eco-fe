@@ -40,13 +40,16 @@ const Carousel = () => {
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
             <div className="relative z-10  text-primaryDark   flex flex-col gap-2 md:py-5 mx-auto text-center justify-center items-center ">
-              <Image
-                src="/testimonial-1.png"
-                alt="testimonial"
-                height={68}
-                width={68}
-                objectFit="cover"
-              />
+              <div className="relative w-28 h-28">
+                <Image
+                  src={testimonial.imageUrl}
+                  alt="testimonial"
+                  objectFit="cover"
+                  fill
+                  className="rounded-full border-2 object-cover border-primary"
+                />
+              </div>
+
               <p className=" md:text-lg font-semibold">
                 &quot;{testimonial.quote}&quot;
               </p>

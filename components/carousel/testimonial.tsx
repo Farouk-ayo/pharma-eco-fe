@@ -34,14 +34,17 @@ const TestimonialSection = () => {
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="relative z-10  text-primaryDark   flex flex-col gap-2 md:gap-10 h-full py-20 md:py-20 mx-auto text-center justify-center items-center w-[80%] lg:w-[65%]">
-              <Image
-                src="/testimonial-1.png"
-                alt="testimonial"
-                height={123}
-                width={123}
-                objectFit="cover"
-              />
+            <div className="relative z-10  text-primaryDark   flex flex-col gap-2 md:gap-10 h-full py-20 md:py-20 mx-auto text-center justify-center items-center w-[80%] lg:w-[65%] rounded-full">
+              <div className="relative w-28 h-28">
+                <Image
+                  src={testimonial.imageUrl}
+                  alt="testimonial"
+                  objectFit="cover"
+                  fill
+                  className="rounded-full border-2 object-cover border-primary"
+                />
+              </div>
+
               <p className="text-xl md:text-3xl font-semibold">
                 &quot;{testimonial.quote}&quot;
               </p>

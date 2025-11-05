@@ -22,7 +22,7 @@ export default function Home() {
     <section>
       <Navbar />
       <Header />
-      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
+      <section className="px-4 lg:px-16 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
         <div className="lg:w-[50%]">
           <Badge text="Our Story" className="mb-2" />
 
@@ -85,7 +85,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32 relative z-10 bg-primaryLight">
+      <section className="px-4 lg:px-16 py-12 lg:py-20 top-32 lg:top-32 relative z-10 bg-primaryLight">
         <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
           <Badge text="SUSTAINABLE DEVELOPMENT GOALS" className="mb-2" />{" "}
           <h1 className="text-2xl   lg:text-4xl font-semibold text-tertiary3 mb-6 ">
@@ -164,7 +164,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 md:px-28 py-20 top-32 bg-white relative z-10">
+      <section className="px-4 md:px-16 py-20 top-32 bg-white relative z-10">
         <div className="md:w-[50%]">
           <Badge text="Why Choose Us" bgColor="bg-tertiary" className="mb-2" />
           <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
@@ -174,7 +174,7 @@ export default function Home() {
         <DisposalDiagram />
       </section>
 
-      <section className="bg-primary/15 relative  px-4 lg:px-28 pt-12 lg:pt-20 top-32 lg:top-32 ">
+      <section className="bg-primary/15 relative  px-4 lg:px-16 pt-12 lg:pt-20 top-32 lg:top-32 ">
         <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
           <Badge text="TESTIMONIALS" bgColor="bg-tertiary" className="mb-2" />
           <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
@@ -193,8 +193,8 @@ export default function Home() {
           <TestimonialSection />
         </div>
       </section>
-      <section className="relative  px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32">
-        <div className="container mx-auto px-6">
+      <section className="relative  px-4 lg:px-16 py-12 mt-32">
+        <div className="container mx-auto ">
           <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
             <Badge text="Articles" bgColor="bg-tertiary" className="mb-2" />{" "}
             <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
@@ -225,7 +225,7 @@ export default function Home() {
                 <Card
                   backgroundColor="#009D3D"
                   key={index}
-                  num={index+1}
+                  num={index + 1}
                   id={card._id}
                   image={card.articleImage1Url}
                   title={card.title}

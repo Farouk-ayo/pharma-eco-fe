@@ -6,6 +6,7 @@ import StepThreeForm from "./components/stepThree";
 import { FormInputs, StepOneInputs, StepTwoInputs } from "@/lib/validation";
 import { usePostRegister } from "@/lib/hooks/api/mutations";
 import { showToast } from "@/lib/util";
+import { HorizontalArrowIcon } from "@/components/icons";
 
 const Page = () => {
   const [step, setStep] = useState(1);
@@ -114,17 +115,7 @@ const Page = () => {
             >
               {currentStep}
             </div>
-            {currentStep < 3 && (
-              <div
-                className={`flex-1 h-0.5 mx-2 border-t-2 font-semibold border-dashed
-                  ${
-                    currentStep < step
-                      ? "border-primaryDark"
-                      : "border-gray-200"
-                  }
-                `}
-              />
-            )}
+            {currentStep < 3 && <HorizontalArrowIcon className="mx-2" />}
           </React.Fragment>
         ))}
       </div>

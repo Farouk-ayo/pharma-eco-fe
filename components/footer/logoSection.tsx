@@ -11,9 +11,9 @@ interface SocialLink {
 
 const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
   return (
-    <div className="lg:col-span-2">
+    <div className="lg:col-span-3">
       <Link href={"/"} target="_blank" rel="noopener noreferrer">
-        <div className="relative w-56  h-20">
+        <div className="relative w-36 h-8 md:w-52 md:h-10">
           <Image
             priority
             src="/pharma-eco-logo.svg"
@@ -22,7 +22,7 @@ const LogoSection = ({ socialLinks }: { socialLinks: SocialLink[] }) => {
           />
         </div>
       </Link>
-      <p className="text-base text-gray-600 my-6">
+      <p className="text-base text-gray-600 my-2 mb-6">
         PharmaEco is an AI-driven social enterprise addressing the urgent
         challenge of pharmaceutical waste and packaging management in Nigeria.
         We combine innovation, community engagement, and environmental

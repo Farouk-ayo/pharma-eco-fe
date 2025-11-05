@@ -9,7 +9,7 @@ export default function Header() {
   const route = useRouter();
 
   return (
-    <div className="relative px-4 lg:px-28 py-40 min-h-screen flex items-center overflow-hidden bg-primary/15 ">
+    <div className="relative px-4 lg:px-16 py-40 min-h-screen flex items-center overflow-hidden bg-primary/15 ">
       <SocialLinks />
 
       <div className="relative w-full   lg:w-[80%] text-left  flex flex-col gap-5">

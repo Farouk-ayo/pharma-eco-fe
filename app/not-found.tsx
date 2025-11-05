@@ -9,7 +9,7 @@ const NotFound = () => {
     <section className="w-full">
       <Navbar />
       <TopBar />
-      <div className="relative flex flex-col-reverse lg:flex-row items-center justify-between min-h-screen bg-gradient-to-b from-[#eafbf500] to-[#157D1861] px-6 md:px-16 lg:px-28 w-full py-20">
+      <div className="relative flex flex-col-reverse lg:flex-row items-center justify-between min-h-screen bg-gradient-to-b from-[#eafbf500] to-[#157D1861] px-6 md:px-16 lg:px-16 w-full py-20">
         {/* Left Content */}
         <div className="text-center lg:text-left max-w-lg lg:max-w-xl">
           <h1 className="text-6xl md:text-9xl font-bold text-primary mb-4">

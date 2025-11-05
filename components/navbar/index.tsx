@@ -43,7 +43,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white fixed  top-0 w-full z-[100] ">
-      <div className="py-2 flex h-16 md:h-[86px] justify-between items-center px-5 lg:px-28">
+      <div className="py-2 flex h-16 md:h-[86px] justify-between items-center px-5 lg:px-16">
         <Link href={"/"}>
           <div className="relative flex items-center w-36 h-8 md:w-52 md:h-10">
             <Image
