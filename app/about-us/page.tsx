@@ -11,7 +11,7 @@ const AboutUs = () => {
     <section>
       <Header
         title="About Us"
-        bg="/bg-about-us.png"
+        bg="/bg-about-us.webp"
         description={
           <p className="text-lg text-medium text-white">
             At PharmaEco, our vision is to lead Nigeria and Africa toward a
@@ -21,10 +21,10 @@ const AboutUs = () => {
           </p>
         }
       />
-      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
+      <section className="px-4 lg:px-16 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
         <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
           <Image
-            src="/drugs.png"
+            src="/drugs.webp"
             alt="drugs"
             layout="fill"
             objectFit="cover"
@@ -39,7 +39,7 @@ const AboutUs = () => {
           </h1>
           <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
             <Image
-              src="/drugs.png"
+              src="/drugs.webp"
               alt="drugs"
               layout="fill"
               objectFit="cover"
@@ -79,7 +79,7 @@ const AboutUs = () => {
         <div
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url(./bg-mvc.png)`,
+            backgroundImage: `url(./bg-mvc.webp)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

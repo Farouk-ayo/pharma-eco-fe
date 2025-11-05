@@ -13,7 +13,9 @@ interface LinkSectionProps {
 const LinkSection: React.FC<LinkSectionProps> = ({ title, links }) => {
   return (
     <div>
-      <h3 className="text-xl font-semibold text-primaryDark mb-4">{title}</h3>
+      <h3 className="text-xl md:text-2xl  font-semibold text-primaryDark mb-4">
+        {title}
+      </h3>
       <ul className="space-y-3">
         {links.map((item) => (
           <li key={item.name}>

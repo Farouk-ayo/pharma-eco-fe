@@ -4,7 +4,7 @@ import { HorizontalLine } from "../icons";
 
 export const MVCSection = () => {
   return (
-    <section className="px-4 lg:px-28 py-12 lg:py-20 relative">
+    <section className="px-4 lg:px-16 py-12 lg:py-20 relative">
       <div className="text-center lg:my-12 w-full lg:w-[60%] mx-auto">
         <Badge text="OUR DRIVE" className="mb-2" />{" "}
         <h1 className="text-2xl   lg:text-4xl font-semibold text-tertiary3 mb-6 ">

@@ -48,7 +48,7 @@ const ArticleDetails = () => {
     return <LoadingSkeleton count={1} type="ArticleID" />;
   }
   return (
-    <section className=" relative  top-20  md:top-20 px-4 lg:px-28 pb-40 items-center overflow-hidden">
+    <section className=" relative  top-20  md:top-20 px-4 lg:px-16 pb-40 items-center overflow-hidden">
       <div className="absolute inset-0 w-full h-80 md:h-[60vh] bg-[#ECFFF099] " />
       <div className="relative z-20">
         <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-10 ">
@@ -93,7 +93,7 @@ const ArticleDetails = () => {
         </p>
         <div className="w-full aspect-[21/9] md:h-[40rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
-            src={article?.articleImage1Url || "/placeholder.jpg"}
+            src={article?.articleImage1Url || "/placeholder.webp"}
             alt={article?.title || "Article image"}
             fill
             priority
@@ -101,7 +101,7 @@ const ArticleDetails = () => {
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
-              target.src = "/placeholder.jpg";
+              target.src = "/placeholder.webp";
             }}
           />
         </div>
@@ -132,7 +132,7 @@ const ArticleDetails = () => {
               {article?.articleImage2Url && (
                 <div className="relative w-full  overflow-hidden h-[20rem] rounded-lg">
                   <Image
-                    src={article?.articleImage2Url || "/placeholder.jpg"}
+                    src={article?.articleImage2Url || "/placeholder.webp"}
                     alt={article?.title || "Article image"}
                     fill
                     priority
@@ -140,7 +140,7 @@ const ArticleDetails = () => {
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.onerror = null;
-                      target.src = "/placeholder.jpg";
+                      target.src = "/placeholder.webp";
                     }}
                   />
                 </div>

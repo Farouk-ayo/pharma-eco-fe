@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Chatbox from "@/components/chatbox";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +26,6 @@ const RootClientLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Chatbox />
       <Toaster /> {children}
     </QueryClientProvider>
   );

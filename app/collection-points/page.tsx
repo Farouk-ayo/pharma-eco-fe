@@ -11,7 +11,7 @@ const CollectionPoints = () => {
     <section className="">
       <Header
         title="Collection Point Near You"
-        bg="/bg-collection.jpg"
+        bg="/bg-collection.webp"
         description={
           <p className="text-lg text-medium text-white">
             Our platform connects households, pharmacies, hospitals, and
@@ -21,18 +21,18 @@ const CollectionPoints = () => {
           </p>
         }
       />
-      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
+      <section className="px-4 lg:px-16 py-12 lg:py-20 relative z-10 flex flex-col-reverse lg:flex-row gap-10">
         <div className="lg:w-[50%]">
           <Badge text="COLLECTION POINT" className="mb-2" />
 
           <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-6 ">
-            Join the movement for a safer environment. Drop your{" "}
-            <span className="text-secondary">pharmaceutical waste</span> at a
-            nearby collection hub
+            Join The Movement For A Safer Environment. Drop Your{" "}
+            <span className="text-secondary">Pharmaceutical Waste</span> At A
+            Nearby Collection Hub
           </h1>
-          <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
+          <div className="relative  lg:hidden w-full h-[20rem]  mb-8">
             <Image
-              src="/drugs-1.jpg"
+              src="/drugs-1.webp"
               alt="drugs"
               layout="fill"
               objectFit="cover"
@@ -62,9 +62,9 @@ const CollectionPoints = () => {
             </p>
           </div>
         </div>
-        <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
+        <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[30rem]">
           <Image
-            src="/drugs-1.jpg"
+            src="/drugs-1.webp"
             alt="drugs"
             layout="fill"
             objectFit="cover"
@@ -72,13 +72,13 @@ const CollectionPoints = () => {
           />
         </div>
       </section>
-      <section className="">
+      <section className="mb-4">
         <ScrollingStats />
       </section>
-      <section className="px-4 lg:px-28  relative z-10 lg:py-20 text-textPrimary">
+      <section className="px-4 lg:px-16  relative z-10 lg:py-20 text-textPrimary">
         <MapComponent />
       </section>
-      <section className="px-4 lg:px-28 py-12 lg:py-20 relative z-10 bg-[#F4FBF6]">
+      <section className="px-4 lg:px-16 py-12 lg:py-20 relative z-10 bg-[#F4FBF6]">
         <PharmacyDirectory />{" "}
       </section>
     </section>

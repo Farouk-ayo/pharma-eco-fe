@@ -20,7 +20,7 @@ interface MapProps {
 
 // Fix default marker icon issue in Leaflet with Next.js
 const defaultIcon = L.icon({
-  iconUrl: "/marker-icon.svg", // Make sure to have this file in the public folder
+  iconUrl: "/marker-icon.webp", // Make sure to have this file in the public folder
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -36,11 +36,11 @@ const MapInner: React.FC<MapProps> = ({ center, locations }) => {
       scrollWheelZoom={false}
     >
       {/* <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.webp"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       /> */}
       <TileLayer
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.webp"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
       />
       {/* User-searched location */}

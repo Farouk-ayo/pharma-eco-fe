@@ -21,7 +21,6 @@ const ContactUs = () => {
     phoneNumber: "",
     organizationName: "",
     message: "",
-    newsUpdates: false,
   };
 
   const {
@@ -52,7 +51,7 @@ const ContactUs = () => {
     <section>
       <Header
         title="Contact Us"
-        bg="/bg-contact-us.jpg"
+        bg="/bg-contact-us.webp"
         description={
           <p className="text-lg text-medium text-white">
             Hope you know we are really fun to talk to? If you’re not a big
@@ -61,7 +60,7 @@ const ContactUs = () => {
           </p>
         }
       />
-      <section className="px-4 py-12 lg:px-28 md:py-32 relative z-10">
+      <section className="px-4 py-12 lg:px-16 md:py-32 relative z-10">
         <div className="container mx-auto px-4">
           <div className=" relative grid grid-cols-1 lg:grid-cols-2 gap-20">
             {/* Form Section */}
@@ -170,21 +169,7 @@ const ContactUs = () => {
                     </span>
                   )}
                 </div>
-                <div className="flex space-x-2">
-                  <input
-                    type="checkbox"
-                    id="news-updates"
-                    {...register("newsUpdates")}
-                    className="text-primary focus:ring-primary rounded accent-primary"
-                  />
-                  <label
-                    htmlFor="news-updates"
-                    className="text-black font-medium text-base"
-                  >
-                    Please keep me informed concerning <strong>News</strong> and{" "}
-                    <strong>Updates</strong> from PharmaEco
-                  </label>
-                </div>
+
                 <Button
                   variant="primary"
                   type="submit"

@@ -8,6 +8,7 @@ import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
 import Button from "@/components/buttons";
 import { ArrowLeftIcon } from "lucide-react";
 import Select from "react-select";
+import Link from "next/link";
 
 interface StepTwoProps {
   onNext: (data: StepTwoInputs) => void;
@@ -31,7 +32,11 @@ export const customStyles = {
     "&:hover": {
       borderColor: "#D1D5DB",
     },
-    minHeight: "42px",
+    borderTopLeftRadius: "8px",
+    borderTopRightRadius: "8px",
+    borderBottomLeftRadius: "30px",
+    borderBottomRightRadius: "30px",
+    minHeight: "64px",
     scrollbarWidth: "thin",
     scrollbarColor: "#e5e7eb #e5e7eb",
   }),
@@ -105,12 +110,12 @@ const StepTwoForm = ({
     <form onSubmit={handleSubmit(onNext)} className="space-y-4">
       <div className="w-full">
         <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
-          Pharmacy Name
+          Pharmacy/Company Name
         </label>
         <input
           {...register("organizationName")}
           placeholder="Enter business name"
-          className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+          className="w-full border px-4 py-2  h-16 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
         />
         {errors.organizationName && (
           <span className="text-sm text-red-500">
@@ -122,12 +127,12 @@ const StepTwoForm = ({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
-            Pharmacy Address/City
+            Pharmacy/Company Address/City
           </label>
           <input
             {...register("city")}
             placeholder="Enter business address"
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+            className="w-full border px-4 py-2 h-16 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
           />
           {errors.city && (
             <span className="text-sm text-red-500">{errors.city.message}</span>
@@ -135,7 +140,7 @@ const StepTwoForm = ({
         </div>
         <div>
           <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
-            Pharmacy State
+            Pharmacy/Company State
           </label>
           <Controller
             name="state"
@@ -163,7 +168,7 @@ const StepTwoForm = ({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
-            Pharmacy Local Govt
+            Pharmacy/Company Local Government
           </label>
           <Controller
             name="localGovt"
@@ -175,6 +180,7 @@ const StepTwoForm = ({
                 isDisabled={!selectedState}
                 placeholder="Select LGA"
                 styles={customStyles}
+                className="rounded-b-[30px] rounded-t-[8px]"
                 value={
                   availableLGAs.find(
                     (option) => option.value === field.value
@@ -192,7 +198,7 @@ const StepTwoForm = ({
         </div>
         <div>
           <label className="block text-base lg:text-lg text-gray-600 font-semibold mb-1">
-            Pharmacy Zip Code (optional)
+            Pharmacy/Company Zip Code (optional)
           </label>
           <input
             {...register("zipCode")}
@@ -202,7 +208,7 @@ const StepTwoForm = ({
               e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
             }}
             placeholder="Enter zip code"
-            className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+            className="w-full border px-4 py-2 h-16 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
           />
           {errors.zipCode && (
             <span className="text-sm text-red-500">
@@ -218,8 +224,8 @@ const StepTwoForm = ({
         </label>
         <textarea
           {...register("others")}
-          className="w-full p-2 border rounded-md resize-none"
-          rows={3}
+          className="w-full p-2 border resize-none  focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+          rows={2}
           placeholder="Enter other details"
         />
       </div>
@@ -227,18 +233,20 @@ const StepTwoForm = ({
       <div className="flex flex-col gap-4">
         <Button
           type="submit"
+          size="lg"
           isDisabled={isSubmitting}
           isLoading={isLoading}
           className="text-white w-full"
         >
           Submit
         </Button>
-        <Button
+        <Link
+          href={"#"}
           onClick={onBack}
-          className="w-full flex items-center gap-2 justify-center !text-primaryDark border-none bg-transparent"
+          className="w-full flex items-center gap-2 justify-center !text-primaryDark border-none bg-transparent !hover:bg-t"
         >
           <ArrowLeftIcon /> Back
-        </Button>
+        </Link>
       </div>
     </form>
   );

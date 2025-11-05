@@ -61,7 +61,7 @@ const LoadingSkeleton = ({ count = 6, type = "card" }) => {
       )}
 
       {type === "ArticleID" && (
-        <section className="relative top-28 md:top-40 px-4 lg:px-28 pb-40 items-center overflow-hidden">
+        <section className="relative top-28 md:top-40 px-4 lg:px-16 pb-40 items-center overflow-hidden">
           <div>
             {/* Breadcrumb and share skeleton */}
             <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-4">

@@ -4,15 +4,14 @@ import Header from "@/components/header/header";
 import { HorizontalLine } from "@/components/icons";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Pagination from "@/components/pagination";
-import { cards } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
 import React, { useState } from "react";
 
 const Articles = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const totalPages = Math.ceil(cards.length / itemsPerPage);
   const { data: articles, isPending } = useGetArticles();
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil((articles?.length ?? 0) / itemsPerPage);
 
   const currentData = articles
     ? articles.slice(
@@ -24,8 +23,8 @@ const Articles = () => {
   return (
     <section className="">
       <Header
-        title="Read Articles"
-        bg="/bg-articles.jpg"
+        title="Articles"
+        bg="/bg-articles.webp"
         description={
           <p className="text-lg text-medium text-white">
             Explore inspiring stories, innovations, and insights on
@@ -36,7 +35,7 @@ const Articles = () => {
           </p>
         }
       />{" "}
-      <section className="px-4  py-12 lg:px-28 md:py-20 relative z-10 my-32">
+      <section className="px-4  py-12 lg:px-16 md:py-20 relative z-10 my-10">
         {" "}
         {!isPending && (
           <div className="hidden lg:block relative w-full -mb-8">

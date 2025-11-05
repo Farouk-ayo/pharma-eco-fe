@@ -34,30 +34,94 @@ const DisposalDiagram = () => {
   return (
     <div className="w-full text-center mx-auto py-10 ">
       <div className="lg:grid lg:grid-cols-3 gap-x-32 gap-y-24 relative flex flex-col items-center justify-center">
+        <style jsx>{`
+          @keyframes rotateClockwise {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          @keyframes rotateCounterClockwise {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(-360deg);
+            }
+          }
+          @keyframes pulse {
+            0%,
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+            50% {
+              transform: scale(1.05);
+              opacity: 0.8;
+            }
+          }
+          @keyframes floatIn {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @keyframes gentleFloat {
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+          .animate-rotate-slow {
+            animation: rotateClockwise 40s linear infinite;
+          }
+          .animate-rotate-slow-reverse {
+            animation: rotateCounterClockwise 30s linear infinite;
+          }
+          .animate-pulse-slow {
+            animation: pulse 4s ease-in-out infinite;
+          }
+          .animate-float-in {
+            animation: floatIn 0.6s ease-out forwards;
+          }
+          .animate-gentle-float {
+            animation: gentleFloat 3s ease-in-out infinite;
+          }
+        `}</style>
+
         <div className="lg:col-start-2 lg:row-start-2 w-80 h-80 mx-auto relative hidden lg:block">
           <div className="relative w-full h-full z-20">
-            {/* Outer Background Circle */}
-            <div className="absolute z-10 w-full h-full rounded-full">
+            {/* Outer Background Circle - Rotating Clockwise */}
+            <div className="absolute z-10 w-full h-full rounded-full animate-rotate-slow">
               <Image
                 priority
-                src={"/ellipse-3.svg"}
+                src={"/ellipse-3.webp"}
                 alt="ellipse"
                 layout="fill"
               />
             </div>
 
-            {/* Middle Circle with Border */}
-            <div className=" z-20 absolute flex items-center justify-center w-full h-full">
+            {/* Middle Circle with Border - Pulsing */}
+            <div className="z-20 absolute flex items-center justify-center w-full h-full animate-pulse-slow">
               <div className="w-60 h-60 bg-transparent rounded-full border-white border-2"></div>
             </div>
 
-            {/* Foreground Circle */}
-            <div className="absolute z-30 flex items-center justify-center w-full h-full">
+            {/* Foreground Circle - Rotating Counter-Clockwise */}
+            <div className="absolute z-30 flex items-center justify-center w-full h-full animate-rotate-slow-reverse">
               <Image
                 priority
-                src={"/ellipse-4.svg"}
+                src={"/ellipse-4.webp"}
                 alt="ellipse"
-                className=" scale-[1.3] md:w-[30rem] md:h-[30rem]   "
+                className="scale-[1.3] md:w-[30rem] md:h-[30rem]"
                 layout="fill"
               />
             </div>
@@ -73,7 +137,7 @@ const DisposalDiagram = () => {
           {itemizedReasons.map((item, index) => (
             <button
               key={item.id}
-              className={`absolute w-8 h-8 bg-primaryDark rounded-full lg:flex items-center justify-center text-white border border-white font-semibold transition-all duration-1000 shadow-lg z-30 hidden ${item.className}`}
+              className={`absolute w-8 h-8 bg-primaryDark rounded-full lg:flex items-center justify-center text-white border border-white font-semibold transition-all duration-500 shadow-lg z-30 hidden hover:scale-125 hover:shadow-xl ${item.className}`}
               style={{
                 top: "50%",
                 left: "50%",
@@ -83,6 +147,7 @@ const DisposalDiagram = () => {
                 marginLeft: "-20px",
                 marginTop: "-20px",
                 backgroundColor: item.color,
+                animationDelay: `${index * 0.1}s`,
               }}
               onClick={() => {
                 setActiveBox(item.id);
@@ -93,12 +158,12 @@ const DisposalDiagram = () => {
           ))}
         </div>
 
-        {itemizedReasons.map((item) => (
+        {itemizedReasons.map((item, index) => (
           <div
             key={item.id}
-            className={`relative z-20 ${
+            className={`relative z-20 animate-float-in ${
               item.position
-            } items-center  my-auto  w-full  ${
+            } items-center my-auto w-full ${
               item.id === 2
                 ? "lg:left-[45%]"
                 : item.id === 3
@@ -111,29 +176,35 @@ const DisposalDiagram = () => {
                 ? "lg:right-[45%]"
                 : ""
             }`}
+            style={{
+              animationDelay: `${index * 0.1}s`,
+              opacity: 0,
+            }}
           >
             <div
-              className={`absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full  z-20 text-white flex items-center justify-center font-bold text-3xl
-                ${
-                  activeBox === item.id
-                    ? "scale-105 border-green-500"
-                    : "scale-100"
-                }
-              `}
+              className={`absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-20 text-white flex items-center justify-center font-bold text-3xl transition-all duration-300 animate-gentle-float ${
+                activeBox === item.id
+                  ? "scale-110 border-green-500"
+                  : "scale-100"
+              }`}
               style={{
                 backgroundColor: item.color,
-                boxShadow: `0 0 0 6px ${item.color}50 `,
+                boxShadow: `0 0 0 6px ${item.color}50`,
+                animationDelay: `${index * 0.2}s`,
               }}
             >
               {item.id}
             </div>
 
             <div
-              className={`p-6 pt-11 rounded-lg  border border-primary/75 border-dashed  bg-white shadow-lg transition-all duration-300   ${
+              className={`p-6 pt-11 rounded-lg border border-primary/75 border-dashed bg-white shadow-lg transition-all duration-300 animate-gentle-float ${
                 activeBox === item.id
-                  ? "scale-105 border-green-500"
+                  ? "scale-105 border-green-500 shadow-2xl"
                   : "scale-100"
               }`}
+              style={{
+                animationDelay: `${index * 0.2}s`,
+              }}
             >
               <h3 className="text-xl font-bold text-tertiary3 mb-2">
                 {item.title}
@@ -249,7 +320,7 @@ export default DisposalDiagram;
 //             <div className="absolute z-10 w-full h-full rounded-full">
 //               <Image
 //                 priority
-//                 src={"/ellipse-3.svg"}
+//                 src={"/ellipse-3.webp"}
 //                 alt="ellipse"
 //                 layout="fill"
 //               />
@@ -264,7 +335,7 @@ export default DisposalDiagram;
 //             <div className="absolute z-30 flex items-center justify-center w-full h-full">
 //               <Image
 //                 priority
-//                 src={"/ellipse-4.svg"}
+//                 src={"/ellipse-4.webp"}
 //                 alt="ellipse"
 //                 className=" scale-125  w-60 h-60 md:w-[30rem] md:h-[30rem] animate-rotateSlow "
 //                 layout="fill"

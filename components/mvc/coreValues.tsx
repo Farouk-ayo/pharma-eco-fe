@@ -55,7 +55,7 @@ export const CoreValuesSection = () => {
   ];
 
   return (
-    <section className="px-4 lg:px-28 py-12 lg:py-20 bg-gray-50">
+    <section className="px-4 lg:px-16 py-12 lg:py-20 bg-gray-50">
       <div className="md:w-[50%] mb-12">
         <Badge
           text="OUR CORE VALUES"

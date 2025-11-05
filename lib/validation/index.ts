@@ -30,7 +30,6 @@ export const feedbackSchema = z.object({
     .string()
     .min(3, "Organization name must be at least 3 characters long"),
   message: z.string().min(10, "Message must be at least 10 characters long"),
-  newsUpdates: z.boolean().optional(),
 });
 
 export const loginSchema = z.object({

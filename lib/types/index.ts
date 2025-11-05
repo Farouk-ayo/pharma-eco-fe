@@ -23,7 +23,6 @@ export interface FeedbackService {
   phoneNumber: string;
   organizationName: string;
   message: string;
-  newsUpdates: false;
   createdAt?: string;
   updatedAt?: string;
 }

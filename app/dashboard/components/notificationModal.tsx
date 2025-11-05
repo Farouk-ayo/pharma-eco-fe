@@ -35,7 +35,7 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
             ))
           ) : (
             <div className="flex flex-col items-center justify-center gap-4">
-              <Image src="./notification.svg" alt="" />
+              <Image src="./notification.webp" alt="" />
               <p className="text-primary text-lg">No notifications</p>
               <div className="text-center text-gray-500 text-base">
                 You have no notifications yet. Please come back later.
