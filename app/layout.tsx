@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.pharmaeco.org/og-image.png",
+        url: "https://www.pharmaeco.org/og-image.webp",
         alt: "PharmaEco - AI-Powered Pharmaceutical Waste & Packaging Management",
         width: 1200,
         height: 630,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       "PharmaEco | AI-Powered Pharmaceutical Waste & Packaging Management in Nigeria",
     description:
       "PharmaEco integrates AI, innovation, and sustainability to make pharmaceutical waste management smarter, safer, and greener.",
-    images: ["https://www.pharmaeco.org/og-image.png"],
+    images: ["https://www.pharmaeco.org/og-image.webp"],
   },
 };
 

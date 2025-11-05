@@ -104,7 +104,7 @@ const DisposalDiagram = () => {
             <div className="absolute z-10 w-full h-full rounded-full animate-rotate-slow">
               <Image
                 priority
-                src={"/ellipse-3.svg"}
+                src={"/ellipse-3.webp"}
                 alt="ellipse"
                 layout="fill"
               />
@@ -119,7 +119,7 @@ const DisposalDiagram = () => {
             <div className="absolute z-30 flex items-center justify-center w-full h-full animate-rotate-slow-reverse">
               <Image
                 priority
-                src={"/ellipse-4.svg"}
+                src={"/ellipse-4.webp"}
                 alt="ellipse"
                 className="scale-[1.3] md:w-[30rem] md:h-[30rem]"
                 layout="fill"
@@ -320,7 +320,7 @@ export default DisposalDiagram;
 //             <div className="absolute z-10 w-full h-full rounded-full">
 //               <Image
 //                 priority
-//                 src={"/ellipse-3.svg"}
+//                 src={"/ellipse-3.webp"}
 //                 alt="ellipse"
 //                 layout="fill"
 //               />
@@ -335,7 +335,7 @@ export default DisposalDiagram;
 //             <div className="absolute z-30 flex items-center justify-center w-full h-full">
 //               <Image
 //                 priority
-//                 src={"/ellipse-4.svg"}
+//                 src={"/ellipse-4.webp"}
 //                 alt="ellipse"
 //                 className=" scale-125  w-60 h-60 md:w-[30rem] md:h-[30rem] animate-rotateSlow "
 //                 layout="fill"

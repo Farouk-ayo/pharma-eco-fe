@@ -25,8 +25,8 @@ export default function ScrollingStats() {
   }, [isLoadingUsers]);
 
   const usersData = [
-    { id: 1, icon: "/regYellow.svg" },
-    { id: 2, icon: "/regGreen.svg" },
+    { id: 1, icon: "/regYellow.webp" },
+    { id: 2, icon: "/regGreen.webp" },
   ];
 
   if (!isReady) {

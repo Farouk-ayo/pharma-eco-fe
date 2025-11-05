@@ -317,7 +317,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                 <div className="absolute inset-0 bg-black opacity-50 flex items-center justify-center w-full h-full"></div>
                 <div className="w-20 h-20 relative z-30 flex items-center justify-center">
                   <Image
-                    src={"/camera.svg"}
+                    src={"/camera.webp"}
                     alt="Camera Icon"
                     layout="fill"
                     objectFit="cover"
@@ -537,7 +537,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                     <div className="absolute inset-0 bg-black opacity-50 flex items-center justify-center w-full h-full"></div>
                     <div className="w-10 h-10 relative z-30 flex items-center justify-center">
                       <Image
-                        src={"/camera.svg"}
+                        src={"/camera.webp"}
                         alt="Camera Icon"
                         layout="fill"
                         objectFit="cover"

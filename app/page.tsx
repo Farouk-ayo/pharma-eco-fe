@@ -31,7 +31,7 @@ export default function Home() {
           </h1>
           <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
             <Image
-              src="/drugs.png"
+              src="/drugs.webp"
               alt="drugs"
               layout="fill"
               objectFit="cover"
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
         <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
           <Image
-            src="/drugs.png"
+            src="/drugs.webp"
             alt="drugs"
             layout="fill"
             objectFit="cover"
@@ -116,7 +116,7 @@ export default function Home() {
           {/* Center - Image */}
           <div className="relative w-full h-[25rem] lg:h-[35rem] flex items-center justify-center">
             <Image
-              src="/sdg.svg"
+              src="/sdg.webp"
               alt="Sustainable Development Goals Infographic"
               layout="fill"
               objectFit="contain"
@@ -186,7 +186,7 @@ export default function Home() {
           <div
             className="absolute inset-0 w-full h-full object-contain lg:object-none"
             style={{
-              backgroundImage: "url(./bg-testimonial.svg)",
+              backgroundImage: "url(./bg-testimonial.webp)",
             }}
           />
 

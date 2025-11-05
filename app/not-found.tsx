@@ -30,7 +30,7 @@ const NotFound = () => {
         {/* Right Content */}
         <div className="relative flex-shrink-0 w-full lg:w-1/2 h-[300px] md:h-[400px] lg:h-[500px]">
           <Image
-            src="/404.svg"
+            src="/404.webp"
             alt="404 Error Icon"
             className="object-contain"
             layout="fill"

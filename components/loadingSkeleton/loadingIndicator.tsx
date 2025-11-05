@@ -7,7 +7,7 @@ const LoadingIndicator = () => {
       <div className="flex-shrink-0 mr-2">
         <div className="bg-green-100 rounded-full p-2 w-10 h-10 flex items-center justify-center">
           <Image
-            src="/logo-pharmabin.svg"
+            src="/logo-pharmabin.webp"
             alt="PharmaEco"
             width={24}
             height={24}

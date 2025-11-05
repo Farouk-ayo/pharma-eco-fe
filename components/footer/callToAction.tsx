@@ -62,7 +62,7 @@ const CallToAction = () => {
           <div className="relative w-full hidden md:flex items-center justify-center py-8 lg:py-0 xl:mt-6">
             <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 lg:px-0">
               <Image
-                src="/pharma-eco-bot.png"
+                src="/pharma-eco-bot.webp"
                 alt="PharmaEcoBot Assistant"
                 fill
                 className="object-contain"
@@ -72,7 +72,7 @@ const CallToAction = () => {
           <div className="relative w-full flex md:hidden items-center justify-center py-8 lg:py-0 xl:mt-6">
             <div className="relative xl:absolute w-full h-96 sm:h-80  xl:h-[33rem] px-4 lg:px-0">
               <Image
-                src="/pharma-eco-bot-m.png"
+                src="/pharma-eco-bot-m.webp"
                 alt="PharmaEcoBot Assistant"
                 fill
                 className="object-contain"

@@ -1,114 +1,3 @@
-export const recentCards = [
-  {
-    id: 1,
-    image: "/community-3.png",
-    title: "The Future Of Pharmaceutical Waste Management In Our Homes",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-  },
-  {
-    id: 1,
-    image: "/community-2.png",
-    title: "What You Need To Know About Pharmaceutical Waste Disposal",
-    description:
-      "Learn about the proper ways to manage pharmaceutical waste effectively and safely...",
-  },
-  {
-    id: 1,
-    image: "/community-1.png",
-    title: "Are Expired & Unused Drugs Part Of Pharmaceutical Waste",
-    description:
-      "Understand how expired and unused medications contribute to pharmaceutical waste and their proper disposal methods...",
-  },
-];
-
-export const cards = [
-  {
-    id: 1,
-    title: "The Future Of Pharmaceutical Waste Management In Our Homes",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-4.png",
-  },
-  {
-    id: 1,
-    title: "What You Need To Know About Pharmaceutical Waste Disposal",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-5.png",
-  },
-  {
-    id: 1,
-    title: "Are Expired & Unused Drugs Part Of Pharmaceutical Waste",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-3.png",
-  },
-  {
-    id: 1,
-    title: "What Is A Biomedical Waste Generator",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-6.png",
-  },
-  {
-    id: 1,
-    title: "What Is A Pharmaceutical Waste Incinerator And How It Works",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-7.png",
-  },
-  {
-    id: 1,
-    title: "Is NAFDAC Really The End Point Of Pharmaceutical Waste Disposal",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-8.png",
-  },
-  {
-    id: 1,
-    title: "What is a healthcare in the disposal of medical waste",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-2.png",
-  },
-  {
-    id: 1,
-    title: "Are community pharmacies responsible for the collection",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-9.png",
-  },
-  {
-    id: 1,
-    title: "What are the requirement for efficient disposal of waste",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-10.png",
-  },
-  {
-    id: 1,
-    title: "Basic rules for the handling of pharmaceutical waste",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-11.png",
-  },
-  {
-    id: 1,
-    title: "some injuries caused by pharmaceutical waste to people",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-1.png",
-  },
-  {
-    id: 1,
-    title: "the proper protocol for the disposal of medical waste",
-    description:
-      "Discover how PharmaBin is shaping the future of waste management in homes through innovative solutions that ensure good disposal...",
-    image: "/community-11.png",
-  },
-];
-
 export const sdgData = [
   {
     id: 3,
@@ -231,34 +120,34 @@ export const testimonials = [
       "PharmaEco made it so easy for our hospital to safely dispose of expired medicines. I’m glad there’s finally a structured solution for this in Nigeria",
     author: "Pharm. Lanre Adebayo",
     designation: "Principal Pharmacist, Well-Land General Hospital",
-    imageUrl: "/testimonial-1.png",
+    imageUrl: "/testimonial-1.webp",
   },
   {
     quote:
       "I never knew throwing unused drugs in the dustbin was dangerous until I found PharmaEco. Now, I just drop them at the nearest collection point",
     author: "Tunde Balogun",
     designation: "Resident, Surulere",
-    imageUrl: "/testimonial-2.png",
+    imageUrl: "/testimonial-2.webp",
   },
   {
     quote:
       "Our pharmacy joined PharmaEco’s program, and it’s been a smooth process. We also educate our customers about safe disposal",
     author: "Pharm. (Dr.). Yetunde Olaniyi",
     designation: "Pharmacy Owner, MediAir Pharmacy, Lekki",
-    imageUrl: "/testimonial-3.png",
+    imageUrl: "/testimonial-3.webp",
   },
   {
     quote:
       "The awareness PharmaEco creates about pharmaceutical waste is eye-opening. It’s a great step toward a cleaner Nigeria.",
     author: "Mr. Femi Ajayi",
     designation: "Environmental Health Officer, Lagos Mainland",
-    imageUrl: "/testimonial-4.png",
+    imageUrl: "/testimonial-4.webp",
   },
   {
     quote:
       "PharmaEco’s collection initiative is a game changer for public health and environmental protection in Lagos",
     author: "Dr. Segun Adeola",
     designation: "Public Health Consultant, Victoria Island",
-    imageUrl: "/testimonial-5.png",
+    imageUrl: "/testimonial-5.webp",
   },
 ];

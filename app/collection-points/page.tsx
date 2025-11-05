@@ -11,7 +11,7 @@ const CollectionPoints = () => {
     <section className="">
       <Header
         title="Collection Point Near You"
-        bg="/bg-collection.jpg"
+        bg="/bg-collection.webp"
         description={
           <p className="text-lg text-medium text-white">
             Our platform connects households, pharmacies, hospitals, and
@@ -32,7 +32,7 @@ const CollectionPoints = () => {
           </h1>
           <div className="relative  lg:hidden w-full h-[20rem]  mb-8">
             <Image
-              src="/drugs-1.jpg"
+              src="/drugs-1.webp"
               alt="drugs"
               layout="fill"
               objectFit="cover"
@@ -64,7 +64,7 @@ const CollectionPoints = () => {
         </div>
         <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[30rem]">
           <Image
-            src="/drugs-1.jpg"
+            src="/drugs-1.webp"
             alt="drugs"
             layout="fill"
             objectFit="cover"

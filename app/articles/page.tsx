@@ -4,15 +4,14 @@ import Header from "@/components/header/header";
 import { HorizontalLine } from "@/components/icons";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Pagination from "@/components/pagination";
-import { cards } from "@/lib/data";
 import { useGetArticles } from "@/lib/hooks/api/queries";
 import React, { useState } from "react";
 
 const Articles = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const totalPages = Math.ceil(cards.length / itemsPerPage);
   const { data: articles, isPending } = useGetArticles();
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil((articles?.length ?? 0) / itemsPerPage);
 
   const currentData = articles
     ? articles.slice(
@@ -25,7 +24,7 @@ const Articles = () => {
     <section className="">
       <Header
         title="Articles"
-        bg="/bg-articles.jpg"
+        bg="/bg-articles.webp"
         description={
           <p className="text-lg text-medium text-white">
             Explore inspiring stories, innovations, and insights on

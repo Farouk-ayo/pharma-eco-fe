@@ -93,7 +93,7 @@ const ArticleDetails = () => {
         </p>
         <div className="w-full aspect-[21/9] md:h-[40rem] relative mb-8 rounded-lg overflow-hidden">
           <Image
-            src={article?.articleImage1Url || "/placeholder.jpg"}
+            src={article?.articleImage1Url || "/placeholder.webp"}
             alt={article?.title || "Article image"}
             fill
             priority
@@ -101,7 +101,7 @@ const ArticleDetails = () => {
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
-              target.src = "/placeholder.jpg";
+              target.src = "/placeholder.webp";
             }}
           />
         </div>
@@ -132,7 +132,7 @@ const ArticleDetails = () => {
               {article?.articleImage2Url && (
                 <div className="relative w-full  overflow-hidden h-[20rem] rounded-lg">
                   <Image
-                    src={article?.articleImage2Url || "/placeholder.jpg"}
+                    src={article?.articleImage2Url || "/placeholder.webp"}
                     alt={article?.title || "Article image"}
                     fill
                     priority
@@ -140,7 +140,7 @@ const ArticleDetails = () => {
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.onerror = null;
-                      target.src = "/placeholder.jpg";
+                      target.src = "/placeholder.webp";
                     }}
                   />
                 </div>

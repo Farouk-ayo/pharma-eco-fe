@@ -51,7 +51,7 @@ const ContactUs = () => {
     <section>
       <Header
         title="Contact Us"
-        bg="/bg-contact-us.jpg"
+        bg="/bg-contact-us.webp"
         description={
           <p className="text-lg text-medium text-white">
             Hope you know we are really fun to talk to? If you’re not a big

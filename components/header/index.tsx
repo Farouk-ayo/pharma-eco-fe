@@ -15,7 +15,7 @@ export default function Header() {
       <div className="relative w-full   lg:w-[80%] text-left  flex flex-col gap-5">
         <div className="flex gap-2 items-center text-base md:text-2xl">
           <Image
-            src="/pharmaecobot.png"
+            src="/pharmaecobot.webp"
             alt="bot"
             height={40}
             width={40}

@@ -98,7 +98,7 @@ const PharmacyDirectory = () => {
       <div
         className="grid grid-cols-1 lg:grid-cols-4 gap-6"
         style={{
-          backgroundImage: "url(./bg-community.svg)",
+          backgroundImage: "url(./bg-community.webp)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
