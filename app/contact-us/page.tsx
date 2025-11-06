@@ -81,7 +81,7 @@ const ContactUs = () => {
                     type="text"
                     {...register("firstName")}
                     placeholder="Enter first name"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary  h-16 rounded-b-[30px] rounded-t-[8px] "
                   />
                   {errors.firstName && (
                     <span className="text-red-600">
@@ -97,7 +97,7 @@ const ContactUs = () => {
                     type="text"
                     {...register("lastName")}
                     placeholder="Enter last name"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary  h-16 rounded-b-[30px] rounded-t-[8px] "
                   />
                   {errors.lastName && (
                     <span className="text-red-600">
@@ -113,7 +113,7 @@ const ContactUs = () => {
                     type="email"
                     {...register("emailAddress")}
                     placeholder="Enter email address"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary  h-16 rounded-b-[30px] rounded-t-[8px] "
                   />
                   {errors.emailAddress && (
                     <span className="text-red-600">
@@ -129,7 +129,7 @@ const ContactUs = () => {
                     type="tel"
                     {...register("phoneNumber")}
                     placeholder="Enter phone number"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary  h-16 rounded-b-[30px] rounded-t-[8px] "
                   />
                   {errors.phoneNumber && (
                     <span className="text-red-600">
@@ -145,7 +145,7 @@ const ContactUs = () => {
                     type="text"
                     {...register("organizationName")}
                     placeholder="Enter business name"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary  h-16 rounded-b-[30px] rounded-t-[8px] "
                   />
                   {errors.organizationName && (
                     <span className="text-red-600">
@@ -160,7 +160,7 @@ const ContactUs = () => {
                   <textarea
                     {...register("message")}
                     placeholder="Enter what you need help for"
-                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] "
+                    className="w-full border-[0.5px] border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-1 focus:ring-primary  h-16 rounded-b-[30px] rounded-t-[8px] "
                     rows={4}
                   ></textarea>
                   {errors.message && (
@@ -173,6 +173,7 @@ const ContactUs = () => {
                 <Button
                   variant="primary"
                   type="submit"
+                  size="actionBtn"
                   className="w-full text-white !rounded-b-[30px] !rounded-t-[8px]"
                   isLoading={isSubmitting}
                 >

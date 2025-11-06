@@ -49,7 +49,7 @@ const CallToAction = () => {
                   circular economy practices.
                 </p>
 
-                <div className="mt-2 lg:mt-4">
+                <div className="mt-4">
                   <Button size="lg" href="#">
                     Say Hi To PharmaEcoBot Now
                   </Button>
