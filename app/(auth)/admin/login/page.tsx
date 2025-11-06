@@ -88,6 +88,7 @@ const AdminLogin = () => {
             <Button
               variant="primary"
               type="submit"
+              size="actionBtn"
               className="w-full text-white"
               isLoading={postCustomer.isPending}
             >

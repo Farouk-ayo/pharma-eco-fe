@@ -115,7 +115,11 @@ const Page = () => {
             >
               {currentStep}
             </div>
-            {currentStep < 3 && <HorizontalArrowIcon className="mx-2" />}
+            {currentStep < 3 && (
+              <div className="flex-1  flex justify-center shrink">
+                <HorizontalArrowIcon className="mx-2 max-w-[100px] sm:max-w-full " />
+              </div>
+            )}
           </React.Fragment>
         ))}
       </div>

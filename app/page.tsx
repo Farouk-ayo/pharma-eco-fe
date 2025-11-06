@@ -31,7 +31,7 @@ export default function Home() {
           </h1>
           <div className="relative  lg:hidden w-full h-[30rem]  mb-8">
             <Image
-              src="/drugs.png"
+              src="/drugs.webp"
               alt="drugs"
               layout="fill"
               objectFit="cover"
@@ -67,7 +67,7 @@ export default function Home() {
 
             <Button
               variant="primary"
-              size="lg"
+              size="actionBtn"
               className="text-black w-max"
               href="/about-us"
             >
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
         <div className="relative hidden lg:inline-block  lg:w-[50%]  lg:h-[45rem]">
           <Image
-            src="/drugs.png"
+            src="/drugs.webp"
             alt="drugs"
             layout="fill"
             objectFit="cover"
@@ -193,9 +193,9 @@ export default function Home() {
           <TestimonialSection />
         </div>
       </section>
-      <section className="relative  px-4 lg:px-28 py-12 lg:py-20 top-32 lg:top-32">
-        <div className="container mx-auto px-6">
-          <div className="text-center md:my-12 w-full md:w-[60%] mx-auto">
+      <section className="relative  px-4 lg:px-28 pb-12 lg:py-20 top-32 lg:top-32 mb-20">
+        <div className="container mx-auto px-6 py-10">
+          <div className="text-center my-12 w-full md:w-[60%] mx-auto">
             <Badge text="Articles" bgColor="bg-tertiary" className="mb-2" />{" "}
             <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 mb-2">
               How We Are Redefining Access To Pharmaceutical Waste Through

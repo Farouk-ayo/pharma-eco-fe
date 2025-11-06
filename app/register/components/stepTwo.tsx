@@ -233,7 +233,7 @@ const StepTwoForm = ({
       <div className="flex flex-col gap-4">
         <Button
           type="submit"
-          size="lg"
+          size="actionBtn"
           isDisabled={isSubmitting}
           isLoading={isLoading}
           className="text-white w-full"

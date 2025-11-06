@@ -11,9 +11,9 @@ const ContactInfo = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          className="flex-1 px-4 py-2 border border-none bg-primary/15 text-textPrimary rounded-b-[40px] rounded-t-[15px] focus:outline-none"
+          className="flex-1 px-4 py-2 border border-none bg-primary/15 text-textPrimary rounded-b-[40px] rounded-t-[15px] focus:outline-none h-16"
         />
-        <button className=" absolute right-0 top-0 z-50 bg-primary text-white px-2 rounded hover:bg-primary/90 rounded-br-[40px] rounded-t-[15px] rounded-bl-[15px] transition-colors scale-75">
+        <button className=" absolute right-2 top-2 z-50 bg-primary text-white px-2 rounded hover:bg-primary/90 rounded-br-[40px] rounded-t-[15px] rounded-bl-[15px] transition-colors scale-100">
           <RocketIcon />
         </button>
       </div>

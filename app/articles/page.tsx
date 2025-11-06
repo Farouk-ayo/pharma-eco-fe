@@ -24,7 +24,7 @@ const Articles = () => {
     <section className="">
       <Header
         title="Articles"
-        bg="/bg-articles.jpg"
+        bg="/bg-articles.webp"
         description={
           <p className="text-lg text-medium text-white">
             Explore inspiring stories, innovations, and insights on
@@ -35,7 +35,7 @@ const Articles = () => {
           </p>
         }
       />{" "}
-      <section className="px-4  py-12 lg:px-28 md:py-20 relative z-10 my-32">
+      <section className="px-4  py-12 lg:px-28 md:py-20 relative z-10 ">
         {" "}
         {!isPending && (
           <div className="hidden lg:block relative w-full -mb-8">
