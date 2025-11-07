@@ -55,8 +55,7 @@ const ContactUs = () => {
         description={
           <p className="text-lg text-medium text-white">
             Hope you know we are really fun to talk to? If you’re not a big
-            talker and prefer e-mail, please send us a note here! We would love
-            to hear from you.
+            talker and prefer e-mail, please send us a note here!.
           </p>
         }
       />

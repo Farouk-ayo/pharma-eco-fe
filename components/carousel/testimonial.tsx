@@ -39,9 +39,10 @@ const TestimonialSection = () => {
                 <Image
                   src={testimonial.imageUrl}
                   alt="testimonial"
-                  objectFit="cover"
                   fill
-                  className="rounded-full border-2 object-cover border-primary"
+                  quality={100}
+                  className="rounded-full border-2 border-primary object-contain"
+                  sizes="(max-width: 768px) 100px, 112px"
                 />
               </div>
 

@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     "PharmaEco | AI-Powered Pharmaceutical Waste & Packaging Management in Nigeria",
   description:
     "PharmaEco is an AI-driven social enterprise addressing pharmaceutical waste and packaging management in Nigeria. We combine technology, innovation, and sustainability to ensure safe, efficient, and eco-friendly disposal of medicines and packaging materials.",
+  manifest: "/manifest.json",
+  icons: [
+    { rel: "apple-touch-icon", url: "/pharmaeco-appicon.png" },
+    { rel: "icon", url: "/pharmaeco-appicon.png" },
+  ],
   keywords: [
     "PharmaEco",
     "AI pharmaceutical waste management",
