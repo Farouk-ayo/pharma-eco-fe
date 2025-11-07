@@ -47,7 +47,7 @@ const ArticleDetails = () => {
     return <LoadingSkeleton count={1} type="ArticleID" />;
   }
   return (
-    <section className=" relative  top-20  md:top-20  pb-40 items-center overflow-hidden">
+    <section className=" relative  top-16  md:top-20  pb-40 items-center overflow-hidden">
       <div className="absolute inset-0 w-full h-80 md:h-[60vh] bg-[#ECFFF099] px-4 lg:px-20 " />
       <div className="relative z-20 px-4 lg:px-20">
         <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center my-10 ">
@@ -270,12 +270,12 @@ const ArticleDetails = () => {
           </h2>
 
           <div
-            className="text-gray-700 text-base md:text-xl leading-8 font-normal "
+            className="text-gray-700 text-base md:text-xl leading-8 font-normal break-words whitespace-normal"
             dangerouslySetInnerHTML={{ __html: article?.references || "" }}
           />
         </div>
       )}
-      <div className=" md:hidden inline-block">
+      <div className=" md:hidden inline-block m-2 md:m-0">
         <div className="mb-8 p-4 border rounded-lg border-gray-300">
           <h3 className="font-semibold mb-4 md:text-xl text-primaryDark ">
             Related Posts

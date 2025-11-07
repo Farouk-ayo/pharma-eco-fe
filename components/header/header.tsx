@@ -23,7 +23,7 @@ export default function Header({ title, description, bg }: HeaderProps) {
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white">
           {title}
         </h1>
-        <p className="font-semibold"> {description}</p>{" "}
+        {description}
       </div>
     </div>
   );
