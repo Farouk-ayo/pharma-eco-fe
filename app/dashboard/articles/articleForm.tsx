@@ -121,10 +121,10 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
 
       // Compress image
       const compressedFile = await imageCompression(file, {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1600,
+        maxSizeMB: 2,
+        maxWidthOrHeight: 2400,
         useWebWorker: true,
-        initialQuality: 0.8,
+        initialQuality: 0.92,
       });
 
       // Convert compressed image to base64
