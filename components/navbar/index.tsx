@@ -10,6 +10,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [targetSection, setTargetSection] = useState<string | null>(null);
   const currentPath = usePathname();
+  const whatsappNumber = "2348125137920";
+  const message = encodeURIComponent(
+    "Hi PharmaEcoBot! 👋 I need help with pharmaceutical waste disposal."
+  );
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -115,7 +120,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Button
-                href={"/register"}
+                href={whatsappLink}
                 variant="secondary"
                 className="text-black px-10"
               >

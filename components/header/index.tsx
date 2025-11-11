@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Header() {
   const route = useRouter();
-  const whatsappNumber = "15551419551";
+  const whatsappNumber = "2348125137920";
   const message = encodeURIComponent(
     "Hi PharmaEcoBot! 👋 I need help with pharmaceutical waste disposal."
   );
