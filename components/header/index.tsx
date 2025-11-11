@@ -7,6 +7,11 @@ import Link from "next/link";
 
 export default function Header() {
   const route = useRouter();
+  const whatsappNumber = "15551419551";
+  const message = encodeURIComponent(
+    "Hi PharmaEcoBot! 👋 I need help with pharmaceutical waste disposal."
+  );
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   return (
     <div className="relative px-4 lg:px-16 py-40 min-h-screen flex items-center overflow-hidden bg-primary/15 ">
@@ -19,7 +24,7 @@ export default function Header() {
           </div>
           <Link
             className=" underline text-primary text-base md:text-2xl"
-            href={"/#"}
+            href={whatsappLink}
           >
             Say Hi To PharmaEcoBot Now
           </Link>
