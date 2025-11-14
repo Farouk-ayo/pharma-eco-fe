@@ -182,7 +182,7 @@ const DisposalDiagram = () => {
             }}
           >
             <div
-              className={`absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full z-20 text-white flex items-center justify-center font-bold text-3xl transition-all duration-300 animate-gentle-float ${
+              className={`absolute -top-6 left-[45%]  -translate-x-1/2 w-12 h-12 rounded-full z-20 text-white flex items-center justify-center font-bold text-3xl transition-all duration-300 animate-gentle-float ${
                 activeBox === item.id
                   ? "scale-110 border-green-500"
                   : "scale-100"
