@@ -6,6 +6,7 @@ import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
 
 export default function ScrollingStats() {
   const { data: users, isPending: isLoadingUsers } = useGetRegisterUsers();
+  console.log(users);
   const [usersCount, setUsersCount] = useState<number>(0);
   const [isReady, setIsReady] = useState(false);
 

@@ -20,8 +20,8 @@ interface MapProps {
 
 // Fix default marker icon issue in Leaflet with Next.js
 const defaultIcon = L.icon({
-  iconUrl: "/marker-icon.webp", // Make sure to have this file in the public folder
-  iconSize: [25, 41],
+  iconUrl: "/marker-icon.webp",
+  iconSize: [30, 30],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 });
