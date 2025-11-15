@@ -8,8 +8,8 @@ import Button from "@/components/buttons";
 
 const PharmacyDirectory = () => {
   const { data: pharmacies = [], isLoading } = useGetRegisterUsers();
-  const [selectedState, setSelectedState] = useState("Osun State");
-  const [selectedArea, setSelectedArea] = useState<string>("Ife Central");
+  const [selectedState, setSelectedState] = useState("Lagos State");
+  const [selectedArea, setSelectedArea] = useState<string>("Ikeja");
   const [isStateDropdownOpen, setIsStateDropdownOpen] = useState(false);
   const [localAreas, setLocalAreas] = useState<string[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -36,9 +36,9 @@ const PharmacyDirectory = () => {
       const areaNames = stateData.state.locals.map((local) => local.name);
       setLocalAreas(areaNames);
 
-      const hasIfeCentral = areaNames.includes("Ife Central");
+      const hasIfeCentral = areaNames.includes("Ikeja");
       if (hasIfeCentral) {
-        setSelectedArea("Ife Central");
+        setSelectedArea("Ikeja");
       } else {
         setSelectedArea(areaNames[0] || "");
       }
@@ -73,7 +73,7 @@ const PharmacyDirectory = () => {
 
             {/* Updated Dropdown */}
             {isStateDropdownOpen && (
-              <div className="absolute left-0 md:right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
+              <div className="absolute left-0 md:left-auto md:right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 max-h-60 overflow-y-auto">
                 <div className="py-1">
                   {nigeriaStates.map((state) => (
                     <button
@@ -95,14 +95,7 @@ const PharmacyDirectory = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div
-        className="grid grid-cols-1 lg:grid-cols-4 gap-6"
-        style={{
-          backgroundImage: "url(./bg-community.webp)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar */}
         <div className="lg:col-span-1">
           <div className="bg-transparent p-4 rounded-lg border">
