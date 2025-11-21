@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import CallToAction from "@/components/footer/callToAction";
 import Header from "@/components/header";
 import { CheckMark, HorizontalLine } from "@/components/icons";
+import InnovationSection from "@/components/innovations";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Navbar from "@/components/navbar";
 import { sdgData } from "@/lib/data";
@@ -172,6 +173,17 @@ export default function Home() {
           </h1>
         </div>
         <DisposalDiagram />
+      </section>
+
+      <section className="relative  px-4 lg:px-28 pt-12 lg:pt-20 top-20 md:top-20 ">
+        <div className="text-center my-6 w-full md:w-[60%] mx-auto">
+          <Badge text="INNOVATIONS" bgColor="bg-tertiary" className="mb-2" />{" "}
+          <h1 className="text-2xl md:text-4xl font-semibold text-tertiary3 ">
+            We Believe Technology And Science Can Transform How Pharmaceutical
+            Waste Is Managed
+          </h1>
+        </div>
+        <InnovationSection />
       </section>
 
       <section className="bg-primary/15 relative  px-4 lg:px-28 pt-12 lg:pt-20 top-32 lg:top-32 ">
