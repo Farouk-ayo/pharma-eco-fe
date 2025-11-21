@@ -51,6 +51,27 @@ export const articleSchema = z.object({
   images: z.array(z.instanceof(File).nullable()).length(4),
 });
 
+export const emrSignUpSchema = z
+  .object({
+    firstName: z.string().min(2, "First name is required"),
+    lastName: z.string().min(2, "Last name is required"),
+    emailAddress: z.string().email("Invalid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string().min(6, "Confirm password is required"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
+
+export const emrSignInSchema = z.object({
+  emailAddress: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+export type EMRSignUpInputs = z.infer<typeof emrSignUpSchema>;
+export type EMRSignInInputs = z.infer<typeof emrSignInSchema>;
+
 export type FeedbackFormInputs = z.infer<typeof feedbackSchema>;
 export type LoginFormmInputs = z.infer<typeof loginSchema>;
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRightIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const InnovationSection = () => {
@@ -67,37 +67,28 @@ const InnovationSection = () => {
               />
             </div>
 
-            <div className="lg:w-1/2 bg-white rounded-[1.5rem] p-6 sm:p-4 flex flex-col justify-between min-h-[280px] sm:min-h-[320px] lg:min-h-[380px]">
-              <div className="flex-1">
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-primaryDark mb-3 sm:mb-4 leading-tight">
-                  {innovations[currentSlide].title}
-                </h3>
-                <p className="text-textPrimary text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
-                  {innovations[currentSlide].description}
-                </p>
+            <div className="lg:w-1/2 bg-white rounded-[1.5rem] p-6 sm:p-6 flex flex-col justify-between min-h-[280px] sm:min-h-[320px] lg:min-h-[380px]">
+              <div className="flex-1 flex flex-col justify-between ">
+                <div>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-primaryDark mb-3 sm:mb-4 leading-tight">
+                    {innovations[currentSlide].title}
+                  </h3>
+                  <p className="text-textPrimary text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+                    {innovations[currentSlide].description}
+                  </p>
+                </div>
+
                 <a
-                  href="#"
+                  href="/pharmaeco-guard/auth/signup"
                   className="inline-flex items-center gap-2 text-secondary font-semibold text-sm sm:text-base hover:gap-3 transition-all duration-300"
                 >
                   Check It Out
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                  <ArrowRightIcon />
                 </a>
               </div>
 
               {/* Navigation Controls */}
-              <div className="flex items-center justify-between mt-6 pt-4 sm:pt-6 border-t border-gray-200">
+              <div className="flex items-center justify-between mt-6 pt-4 sm:pt-6 border-gray-200">
                 {/* Dots Indicator */}
                 <div className="flex gap-2">
                   {innovations.map((_, index) => (
