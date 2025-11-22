@@ -54,7 +54,7 @@ export const EMRUserProvider: React.FC<{ children: React.ReactNode }> = ({
   const logout = () => {
     Cookies.remove("emrAuthToken");
     setUser(null);
-    router.push("/pharmaeco-guard/signin");
+    router.push("/pharmaeco-guard/auth/signin");
   };
 
   return (
