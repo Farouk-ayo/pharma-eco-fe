@@ -190,14 +190,14 @@ const DashboardPage = () => {
   const isLoading = patientsLoading || appointmentsLoading || encountersLoading;
 
   return (
-    <div className="p-4 lg:p-8 bg-primaryLight">
+    <div className="p-3 sm:p-4 lg:p-8 bg-primaryLight">
       {/* Welcome Banner */}
-      <div className="p-6 lg:p-8 mb-8 max-w-2xl mx-auto">
-        <h2 className="text-2xl lg:text-3xl font-bold text-center text-primary mb-3">
+      <div className="p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8 max-w-2xl mx-auto">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center text-primary mb-2 sm:mb-3">
           Welcome <br />
           To PharmaEcoGuard EMR
         </h2>
-        <p className="text-sm lg:text-base text-textPrimary text-center max-w-3xl mx-auto">
+        <p className="text-xs sm:text-sm lg:text-base text-textPrimary text-center max-w-3xl mx-auto px-2">
           Your unified Electronic Medical Record System that helps to improve
           patient safety, documents care, and protects the environment.
         </p>
@@ -207,7 +207,7 @@ const DashboardPage = () => {
       <AIPromptBox />
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <StatCardSkeleton key={i} />
@@ -216,13 +216,13 @@ const DashboardPage = () => {
       </div>
 
       {/* System Modules */}
-      <div className="mb-6">
-        <h2 className="text-xl lg:text-2xl font-bold text-primaryDark">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-primaryDark">
           System Modules
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
         {isLoading
           ? Array.from({ length: 11 }).map((_, i) => (
               <SystemModuleCardSkeleton key={i} />
@@ -233,7 +233,7 @@ const DashboardPage = () => {
       </div>
 
       {/* Footer */}
-      <div className="mt-12 text-center text-sm text-gray-500">
+      <div className="mt-8 sm:mt-12 text-center text-xs sm:text-sm text-gray-500 px-4">
         Copyright © 2025 PharmaEcoGuard EMR. All Rights Reserved
       </div>
     </div>

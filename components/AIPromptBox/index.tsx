@@ -75,25 +75,25 @@ const AIPromptBox = () => {
   ];
 
   return (
-    <div className=" bg-primary/10  rounded-2xl p-6 lg:p-8 mb-8 border border-primary/20">
-      <div className="flex items-start gap-4 mb-4">
-        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-          <Sparkles className="w-6 h-6 text-white" />
+    <div className="bg-primary/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8 border border-primary/20">
+      <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+          <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </div>
-        <div className="flex-1">
-          <h3 className="text-xl font-bold text-primaryDark mb-2">
+        <div className="flex-1 w-full">
+          <h3 className="text-lg sm:text-xl font-bold text-primaryDark mb-1 sm:mb-2">
             AI Assistant - Dorra EMR
           </h3>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
             Type a natural language command to create patients, schedule
             appointments, or record encounters.
           </p>
 
           {/* Mode Toggle */}
-          <div className="flex gap-2 mb-4">
+          <div className="flex gap-2 mb-3 sm:mb-4">
             <button
               onClick={() => setMode("create")}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                 mode === "create"
                   ? "bg-primary text-white"
                   : "bg-white text-gray-600 hover:bg-gray-100"
@@ -103,7 +103,7 @@ const AIPromptBox = () => {
             </button>
             <button
               onClick={() => setMode("action")}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                 mode === "action"
                   ? "bg-primary text-white"
                   : "bg-white text-gray-600 hover:bg-gray-100"
@@ -115,8 +115,8 @@ const AIPromptBox = () => {
 
           {/* Patient Selector for Actions */}
           {mode === "action" && (
-            <div className="mb-4">
-              <label className="block text-base font-semibold text-gray-600 mb-2">
+            <div className="mb-3 sm:mb-4">
+              <label className="block text-sm sm:text-base font-semibold text-gray-600 mb-2">
                 Select Patient
               </label>
               <Controller
@@ -152,7 +152,7 @@ const AIPromptBox = () => {
                   ? "E.g., Create a patient named John Doe from Surulere Lagos, contact: +2348012345678..."
                   : "E.g., Schedule appointment for tomorrow at 10am for consultation..."
               }
-              className="w-full px-4 py-4 pr-14 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-white min-h-[100px] text-base resize-none"
+              className="w-full px-3 sm:px-4 py-3 sm:py-4 pr-12 sm:pr-14 border-2 border-primary/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary bg-white min-h-[80px] sm:min-h-[100px] text-sm sm:text-base resize-none"
               disabled={isLoading}
             />
             <button
@@ -162,27 +162,27 @@ const AIPromptBox = () => {
                 !prompt.trim() ||
                 (mode === "action" && !selectedPatientId)
               }
-              className="absolute bottom-4 right-4 w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-primaryDark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-lg flex items-center justify-center hover:bg-primaryDark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
-                <Loader2 className="w-5 h-5 text-white animate-spin" />
+                <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-spin" />
               ) : (
-                <Send className="w-5 h-5 text-white" />
+                <Send className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               )}
             </button>
           </form>
 
           {/* Example Prompts */}
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4">
             <p className="text-xs font-semibold text-gray-600 mb-2">
               Example prompts:
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {examplePrompts.map((example, index) => (
                 <button
                   key={index}
                   onClick={() => setPrompt(example)}
-                  className="text-xs bg-white px-3 py-1.5 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors border border-gray-200"
+                  className="text-[10px] sm:text-xs bg-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors border border-gray-200"
                 >
                   {example.slice(0, 50)}...
                 </button>
