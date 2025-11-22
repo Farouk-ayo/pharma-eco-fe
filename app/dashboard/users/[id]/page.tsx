@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { usePatchRegisterUser } from "@/lib/hooks/api/mutations";
+import { usePatchRegisterUser } from "@/lib/api/mutations";
 import { useParams, useRouter } from "next/navigation";
 import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
 import { customStyles } from "@/app/register/components/stepTwo";
-import { useGetRegisterUser } from "@/lib/hooks/api/queries";
+import { useGetRegisterUser } from "@/lib/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import { FormInputs, formSchema } from "@/lib/validation";
 import { Controller, useForm } from "react-hook-form";

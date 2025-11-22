@@ -8,7 +8,7 @@ import { showToast } from "@/lib/util";
 import { useForm } from "react-hook-form";
 import { feedbackSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePostFeedback } from "@/lib/hooks/api/mutations";
+import { usePostFeedback } from "@/lib/api/mutations";
 import { FeedbackService } from "@/lib/types";
 import { HorizontalLine } from "@/components/icons";
 

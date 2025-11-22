@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
+import { useGetRegisterUsers } from "@/lib/api/queries";
 
 export default function ScrollingStats() {
   const { data: users, isPending: isLoadingUsers } = useGetRegisterUsers();

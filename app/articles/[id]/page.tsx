@@ -9,7 +9,7 @@ import {
   XIcon2,
 } from "@/components/icons";
 import Link from "next/link";
-import { useGetArticle, useGetArticles } from "@/lib/hooks/api/queries";
+import { useGetArticle, useGetArticles } from "@/lib/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import { formatDateToString } from "@/lib/util";
 

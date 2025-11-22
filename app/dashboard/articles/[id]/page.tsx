@@ -3,9 +3,9 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import ArticleForm from "../articleForm";
 import Modal from "@/components/modal/modalConfirmation";
-import { useGetArticle } from "@/lib/hooks/api/queries";
+import { useGetArticle } from "@/lib/api/queries";
 import { ArticleCard } from "@/lib/types";
-import { useDeleteArticle, usePatchArticle } from "@/lib/hooks/api/mutations";
+import { useDeleteArticle, usePatchArticle } from "@/lib/api/mutations";
 
 export default function ViewArticlePage() {
   const { id } = useParams();

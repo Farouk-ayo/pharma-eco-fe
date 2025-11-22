@@ -6,7 +6,7 @@ import { showToast } from "@/lib/util";
 import { useForm } from "react-hook-form";
 import { LoginFormmInputs, loginSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePostAdmin } from "@/lib/hooks/api/mutations";
+import { usePostAdmin } from "@/lib/api/mutations";
 import { LoginInputsPayload } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";

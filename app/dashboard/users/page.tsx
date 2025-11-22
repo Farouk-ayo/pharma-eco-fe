@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import UserCard from "./usersCard";
-import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
+import { useGetRegisterUsers } from "@/lib/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Pagination from "@/components/pagination";
-import { useDeleteRegisteredUser } from "@/lib/hooks/api/mutations";
+import { useDeleteRegisteredUser } from "@/lib/api/mutations";
 import Modal from "@/components/modal/modalConfirmation";
 import { showToast } from "@/lib/util";
 import { useRouter } from "next/navigation";

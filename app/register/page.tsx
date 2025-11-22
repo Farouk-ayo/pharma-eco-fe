@@ -4,7 +4,7 @@ import StepOneForm from "./components/stepOne";
 import StepTwoForm from "./components/stepTwo";
 import StepThreeForm from "./components/stepThree";
 import { FormInputs, StepOneInputs, StepTwoInputs } from "@/lib/validation";
-import { usePostRegister } from "@/lib/hooks/api/mutations";
+import { usePostRegister } from "@/lib/api/mutations";
 import { showToast } from "@/lib/util";
 import { HorizontalArrowIcon } from "@/components/icons";
 

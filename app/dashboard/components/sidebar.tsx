@@ -14,7 +14,7 @@ import {
   Logout,
   Users,
 } from "@/components/icons";
-import { useLogout } from "@/lib/hooks/api/mutations";
+import { useLogout } from "@/lib/api/mutations";
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const [isMobile, setIsMobile] = useState(false);

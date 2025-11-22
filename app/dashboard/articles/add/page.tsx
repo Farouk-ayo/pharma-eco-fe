@@ -1,5 +1,5 @@
 "use client";
-import { usePostArticle } from "@/lib/hooks/api/mutations";
+import { usePostArticle } from "@/lib/api/mutations";
 import ArticleForm from "../articleForm";
 import { ArticleCard } from "@/lib/types";
 import { useRouter } from "next/navigation";

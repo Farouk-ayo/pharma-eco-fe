@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useGetArticles, useGetRegisterUsers } from "@/lib/hooks/api/queries";
+import { useGetArticles, useGetRegisterUsers } from "@/lib/api/queries";
 import StatisticsCard from "./components/statisticsCard";
 import UserCard from "./users/usersCard";
 import ArticlesSection from "./articles/articlesCard";
