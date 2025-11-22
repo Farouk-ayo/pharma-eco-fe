@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
-import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
+import { useGetRegisterUsers } from "@/lib/api/queries";
 import { nigeriaStates } from "@/lib/data/nigeria-states-lga";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Button from "@/components/buttons";

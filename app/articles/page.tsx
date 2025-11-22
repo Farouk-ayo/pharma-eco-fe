@@ -4,7 +4,7 @@ import Header from "@/components/header/header";
 import { HorizontalLine } from "@/components/icons";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Pagination from "@/components/pagination";
-import { useGetArticles } from "@/lib/hooks/api/queries";
+import { useGetArticles } from "@/lib/api/queries";
 import React, { useState } from "react";
 
 const Articles = () => {

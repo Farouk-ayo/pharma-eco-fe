@@ -2,7 +2,7 @@
 
 import React from "react";
 import ArticlesSection from "./articlesCard";
-import { useGetArticles } from "@/lib/hooks/api/queries";
+import { useGetArticles } from "@/lib/api/queries";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import { useRouter } from "next/navigation";
 

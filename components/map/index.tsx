@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { MapPinIcon } from "lucide-react";
 import Button from "../buttons";
-import { useGetRegisterUsers } from "@/lib/hooks/api/queries";
+import { useGetRegisterUsers } from "@/lib/api/queries";
 
 export interface RegisteredUser {
   _id?: string;

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EMRSignUpInputs, emrSignUpSchema } from "@/lib/validation";
 import Button from "@/components/buttons";
-import { useEMRSignUp } from "@/lib/hooks/api/mutations";
+import { useEMRSignUp } from "@/lib/api/mutations";
 import { showToast } from "@/lib/util";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";

@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import FeedbackCard from "./feedbackCard";
-import { useGetFeedback } from "@/lib/hooks/api/queries";
+import { useGetFeedback } from "@/lib/api/queries";
 import Pagination from "@/components/pagination";
-import { useDeleteFeedback } from "@/lib/hooks/api/mutations";
+import { useDeleteFeedback } from "@/lib/api/mutations";
 import Modal from "@/components/modal/modalConfirmation";
 import { showToast } from "@/lib/util";
 

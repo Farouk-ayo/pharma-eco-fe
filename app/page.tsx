@@ -12,7 +12,7 @@ import InnovationSection from "@/components/innovations";
 import LoadingSkeleton from "@/components/loadingSkeleton";
 import Navbar from "@/components/navbar";
 import { sdgData } from "@/lib/data";
-import { useGetArticles } from "@/lib/hooks/api/queries";
+import { useGetArticles } from "@/lib/api/queries";
 import Image from "next/image";
 
 export default function Home() {

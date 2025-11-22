@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["cdn.simpleicons.org", "res.cloudinary.com"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/dorra/:path*",
+        destination: "https://hackathon-api.aheadafrica.org/:path*",
+      },
+    ];
+  },
 };
 
 module.exports = withPWA(nextConfig);

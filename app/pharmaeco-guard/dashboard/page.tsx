@@ -1,49 +1,76 @@
 "use client";
-import React from "react";
+
+import React, { useMemo } from "react";
+// import { useEMRUser } from "@/contexts/emrUserContext";
 
 import { Users, Calendar, FileText, Trash2 } from "lucide-react";
-import { useEMRUser } from "@/contexts/emrUserContext";
+import {
+  useDorraAppointments,
+  useDorraEncounters,
+  useDorraPatients,
+} from "@/lib/api/dorraQueries";
+import AIPromptBox from "@/components/AIPromptBox";
 import StatCard, { StatCardSkeleton } from "./components/cards/statsCard";
 import ModuleCard, { ModuleCardSkeleton } from "./components/cards/modulesCard";
 
 const DashboardPage = () => {
-  //   const { user, loading } = useEMRUser();
-  const { loading } = useEMRUser();
+  //   const { user, loading: userLoading } = useEMRUser();
+  const { data: patientsData, isLoading: patientsLoading } = useDorraPatients();
+  const { data: appointmentsData, isLoading: appointmentsLoading } =
+    useDorraAppointments();
+  const { data: encountersData, isLoading: encountersLoading } =
+    useDorraEncounters();
 
-  const stats = [
-    {
-      title: "Total Patients",
-      value: 60,
-      icon: <Users className="w-6 h-6 text-orange-600" />,
-      trend: "+12% more than last week",
-      trendUp: true,
-      iconBgColor: "bg-orange-100",
-    },
-    {
-      title: "Today's Appointments",
-      value: 4,
-      icon: <Calendar className="w-6 h-6 text-blue-600" />,
-      trend: "0.2% lower than yesterday",
-      trendUp: false,
-      iconBgColor: "bg-blue-100",
-    },
-    {
-      title: "Active Encounters",
-      value: 1,
-      icon: <FileText className="w-6 h-6 text-purple-600" />,
-      trend: "1% more than last week",
-      trendUp: true,
-      iconBgColor: "bg-purple-100",
-    },
-    {
-      title: "Waste Returned (In Sachets)",
-      value: 15,
-      icon: <Trash2 className="w-6 h-6 text-green-600" />,
-      trend: "4% more than last week",
-      trendUp: true,
-      iconBgColor: "bg-green-100",
-    },
-  ];
+  // Calculate stats from real data
+  const stats = useMemo(() => {
+    const totalPatients = patientsData?.count || 0;
+
+    // Filter today's appointments
+    const today = new Date().toISOString().split("T")[0];
+    const todayAppointments =
+      appointmentsData?.results.filter((apt) => apt.date.startsWith(today))
+        .length || 0;
+
+    // Count active encounters
+    const activeEncounters = encountersData?.count || 0;
+
+    return [
+      {
+        title: "Total Patients",
+        value: totalPatients,
+        icon: <Users className="w-6 h-6 text-orange-600" />,
+        trend: "+12% more than last week",
+        trendUp: true,
+        iconBgColor: "bg-orange-100",
+      },
+      {
+        title: "Today's Appointments",
+        value: todayAppointments,
+        icon: <Calendar className="w-6 h-6 text-blue-600" />,
+        trend: appointmentsData?.count
+          ? `${appointmentsData.count} total`
+          : "No data",
+        trendUp: todayAppointments > 0,
+        iconBgColor: "bg-blue-100",
+      },
+      {
+        title: "Active Encounters",
+        value: activeEncounters,
+        icon: <FileText className="w-6 h-6 text-purple-600" />,
+        trend: "1% more than last week",
+        trendUp: true,
+        iconBgColor: "bg-purple-100",
+      },
+      {
+        title: "Waste Returned (In Sachets)",
+        value: 15,
+        icon: <Trash2 className="w-6 h-6 text-green-600" />,
+        trend: "4% more than last week",
+        trendUp: true,
+        iconBgColor: "bg-green-100",
+      },
+    ];
+  }, [patientsData, appointmentsData, encountersData]);
 
   const modules = [
     {
@@ -138,22 +165,27 @@ const DashboardPage = () => {
     },
   ];
 
+  const isLoading = patientsLoading || appointmentsLoading || encountersLoading;
+
   return (
-    <div className="p-4 lg:p-8 bg-primaryLight">
+    <div className="p-4 lg:p-8">
       {/* Welcome Banner */}
-      <div className="  p-6 lg:p-8 mb-8">
-        <h2 className="text-xl lg:text-2xl font-bold text-primary mb-3 text-center">
-          Welcome To PharmaEcoGuard EMR
+      <div className="  p-6 lg:p-8 mb-8 max-w-2xl mx-auto">
+        <h2 className="text-2xl lg:text-3xl font-bold text-center text-primary mb-3 ">
+          Welcome <br />
+          To PharmaEcoGuard EMR
         </h2>
         <p className="text-sm lg:text-base text-textPrimary text-center max-w-3xl mx-auto">
           Your unified Electronic Medical Record System that helps to improve
           patient safety, documents care, and protects the environment.
         </p>
       </div>
+      {/* AI Prompt Box */}
+      <AIPromptBox />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
-        {loading
+        {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <StatCardSkeleton key={i} />
             ))
@@ -168,7 +200,7 @@ const DashboardPage = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-        {loading
+        {isLoading
           ? Array.from({ length: 11 }).map((_, i) => (
               <ModuleCardSkeleton key={i} />
             ))
