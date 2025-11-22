@@ -1,9 +1,6 @@
 export const DORRA_API_CONFIG = {
-  // Use proxy in development, direct API in production
-  baseURL:
-    process.env.NODE_ENV === "development"
-      ? "/api/dorra"
-      : "https://hackathon-api.aheadafrica.org",
+  // Always use proxy to avoid CORS issues
+  baseURL: "/api/dorra",
   apiKey: "V5NTCNA3LF:0T8ZMX2IICW2BP6TMVWPZH6WHELHPT9L",
   headers: {
     "Content-Type": "application/json",
