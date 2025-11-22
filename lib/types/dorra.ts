@@ -7,7 +7,7 @@ export interface DorraPatient {
   full_name: string;
   age: string;
   date_of_birth: string;
-  gender: "Male" | "Female" | "Other";
+  gender: "Male" | "Female" | "Other" | undefined;
   address: string;
   phone_number: string;
   email: string;
@@ -33,6 +33,7 @@ export interface DorraEncounter {
   id: number;
   patient_name: string;
   unique_id: string;
+  has_drug_interaction: boolean;
   weight: string;
   height: string;
   bmi: string;

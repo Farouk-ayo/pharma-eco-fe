@@ -1,20 +1,43 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Send, Sparkles, Loader2 } from "lucide-react";
+import { Controller, useForm } from "react-hook-form";
+import Select from "react-select";
 import {
   useDorraAICreatePatient,
   useDorraAIPrompt,
 } from "@/lib/api/dorraMutations";
+import { useDorraPatients } from "@/lib/api/dorraQueries";
+import { customStyles } from "@/app/register/components/stepTwo";
+
+interface AIPromptFormData {
+  selectedPatient: number | null;
+}
 
 const AIPromptBox = () => {
   const [prompt, setPrompt] = useState("");
-  const [selectedPatientId, setSelectedPatientId] = useState<string | null>(
-    null
-  );
   const [mode, setMode] = useState<"create" | "action">("create");
 
   const createPatientMutation = useDorraAICreatePatient();
   const aiPromptMutation = useDorraAIPrompt();
+  const { data: patientsData } = useDorraPatients();
+
+  const { control, watch } = useForm<AIPromptFormData>({
+    defaultValues: {
+      selectedPatient: null,
+    },
+  });
+
+  const selectedPatientId = watch("selectedPatient");
+
+  const patientOptions = useMemo(() => {
+    if (!patientsData?.results) return [];
+
+    return patientsData.results.map((patient) => ({
+      value: patient.id,
+      label: `${patient.first_name} ${patient.last_name} (${patient.unique_id})`,
+    }));
+  }, [patientsData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,13 +69,13 @@ const AIPromptBox = () => {
     createPatientMutation.isPending || aiPromptMutation.isPending;
 
   const examplePrompts = [
-    "Create a patient named John Doe from Surulere Lagos, contact: +2348012345678, wants to register for pharmaceutical waste collection",
-    "Schedule appointment for patient ID 286 tomorrow at 10am for consultation",
-    "Record encounter: patient complains of headache and fever, prescribed Paracetamol 500mg",
+    "Create a patient named John Doe from Surulere Lagos, contact: +2348012345678",
+    "Schedule appointment for patient tomorrow at 10am for consultation",
+    "Record encounter: patient complains of headache and fever",
   ];
 
   return (
-    <div className="bg-gradient-to-r from-primary/10 to-purple-100 rounded-2xl p-6 lg:p-8 mb-8 border border-primary/20">
+    <div className=" bg-primary/10  rounded-2xl p-6 lg:p-8 mb-8 border border-primary/20">
       <div className="flex items-start gap-4 mb-4">
         <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
           <Sparkles className="w-6 h-6 text-white" />
@@ -63,8 +86,7 @@ const AIPromptBox = () => {
           </h3>
           <p className="text-sm text-gray-600 mb-4">
             Type a natural language command to create patients, schedule
-            appointments, or record encounters. Dorra will understand and
-            execute your request.
+            appointments, or record encounters.
           </p>
 
           {/* Mode Toggle */}
@@ -91,15 +113,33 @@ const AIPromptBox = () => {
             </button>
           </div>
 
-          {/* Patient ID Input for Actions */}
+          {/* Patient Selector for Actions */}
           {mode === "action" && (
-            <input
-              type="text"
-              placeholder="Enter Patient ID"
-              value={selectedPatientId || ""}
-              onChange={(e) => setSelectedPatientId(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary mb-4"
-            />
+            <div className="mb-4">
+              <label className="block text-base font-semibold text-gray-600 mb-2">
+                Select Patient
+              </label>
+              <Controller
+                name="selectedPatient"
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={patientOptions}
+                    placeholder="Choose a patient..."
+                    styles={customStyles}
+                    value={
+                      patientOptions.find(
+                        (option) => option.value === field.value
+                      ) || null
+                    }
+                    onChange={(option) => field.onChange(option?.value)}
+                    isSearchable
+                    isClearable
+                  />
+                )}
+              />
+            </div>
           )}
 
           {/* Prompt Input */}

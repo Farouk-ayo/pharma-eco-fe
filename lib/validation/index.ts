@@ -69,6 +69,19 @@ export const emrSignInSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
+export const patientSchema = z.object({
+  first_name: z.string().min(2, "First name is required"),
+  last_name: z.string().min(2, "Last name is required"),
+  age: z.string().optional(),
+  date_of_birth: z.string().optional(),
+  gender: z.enum(["Male", "Female", "Other"]).optional(),
+  address: z.string().optional(),
+  phone_number: z.string().min(10, "Valid phone number required").optional(),
+  email: z.string().email("Valid email required").optional(),
+  allergies: z.string().optional(),
+});
+
+export type PatientFormData = z.infer<typeof patientSchema>;
 export type EMRSignUpInputs = z.infer<typeof emrSignUpSchema>;
 export type EMRSignInInputs = z.infer<typeof emrSignInSchema>;
 
