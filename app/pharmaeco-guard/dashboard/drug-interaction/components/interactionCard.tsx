@@ -7,7 +7,7 @@ interface DrugInteraction {
   unique_id: string;
   drug_a: string;
   drug_b: string;
-  severity: "Major" | "Moderate" | "Minor" | "Unknown";
+  severity: "major" | "moderate" | "minor" | "unknown";
   reason: string;
   created_at: string;
 }
@@ -17,28 +17,28 @@ interface InteractionCardProps {
 }
 
 const severityConfig = {
-  Major: {
+  major: {
     bg: "bg-red-50",
     border: "border-red-200",
     text: "text-red-900",
     badge: "bg-red-100 text-red-700 border-red-300",
     icon: <AlertTriangle className="w-4 h-4 lg:w-5 lg:h-5 text-red-600" />,
   },
-  Moderate: {
+  moderate: {
     bg: "bg-orange-50",
     border: "border-orange-200",
     text: "text-orange-900",
     badge: "bg-orange-100 text-orange-700 border-orange-300",
     icon: <AlertTriangle className="w-4 h-4 lg:w-5 lg:h-5 text-orange-600" />,
   },
-  Minor: {
+  minor: {
     bg: "bg-yellow-50",
     border: "border-yellow-200",
     text: "text-yellow-900",
     badge: "bg-yellow-100 text-yellow-700 border-yellow-300",
     icon: <Info className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-600" />,
   },
-  Unknown: {
+  unknown: {
     bg: "bg-gray-50",
     border: "border-gray-200",
     text: "text-gray-900",
@@ -51,6 +51,7 @@ export const InteractionCard: React.FC<InteractionCardProps> = ({
   interaction,
 }) => {
   const config = severityConfig[interaction.severity];
+  console.log(interaction);
 
   return (
     <div
