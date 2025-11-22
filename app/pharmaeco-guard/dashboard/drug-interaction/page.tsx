@@ -18,7 +18,7 @@ interface DrugInteraction {
   unique_id: string;
   drug_a: string;
   drug_b: string;
-  severity: "Major" | "Moderate" | "Minor" | "Unknown";
+  severity: "major" | "moderate" | "minor" | "unknown";
   reason: string;
   created_at: string;
   patient: number;

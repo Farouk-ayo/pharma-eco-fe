@@ -62,10 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       route: "/pharmaeco-guard/dashboard/drug-interaction",
       label: "Drug Interaction AI",
     },
-    {
-      route: "/pharmaeco-guard/dashboard/waste",
-      label: "Waste System",
-    },
+
     {
       route: "/pharmaeco-guard/dashboard/encounters",
       label: "Encounters",
@@ -73,6 +70,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     {
       route: "/pharmaeco-guard/dashboard/appointments",
       label: "Appointments",
+    },
+
+    {
+      route: "/pharmaeco-guard/dashboard/waste",
+      label: "Waste System",
     },
   ];
 
