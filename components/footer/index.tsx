@@ -55,6 +55,10 @@ const Footer = () => {
       name: "Articles",
     },
     {
+      link: "/innovators",
+      name: "Innovators",
+    },
+    {
       link: "/contact-us",
       name: "Contact Us",
     },

@@ -5,6 +5,7 @@ import {
   RegisteredUser,
 } from "@/lib/types";
 import { showToast } from "@/lib/util";
+import { EMRSignInInputs, EMRSignUpInputs } from "@/lib/validation";
 import axiosInstance from "@/services/axiosInstance";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Cookies from "js-cookie";
@@ -157,6 +158,30 @@ export const useLogout = () => {
     },
     onError: (error: Error) => {
       showToast.error(error.message || "Logout failed!");
+    },
+  });
+};
+
+export const useEMRSignUp = () => {
+  return useMutation({
+    mutationKey: ["emr-signup"],
+    mutationFn: (signupDetails: EMRSignUpInputs) => {
+      return axiosInstance.post("/emr/auth/register", signupDetails);
+    },
+    onError: (error: Error) => {
+      showToast.error(error.message);
+    },
+  });
+};
+
+export const useEMRSignIn = () => {
+  return useMutation({
+    mutationKey: ["emr-signin"],
+    mutationFn: (signinDetails: EMRSignInInputs) => {
+      return axiosInstance.post("/emr/auth/login", signinDetails);
+    },
+    onError: (error: Error) => {
+      showToast.error(error.message);
     },
   });
 };

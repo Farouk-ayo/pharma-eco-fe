@@ -109,3 +109,19 @@ export type ArticleCard = {
   articleImage4?: string;
   articleImage5?: string;
 };
+
+export interface EMRUser {
+  id: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+}
+
+export interface EMRAuthResponse {
+  success: boolean;
+  message: string;
+  data: {
+    token: string;
+    user: EMRUser;
+  };
+}
