@@ -123,7 +123,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col gap-8">
           <div className="flex flex-row items-center justify-between">
             <Link href={"/pharmaeco-guard/dashboard"}>
-              <div className="relative flex items-center w-36 h-8 md:w-52 md:h-15 scale-[2]">
+              <div className="relative flex items-center  w-36 h-8 md:w-36 md:h-15 scale-[2]">
                 <Image
                   src="/pharma-eco-guard-d.svg"
                   alt="pharmaeco"

@@ -61,7 +61,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
         <div className="flex-shrink-0">
           {/* Mobile Logo */}
           <Link href={"/pharmaeco-guard/dashboard"} className="lg:hidden">
-            <div className="relative flex items-center w-36 h-8 md:w-52 md:h-10">
+            <div className="relative flex items-center w-36 h-8 md:w-52 md:h-15 scale-[2]">
               <Image
                 src="/pharma-eco-guard-d.svg"
                 alt="pharmaeco"
