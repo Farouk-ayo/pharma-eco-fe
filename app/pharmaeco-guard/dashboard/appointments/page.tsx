@@ -10,14 +10,10 @@ import {
   useDorraUpdateAppointment,
   useDorraDeleteAppointment,
 } from "@/lib/api/dorraMutations";
-import { Calendar, Pencil, Trash2, X, Clock } from "lucide-react";
+import { Calendar, Pencil, Trash2, X, Clock, Plus } from "lucide-react";
 
 interface AppointmentFormData {
-  patient_id: string;
-  patient_name: string;
-  patient_phone: string;
   date: string;
-  time: string;
   reason: string;
   status: "active" | "completed";
   summary?: string;
@@ -123,7 +119,7 @@ const AppointmentsPage = () => {
           Appointments
         </h1>
         <p className="text-sm lg:text-base text-gray-600">
-          Schedule, manage, and track patient appointments
+          Manage and track patient appointments
         </p>
       </div>
 
@@ -135,7 +131,7 @@ const AppointmentsPage = () => {
               Schedule
             </h3>
             <p className="text-xs lg:text-sm text-gray-600 mb-4">
-              Select date and manage appointments
+              Select date to view appointments
             </p>
 
             <div className="mb-4">
@@ -150,11 +146,7 @@ const AppointmentsPage = () => {
               />
             </div>
 
-            <Button variant="primary" className="w-full mb-6">
-              Schedule New Appointment
-            </Button>
-
-            <div className="space-y-2">
+            <div className="space-y-2 mb-6">
               <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="text-sm font-medium text-gray-600">
                   Today&apos;s Appointments
@@ -165,7 +157,7 @@ const AppointmentsPage = () => {
               </div>
               <div className="flex justify-between items-center py-2 border-b border-gray-200">
                 <span className="text-sm font-medium text-gray-600">
-                  Confirmed
+                  Active
                 </span>
                 <span className="text-sm font-bold text-green-600">
                   {confirmedCount}
@@ -178,6 +170,23 @@ const AppointmentsPage = () => {
                 <span className="text-sm font-bold text-blue-600">
                   {completedCount}
                 </span>
+              </div>
+            </div>
+
+            {/* Info Box */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="flex items-start gap-2">
+                <Plus className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-semibold text-blue-900 mb-1">
+                    Create New Appointment
+                  </p>
+                  <p className="text-xs text-blue-700">
+                    Use the AI prompt box on the dashboard to create new
+                    appointments. Example: &quot;Schedule appointment for
+                    patient 123 on Dec 25 for follow-up&quot;
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -200,11 +209,11 @@ const AppointmentsPage = () => {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-600 mb-2">
-                    Date
+                    Date & Time
                   </label>
                   <input
                     {...register("date", { required: "Date is required" })}
-                    type="date"
+                    type="datetime-local"
                     className="w-full border px-4 py-2 h-14 rounded-md focus:outline-none focus:ring-2 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
                   />
                   {errors.date && (
@@ -297,11 +306,16 @@ const AppointmentsPage = () => {
                 {todaysAppointments.map((appointment) => (
                   <div
                     key={appointment.id}
-                    className={`border-2 rounded-lg p-4 lg:p-5 transition-all ${
+                    className={`border-2 rounded-lg p-4 lg:p-5 transition-all cursor-pointer hover:shadow-md ${
                       appointment.status === "active"
                         ? "border-blue-200 bg-blue-50"
                         : "border-gray-200 bg-white"
+                    } ${
+                      editingAppointmentId === appointment.id
+                        ? "ring-2 ring-primary"
+                        : ""
                     }`}
+                    onClick={() => handleEdit(appointment.id)}
                   >
                     <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-3 mb-4">
                       <div className="flex items-start gap-3">
@@ -347,7 +361,7 @@ const AppointmentsPage = () => {
                           }`}
                         >
                           {appointment.status === "active"
-                            ? "Scheduled"
+                            ? "Active"
                             : "Completed"}
                         </span>
                       </div>
@@ -377,14 +391,20 @@ const AppointmentsPage = () => {
 
                     <div className="flex gap-2 pt-3 border-t border-gray-200">
                       <button
-                        onClick={() => handleEdit(appointment.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleEdit(appointment.id);
+                        }}
                         className="flex-1 px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium text-sm flex items-center justify-center gap-2"
                       >
                         <Pencil className="w-4 h-4" />
                         Edit
                       </button>
                       <button
-                        onClick={() => handleDeleteClick(appointment.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteClick(appointment.id);
+                        }}
                         className="flex-1 px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors font-medium text-sm flex items-center justify-center gap-2"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -399,8 +419,11 @@ const AppointmentsPage = () => {
                 <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Calendar className="w-8 h-8 lg:w-10 lg:h-10 text-gray-400" />
                 </div>
-                <p className="text-sm lg:text-base text-gray-500">
+                <p className="text-sm lg:text-base text-gray-500 mb-2">
                   No appointments scheduled for this date
+                </p>
+                <p className="text-xs text-gray-400">
+                  Use AI prompt to create appointments
                 </p>
               </div>
             )}
