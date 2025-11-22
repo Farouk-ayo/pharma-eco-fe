@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Controller } from "react-hook-form";
 import Select from "react-select";
-import Button from "@/components/buttons";
 import { DorraPatient } from "@/lib/types/dorra";
 
 interface PatientDropdownProps {
@@ -10,7 +9,7 @@ interface PatientDropdownProps {
   selectedPatientId: number | null;
   selectedPatient?: DorraPatient;
   setSelectedPatientId: (id: number) => void;
-  onAddRecord: () => void;
+  onAddRecord?: () => void;
 }
 
 const customStyles = {
@@ -46,7 +45,6 @@ export const PatientDropdown = ({
   selectedPatientId,
   selectedPatient,
   setSelectedPatientId,
-  onAddRecord,
 }: PatientDropdownProps) => {
   const patientOptions =
     patientsData?.results?.map((p: any) => ({
@@ -74,7 +72,7 @@ export const PatientDropdown = ({
     <div className="bg-white">
       <h3 className="text-lg font-bold text-primaryDark mb-2">Patients</h3>
       <p className="text-sm text-gray-600 mb-4">
-        Choose a patient to view their medical history
+        Choose a patient to view their information
       </p>
 
       {/* Dropdown */}
@@ -113,37 +111,37 @@ export const PatientDropdown = ({
                   {selectedPatient.unique_id}
                 </span>
               </div>
-              <div>
-                <span className="text-gray-600">DOB: </span>
-                <span className="font-medium">
-                  {selectedPatient.date_of_birth || "N/A"}
-                </span>
-              </div>
-              <div>
-                <span className="text-gray-600">Blood Group: </span>
-                <span className="font-medium">AB+</span>
-              </div>
-              <div>
-                <span className="text-gray-600">Genotype: </span>
-                <span className="font-medium">AA</span>
-              </div>
-              <div>
-                <span className="text-gray-600">Total Records: </span>
-                <span className="font-medium">5</span>
-              </div>
+              {selectedPatient.date_of_birth && (
+                <div>
+                  <span className="text-gray-600">DOB: </span>
+                  <span className="font-medium">
+                    {selectedPatient.date_of_birth}
+                  </span>
+                </div>
+              )}
+              {selectedPatient.age && (
+                <div>
+                  <span className="text-gray-600">Age: </span>
+                  <span className="font-medium">
+                    {selectedPatient.age} years
+                  </span>
+                </div>
+              )}
+              {selectedPatient.gender && (
+                <div>
+                  <span className="text-gray-600">Gender: </span>
+                  <span className="font-medium">{selectedPatient.gender}</span>
+                </div>
+              )}
+              {selectedPatient.phone_number && (
+                <div>
+                  <span className="text-gray-600">Phone: </span>
+                  <span className="font-medium">
+                    {selectedPatient.phone_number}
+                  </span>
+                </div>
+              )}
             </div>
-          </div>
-
-          {/* Add Record */}
-          <div className="mt-4">
-            <Button
-              type="button"
-              variant="primary"
-              className="w-full py-3"
-              onClick={onAddRecord}
-            >
-              + Add Record
-            </Button>
           </div>
         </div>
       )}

@@ -35,7 +35,7 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
   return (
     <Link href={href}>
       <div
-        className={`${bgColor} rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer h-full`}
+        className={`${bgColor} border rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer h-full`}
       >
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0">
