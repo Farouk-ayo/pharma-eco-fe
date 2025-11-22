@@ -15,6 +15,11 @@ import {
   Portal,
   Users,
   Waste,
+  Notes,
+  Referrals,
+  Messaging,
+  Prescription,
+  Telepharmacy,
 } from "@/components/icons/peg-icons";
 
 interface SidebarProps {
@@ -43,9 +48,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     "/pharmaeco-guard/dashboard/patients": <Users />,
     "/pharmaeco-guard/dashboard/portal": <Portal />,
     "/pharmaeco-guard/dashboard/drug-interaction": <DrugInteraction />,
+    "/pharmaeco-guard/dashboard/waste": <Waste />,
     "/pharmaeco-guard/dashboard/encounters": <Encounters />,
     "/pharmaeco-guard/dashboard/appointments": <Appointments />,
-    "/pharmaeco-guard/dashboard/waste": <Waste />,
+    "/pharmaeco-guard/dashboard/notes": <Notes />,
+    "/pharmaeco-guard/dashboard/referrals": <Referrals />,
+    "/pharmaeco-guard/dashboard/messaging": <Messaging />,
+    "/pharmaeco-guard/dashboard/prescriptions": <Prescription />,
+    "/pharmaeco-guard/dashboard/telepharmacy": <Telepharmacy />,
   };
 
   const navlinks = [
@@ -60,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     },
     {
       route: "/pharmaeco-guard/dashboard/drug-interaction",
-      label: "Drug Interaction AI",
+      label: "Drug Interaction AI System",
     },
 
     {
@@ -71,10 +81,29 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       route: "/pharmaeco-guard/dashboard/appointments",
       label: "Appointments",
     },
-
     {
       route: "/pharmaeco-guard/dashboard/waste",
-      label: "Waste System",
+      label: "Pharmaceutical Waste System",
+    },
+    {
+      route: "/pharmaeco-guard/dashboard/notes",
+      label: "Pharmacist Notes",
+    },
+    {
+      route: "/pharmaeco-guard/dashboard/referrals",
+      label: "Referrals",
+    },
+    {
+      route: "/pharmaeco-guard/dashboard/messaging",
+      label: "Messaging",
+    },
+    {
+      route: "/pharmaeco-guard/dashboard/prescriptions",
+      label: "E-Prescription",
+    },
+    {
+      route: "/pharmaeco-guard/dashboard/telepharmacy",
+      label: "Telepharmacy",
     },
   ];
 
@@ -94,7 +123,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col gap-8">
           <div className="flex flex-row items-center justify-between">
             <Link href={"/pharmaeco-guard/dashboard"}>
-              <div className="relative flex items-center  w-36 h-8 md:w-52 md:h-15 scale-[2]">
+              <div className="relative flex items-center w-36 h-8 md:w-52 md:h-15 scale-[2]">
                 <Image
                   src="/pharma-eco-guard-d.svg"
                   alt="pharmaeco"
@@ -114,21 +143,23 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             {navlinks.map((link) => (
               <Link
                 key={link.route}
-                className={`flex flex-row gap-5 items-center px-2 py-4 lg:p-4 font-semibold rounded-lg hover:bg-primaryLight cursor-pointer hover:text-primary hover:fill-primary ${
-                  currentPath === link.route ? " text-primary fill-primary" : ""
+                className={`flex flex-row gap-5 items-center px-2 py-4 lg:p-4 font-semibold rounded-lg hover:bg-primaryLight cursor-pointer hover:text-primary transition-colors ${
+                  currentPath === link.route
+                    ? "bg-primaryLight text-primary"
+                    : ""
                 }`}
                 href={link.route}
                 onClick={isMobile ? onClose : undefined}
               >
-                <span className="mr-2 fill-primary">{icons[link.route]}</span>
+                <span className="flex-shrink-0">{icons[link.route]}</span>
                 <span className="text-base">{link.label}</span>
               </Link>
             ))}
             <button
-              className="flex p-4 flex-row text-red-500 gap-5 items-center rounded-lg hover:bg-red-50 cursor-pointer hover:text-red-500"
+              className="flex p-4 flex-row text-red-500 gap-5 items-center rounded-lg hover:bg-red-50 cursor-pointer hover:text-red-500 transition-colors"
               onClick={() => setShowLogoutModal(true)}
             >
-              <span>
+              <span className="flex-shrink-0">
                 <Logout />
               </span>
               <span>Logout</span>

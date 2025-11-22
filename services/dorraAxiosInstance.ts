@@ -27,7 +27,7 @@ dorraAxiosInstance.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       Cookies.remove("emrAuthToken");
-      window.location.href = "/pharmaeco-guard/signin";
+      window.location.href = "/pharmaeco-guard/auth/signin";
     }
     return Promise.reject(error);
   }
