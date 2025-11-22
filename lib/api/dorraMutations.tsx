@@ -9,7 +9,7 @@ export const useDorraAIPrompt = () => {
 
   return useMutation({
     mutationKey: ["dorra-ai-prompt"],
-    mutationFn: async (data: { prompt: string; patient: number }) => {
+    mutationFn: async (data: { prompt: string; patient: string }) => {
       const response = await dorraAxiosInstance.post("/v1/ai/emr", data);
       return response.data as AIPromptResponse;
     },

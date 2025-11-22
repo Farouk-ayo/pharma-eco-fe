@@ -28,9 +28,10 @@ const PatientPortalPage = () => {
 
   const { data: patientsData, isLoading: patientsLoading } =
     useDorraPatients(searchQuery);
-  const { data: selectedPatient, isLoading: patientLoading } = useDorraPatient(
-    selectedPatientId!
-  );
+  //   const { data: selectedPatient, isLoading: patientLoading } = useDorraPatient(
+  //     selectedPatientId!
+  //   );
+  const { data: selectedPatient } = useDorraPatient(selectedPatientId!);
   const { data: appointmentsData } = useDorraPatientAppointments(
     selectedPatientId!
   );

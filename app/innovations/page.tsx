@@ -104,7 +104,7 @@ const InnovationPage = () => {
               variant="primary"
               size="actionBtn"
               className="text-black w-max"
-              href={whatsappLink}
+              href={"/pharmaeco-guard/auth/signup"}
             >
               Check It Out
             </Button>

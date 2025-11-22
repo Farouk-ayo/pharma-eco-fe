@@ -117,7 +117,7 @@ const EMRSignIn = () => {
         <p className="text-center text-base text-textPrimary pt-2">
           Don&apos;t Have An Account?{" "}
           <Link
-            href="/pharmaeco-guard/signup"
+            href="/pharmaeco-guard/auth/signup"
             className="text-secondary font-semibold hover:underline"
           >
             Create One

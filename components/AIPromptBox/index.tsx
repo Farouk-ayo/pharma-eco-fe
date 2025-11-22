@@ -8,7 +8,7 @@ import {
 
 const AIPromptBox = () => {
   const [prompt, setPrompt] = useState("");
-  const [selectedPatientId, setSelectedPatientId] = useState<number | null>(
+  const [selectedPatientId, setSelectedPatientId] = useState<string | null>(
     null
   );
   const [mode, setMode] = useState<"create" | "action">("create");
@@ -94,10 +94,10 @@ const AIPromptBox = () => {
           {/* Patient ID Input for Actions */}
           {mode === "action" && (
             <input
-              type="number"
+              type="text"
               placeholder="Enter Patient ID"
               value={selectedPatientId || ""}
-              onChange={(e) => setSelectedPatientId(Number(e.target.value))}
+              onChange={(e) => setSelectedPatientId(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary mb-4"
             />
           )}
