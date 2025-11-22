@@ -50,6 +50,17 @@ export const useDorraAppointments = (search?: string, page?: number) => {
   });
 };
 
+export const useDorraAppointment = (id: number) => {
+  return useQuery<DorraAppointment>({
+    queryKey: ["dorra-appointment", id],
+    queryFn: async () => {
+      const response = await dorraAxiosInstance.get(`/v1/appointments/${id}`);
+      return response.data;
+    },
+    enabled: !!id,
+  });
+};
+
 export const useDorraEncounters = (search?: string, page?: number) => {
   return useQuery<DorraPaginatedResponse<DorraEncounter>>({
     queryKey: ["dorra-encounters", search, page],
@@ -63,6 +74,17 @@ export const useDorraEncounters = (search?: string, page?: number) => {
       );
       return response.data;
     },
+  });
+};
+
+export const useDorraEncounter = (id: number) => {
+  return useQuery<DorraEncounter>({
+    queryKey: ["dorra-encounter", id],
+    queryFn: async () => {
+      const response = await dorraAxiosInstance.get(`/v1/encounters/${id}`);
+      return response.data;
+    },
+    enabled: !!id,
   });
 };
 
@@ -92,12 +114,58 @@ export const useDorraPatientEncounters = (patientId: number) => {
   });
 };
 
-export const useDorraDrugInteractions = () => {
+export const useDorraPatientMedications = (
+  patientId: number,
+  date?: string,
+  page?: number
+) => {
   return useQuery({
-    queryKey: ["dorra-drug-interactions"],
+    queryKey: ["dorra-patient-medications", patientId, date, page],
     queryFn: async () => {
+      const params = new URLSearchParams();
+      if (date) params.append("created_at__date", date);
+      if (page) params.append("page", page.toString());
+
       const response = await dorraAxiosInstance.get(
-        "/v1/pharmavigilance/interactions"
+        `/v1/patients/${patientId}/medications?${params.toString()}`
+      );
+      return response.data;
+    },
+    enabled: !!patientId,
+  });
+};
+
+export const useDorraPatientTests = (
+  patientId: number,
+  date?: string,
+  page?: number
+) => {
+  return useQuery({
+    queryKey: ["dorra-patient-tests", patientId, date, page],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      if (date) params.append("created_at__date", date);
+      if (page) params.append("page", page.toString());
+
+      const response = await dorraAxiosInstance.get(
+        `/v1/patients/${patientId}/tests?${params.toString()}`
+      );
+      return response.data;
+    },
+    enabled: !!patientId,
+  });
+};
+
+export const useDorraDrugInteractions = (search?: string, page?: number) => {
+  return useQuery({
+    queryKey: ["dorra-drug-interactions", search, page],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      if (search) params.append("search", search);
+      if (page) params.append("page", page.toString());
+
+      const response = await dorraAxiosInstance.get(
+        `/v1/pharmavigilance/interactions?${params.toString()}`
       );
       return response.data;
     },

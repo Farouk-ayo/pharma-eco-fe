@@ -168,7 +168,7 @@ const DashboardPage = () => {
   const isLoading = patientsLoading || appointmentsLoading || encountersLoading;
 
   return (
-    <div className="p-4 lg:p-8">
+    <div className="p-4 lg:p-8 bg-primaryLight">
       {/* Welcome Banner */}
       <div className="  p-6 lg:p-8 mb-8 max-w-2xl mx-auto">
         <h2 className="text-2xl lg:text-3xl font-bold text-center text-primary mb-3 ">
