@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="w-full lg:w-1/2 bg-white px-4 md:px-10 p-10">
             <div className="">
               <div className="flex flex-col gap-4 mb-5 ">
-                <Link href="/">
+                <Link href="/innovations">
                   <div className="relative w-48 md:w-52 h-20 hidden lg:inline-block">
                     <Image
                       src="/pharma-eco-guard.svg"

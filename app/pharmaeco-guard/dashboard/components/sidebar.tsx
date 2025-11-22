@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { XIcon, LogOut } from "lucide-react";
 import Modal from "@/components/modal/modalConfirmation";
 import { useEMRUser } from "@/contexts/emrUserContext";
+import Image from "next/image";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -77,16 +78,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col gap-8">
           <div className="flex flex-row items-center justify-between">
             <Link href={"/pharmaeco-guard/dashboard"}>
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-white text-xl">💊</span>
-                </div>
-                <div>
-                  <p className="text-primary font-bold text-sm leading-tight">
-                    PharmaEcoGuard
-                  </p>
-                  <p className="text-primary text-xs leading-tight">EMR</p>
-                </div>
+              <div className="relative flex items-center  w-36 h-8 md:w-52 md:h-10">
+                <Image
+                  src="/pharma-eco-guard-d.svg"
+                  alt="pharmaeco"
+                  className="w-full h-full"
+                  layout="fill"
+                />
               </div>
             </Link>
             <button
