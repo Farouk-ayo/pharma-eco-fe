@@ -75,7 +75,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
           <div className="hidden lg:block">
             <h2 className="text-xl font-bold text-primaryDark mb-1">
               {loading ? (
-                <span className="animate-pulse">Loading...</span>
+                <span className="animate-pulse">...</span>
               ) : (
                 <>Welcome, Pharm. {user?.firstName || "User"} 👋</>
               )}
@@ -122,7 +122,7 @@ const Topbar: React.FC<TopbarProps> = ({ toggleSidebar }) => {
             <div className="text-left">
               <p className="text-base font-semibold text-primaryDark">
                 {loading ? (
-                  <span className="animate-pulse">Loading...</span>
+                  <span className="animate-pulse">...</span>
                 ) : (
                   getFullName()
                 )}
