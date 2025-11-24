@@ -39,6 +39,7 @@ export const EMRUserProvider: React.FC<{ children: React.ReactNode }> = ({
         const response = await axiosInstance.get("/emr/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(response, "response");
         setUser(response.data.data);
       } catch (error) {
         console.error(error);
