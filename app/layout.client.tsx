@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PWAInstallModal from "@/components/modal/pwaInstallModal";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +27,9 @@ const RootClientLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Toaster /> {children}
+      <Toaster />
+      <PWAInstallModal />
+      {children}
     </QueryClientProvider>
   );
 };
