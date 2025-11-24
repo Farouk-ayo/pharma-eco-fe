@@ -107,39 +107,42 @@ const EncountersPage = () => {
         <div className="lg:col-span-2">
           <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6">
             {/* Tabs */}
-            <div className="flex gap-2 mb-6 border-b border-gray-200 overflow-x-auto">
-              <button
-                onClick={() => setActiveFilter("all")}
-                className={`px-4 py-3 font-medium text-sm whitespace-nowrap border-b-2 transition-colors ${
-                  activeFilter === "all"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                All ({allCount})
-              </button>
-              <button
-                onClick={() => setActiveFilter("recent")}
-                className={`px-4 py-3 font-medium text-sm whitespace-nowrap border-b-2 transition-colors ${
-                  activeFilter === "recent"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Recent ({recentCount})
-              </button>
-              <button
-                onClick={() => setActiveFilter("withDrugInteraction")}
-                className={`px-4 py-3 font-medium text-sm whitespace-nowrap border-b-2 transition-colors ${
-                  activeFilter === "withDrugInteraction"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Drug Interactions ({drugInteractionCount})
-              </button>
+            <div className="my-4 rounded-b-[30px] rounded-t-[8px] bg-[#F1F1F1]">
+              <div className="flex overflow-x-auto hide-scrollbar">
+                <button
+                  onClick={() => setActiveFilter("all")}
+                  className={`flex items-center gap-2 m-2 px-4 py-3 transition-all whitespace-nowrap rounded-b-[30px] rounded-t-[8px] ${
+                    activeFilter === "all"
+                      ? "bg-white font-semibold"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="text-sm">All ({allCount})</span>
+                </button>
+                <button
+                  onClick={() => setActiveFilter("recent")}
+                  className={`flex items-center gap-2 m-2 px-4 py-3 transition-all whitespace-nowrap rounded-b-[30px] rounded-t-[8px] ${
+                    activeFilter === "recent"
+                      ? "bg-white font-semibold"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="text-sm">Recent ({recentCount})</span>
+                </button>
+                <button
+                  onClick={() => setActiveFilter("withDrugInteraction")}
+                  className={`flex items-center gap-2 m-2 px-4 py-3 transition-all whitespace-nowrap rounded-b-[30px] rounded-t-[8px] ${
+                    activeFilter === "withDrugInteraction"
+                      ? "bg-white font-semibold"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="text-sm">
+                    Drug Interactions ({drugInteractionCount})
+                  </span>
+                </button>
+              </div>
             </div>
-
             {/* Encounters List */}
             {isLoading ? (
               <div className="space-y-4">

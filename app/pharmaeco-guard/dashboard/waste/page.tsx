@@ -1,55 +1,32 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDorraPatients } from "@/lib/api/dorraQueries";
 import { PatientDropdown } from "../components/patientDropdown";
-import { Trash2, Package, AlertTriangle, CheckCircle } from "lucide-react";
+import { Trash2, Gift, TrendingUp } from "lucide-react";
 
-// Dummy waste data
-const dummyWasteData = [
-  {
-    id: 1,
-    patient_name: "John Doe",
-    unique_id: "PAT-001",
-    drug_name: "Omeprazole 20mg",
-    waste_type: "Blister Pack",
-    quantity: "1 sachet - 6 tabs remains",
-    date: "2025-11-20",
-    status: "unused",
-    reason: "Patient discontinued medication after doctor consultation",
-  },
-  {
-    id: 2,
-    patient_name: "Jane Smith",
-    unique_id: "PAT-002",
-    drug_name: "Amlodipine 10mg",
-    waste_type: "Blister Pack",
-    quantity: "1 sachet - 2 tabs remains",
-    date: "2025-11-20",
-    status: "unused",
-    reason: "Switched to different medication",
-  },
-  {
-    id: 3,
-    patient_name: "Mike Johnson",
-    unique_id: "PAT-003",
-    drug_name: "Lisinopril 10mg",
-    waste_type: "Blister Pack",
-    quantity: "1 sachet - 4 tabs remains",
-    date: "2025-11-20",
-    status: "expired",
-    reason: "Medication expired before completion",
-  },
-];
+import { toast } from "sonner";
+import { dummyUserRewards, dummyWasteData } from "@/lib/data/waste";
+import { HowItWorksGuide } from "./components/HowItWorksGuide";
+import { DiscountRedemption } from "./components/DiscountRedemption";
+import { WasteItemCard } from "./components/WasteItemCard";
+import { RewardsDashboard } from "./components/RewardsDashboard";
+import { RewardsHistory } from "./components/RewardsHistory";
+import { AddWasteModal } from "./components/AddWasteModal";
 
 const WastePage = () => {
   const { control } = useForm();
   const [selectedPatientId, setSelectedPatientId] = useState<number | null>(
     null
   );
+  const [activeTab, setActiveTab] = useState<"waste" | "rewards" | "history">(
+    "waste"
+  );
   const [activeFilter, setActiveFilter] = useState<
-    "all" | "unused" | "expired"
+    "all" | "unused" | "expired" | "damaged"
   >("all");
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const { data: patientsData } = useDorraPatients();
   const selectedPatient = patientsData?.results.find(
@@ -58,10 +35,18 @@ const WastePage = () => {
 
   // Filter waste by patient and status
   const filteredWaste = dummyWasteData.filter((waste) => {
+    if (selectedPatientId && waste.patient_id !== selectedPatientId)
+      return false;
     if (activeFilter !== "all" && waste.status !== activeFilter) return false;
     return true;
   });
 
+  // Get user rewards for selected patient
+  const userRewards = selectedPatientId
+    ? dummyUserRewards[selectedPatientId]
+    : null;
+
+  // Calculate stats
   const allCount = dummyWasteData.length;
   const unusedCount = dummyWasteData.filter(
     (w) => w.status === "unused"
@@ -69,17 +54,35 @@ const WastePage = () => {
   const expiredCount = dummyWasteData.filter(
     (w) => w.status === "expired"
   ).length;
+  const damagedCount = dummyWasteData.filter(
+    (w) => w.status === "damaged"
+  ).length;
+  const unverifiedCount = dummyWasteData.filter((w) => !w.verified).length;
 
-  const getStatusBadge = (status: string) => {
-    if (status === "expired") return "bg-red-100 text-red-700 border-red-300";
-    return "bg-yellow-100 text-yellow-700 border-yellow-300";
+  const handleAddWaste = async (data: any) => {
+    console.log("Adding waste:", data);
+    toast.success(
+      "Waste return recorded successfully! Points will be awarded after verification."
+    );
+    setShowAddModal(false);
   };
 
-  const getStatusIcon = (status: string) => {
-    if (status === "expired") {
-      return <AlertTriangle className="w-5 h-5 lg:w-6 lg:h-6 text-red-600" />;
-    }
-    return <Package className="w-5 h-5 lg:w-6 lg:h-6 text-yellow-600" />;
+  const handleVerify = (wasteId: number) => {
+    console.log("Verifying waste:", wasteId);
+    toast.success("Waste verified! Points awarded to patient.");
+  };
+
+  const handleRedeemDiscount = async (
+    purchaseAmount: number,
+    discountPercentage: number
+  ) => {
+    console.log("Redeeming discount:", { purchaseAmount, discountPercentage });
+    toast.success(
+      `${discountPercentage}% discount applied! You saved ₦${(
+        (purchaseAmount * discountPercentage) /
+        100
+      ).toFixed(2)}`
+    );
   };
 
   return (
@@ -90,14 +93,14 @@ const WastePage = () => {
           Pharmaceutical Waste Management
         </h1>
         <p className="text-sm lg:text-base text-gray-600">
-          Track and guide patient pharmaceutical waste disposal
+          Track waste returns and manage patient rewards program
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-        {/* Left Panel - Patient Selection */}
-        <div className="lg:col-span-1">
-          <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6 mb-4">
+        {/* Left Panel - Patient Selection & Stats */}
+        <div className="lg:col-span-1 space-y-4">
+          <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6">
             <PatientDropdown
               control={control}
               patientsData={patientsData}
@@ -108,13 +111,14 @@ const WastePage = () => {
             />
           </div>
 
-          {/* Stats Card */}
-          <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6 mb-4">
-            <h3 className="text-lg font-bold text-primaryDark mb-4">
-              Waste Statistics
+          {/* Quick Stats */}
+          <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6">
+            <h3 className="text-lg font-bold text-primaryDark mb-4 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5" />
+              System Statistics
             </h3>
             <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+              <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200">
                 <span className="text-sm font-medium text-gray-700">
                   Total Waste Returned
                 </span>
@@ -122,7 +126,7 @@ const WastePage = () => {
                   {allCount}
                 </span>
               </div>
-              <div className="flex justify-between items-center p-3 bg-yellow-50 rounded-lg">
+              <div className="flex justify-between items-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
                 <span className="text-sm font-medium text-gray-700">
                   Unused Drugs
                 </span>
@@ -130,7 +134,7 @@ const WastePage = () => {
                   {unusedCount}
                 </span>
               </div>
-              <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+              <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
                 <span className="text-sm font-medium text-gray-700">
                   Expired Drugs
                 </span>
@@ -138,188 +142,219 @@ const WastePage = () => {
                   {expiredCount}
                 </span>
               </div>
+              <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-200">
+                <span className="text-sm font-medium text-gray-700">
+                  Damaged
+                </span>
+                <span className="text-lg font-bold text-orange-600">
+                  {damagedCount}
+                </span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg border border-purple-200">
+                <span className="text-sm font-medium text-gray-700">
+                  Pending Verification
+                </span>
+                <span className="text-lg font-bold text-purple-600">
+                  {unverifiedCount}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Eco-Lessons Info */}
-          <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-            <div className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-semibold text-green-900 mb-1">
-                  Eco-Lessons
-                </p>
-                <p className="text-xs text-green-700">
-                  Educate patients on medication safety and proper disposal of
-                  unused & expired drugs using NAFDAC-approved methods
-                </p>
-              </div>
-            </div>
-          </div>
+          <HowItWorksGuide />
+
+          {/* Discount Redemption - Only show if patient selected and has rewards */}
+          {selectedPatientId && userRewards && (
+            <DiscountRedemption
+              userRewards={userRewards}
+              onRedeemDiscount={handleRedeemDiscount}
+            />
+          )}
         </div>
 
-        {/* Right Panel - Waste Records */}
+        {/* Right Panel - Main Content */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6">
-            {/* Header with Tabs */}
-            <div className="mb-6">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-lg lg:text-xl font-bold text-primaryDark">
-                    Returned Medicines
-                  </h3>
-                  <p className="text-xs lg:text-sm text-gray-600">
-                    Unused and expired drugs returned from patients back into
-                    the system to avoid environmental impact
-                  </p>
-                </div>
-                <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primaryDark transition-colors font-medium text-sm whitespace-nowrap">
-                  + Add Waste Returned
-                </button>
-              </div>
-
-              {/* Filter Tabs */}
-              <div className="flex gap-2 border-b border-gray-200 overflow-x-auto">
+          <div className="bg-white rounded-xl border border-gray-200">
+            {/* Tabs */}
+            <div className="my-4 mx-4 rounded-b-[30px] rounded-t-[8px] bg-[#F1F1F1]">
+              <div className="flex overflow-x-auto hide-scrollbar">
                 <button
-                  onClick={() => setActiveFilter("all")}
-                  className={`px-4 py-3 font-medium text-sm whitespace-nowrap border-b-2 transition-colors ${
-                    activeFilter === "all"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-gray-600 hover:text-gray-900"
+                  onClick={() => setActiveTab("waste")}
+                  className={`flex items-center gap-2 m-2 px-4 py-3 transition-all whitespace-nowrap rounded-b-[30px] rounded-t-[8px] ${
+                    activeTab === "waste"
+                      ? "bg-white font-semibold"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                   }`}
                 >
-                  All ({allCount})
+                  <Trash2 className="w-4 h-4" />
+                  <span className="text-sm">Waste Returns</span>
                 </button>
-                <button
-                  onClick={() => setActiveFilter("unused")}
-                  className={`px-4 py-3 font-medium text-sm whitespace-nowrap border-b-2 transition-colors ${
-                    activeFilter === "unused"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  Unused ({unusedCount})
-                </button>
-                <button
-                  onClick={() => setActiveFilter("expired")}
-                  className={`px-4 py-3 font-medium text-sm whitespace-nowrap border-b-2 transition-colors ${
-                    activeFilter === "expired"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  Expired ({expiredCount})
-                </button>
-              </div>
-            </div>
-
-            {/* Waste Records List */}
-            <div className="space-y-4">
-              {filteredWaste.map((waste) => (
-                <div
-                  key={waste.id}
-                  className={`border-2 rounded-lg p-4 lg:p-5 transition-all hover:shadow-md ${
-                    waste.status === "expired"
-                      ? "border-red-200 bg-red-50"
-                      : "border-yellow-200 bg-yellow-50"
-                  }`}
-                >
-                  {/* Header */}
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`w-10 h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                          waste.status === "expired"
-                            ? "bg-red-100"
-                            : "bg-yellow-100"
-                        }`}
-                      >
-                        {getStatusIcon(waste.status)}
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm lg:text-base text-gray-900">
-                          {waste.drug_name}
-                        </p>
-                        <p className="text-xs text-gray-600">
-                          {waste.patient_name} • {waste.unique_id}
-                        </p>
-                      </div>
-                    </div>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(
-                        waste.status
-                      )} flex-shrink-0 self-start`}
+                {selectedPatientId && (
+                  <>
+                    <button
+                      onClick={() => setActiveTab("rewards")}
+                      className={`flex items-center gap-2 m-2 px-4 py-3 transition-all whitespace-nowrap rounded-b-[30px] rounded-t-[8px] ${
+                        activeTab === "rewards"
+                          ? "bg-white font-semibold"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                      }`}
                     >
-                      {waste.status === "expired" ? "Expired" : "Unused"}
-                    </span>
-                  </div>
-
-                  {/* Details */}
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2">
-                      <span className="text-xs font-semibold text-gray-600 min-w-[80px]">
-                        Waste Type:
-                      </span>
-                      <span className="text-sm text-gray-900">
-                        {waste.waste_type}
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-xs font-semibold text-gray-600 min-w-[80px]">
-                        Quantity:
-                      </span>
-                      <span className="text-sm text-gray-900">
-                        {waste.quantity}
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-xs font-semibold text-gray-600 min-w-[80px]">
-                        Date:
-                      </span>
-                      <span className="text-sm text-gray-900">
-                        {new Date(waste.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-xs font-semibold text-gray-600 min-w-[80px]">
-                        Reason:
-                      </span>
-                      <span className="text-sm text-gray-900">
-                        {waste.reason}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Action Button */}
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <button className="w-full lg:w-auto px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm">
-                      See Details
+                      <Gift className="w-4 h-4" />
+                      <span className="text-sm">Rewards</span>
                     </button>
-                  </div>
-                </div>
-              ))}
+                    <button
+                      onClick={() => setActiveTab("history")}
+                      className={`flex items-center gap-2 m-2 px-4 py-3 transition-all whitespace-nowrap rounded-b-[30px] rounded-t-[8px] ${
+                        activeTab === "history"
+                          ? "bg-white font-semibold"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                      }`}
+                    >
+                      <span className="text-sm">History</span>
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
 
-            {filteredWaste.length === 0 && (
-              <div className="text-center py-16">
-                <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Trash2 className="w-8 h-8 lg:w-10 lg:h-10 text-gray-400" />
-                </div>
-                <h4 className="text-base lg:text-lg font-semibold text-gray-700 mb-2">
-                  No Waste Records Found
-                </h4>
-                <p className="text-sm lg:text-base text-gray-600">
-                  No waste has been returned for the selected filter
-                </p>
-              </div>
-            )}
+            {/* Tab Content */}
+            <div className="p-4 lg:p-6">
+              {activeTab === "waste" && (
+                <>
+                  {/* Header with Add Button */}
+                  <div className="mb-6">
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+                      <div>
+                        <h3 className="text-lg lg:text-xl font-bold text-primaryDark">
+                          Returned Medicines
+                        </h3>
+                        <p className="text-xs lg:text-sm text-gray-600 mt-1">
+                          Track unused and expired drugs returned from patients
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => {
+                          if (!selectedPatientId) {
+                            toast.error("Please select a patient first");
+                            return;
+                          }
+                          setShowAddModal(true);
+                        }}
+                        className="px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-primaryDark transition-colors font-medium text-sm whitespace-nowrap flex items-center gap-2"
+                      >
+                        <span className="text-lg">+</span>
+                        Add Waste Return
+                      </button>
+                    </div>
+
+                    {/* Filter Tabs */}
+                    <div className="rounded-b-[30px] rounded-t-[8px] bg-[#F1F1F1]">
+                      <div className="flex gap-1 overflow-x-auto hide-scrollbar p-2">
+                        <button
+                          onClick={() => setActiveFilter("all")}
+                          className={`px-4 py-2 rounded-b-[30px] rounded-t-[8px] font-medium text-sm whitespace-nowrap transition-all ${
+                            activeFilter === "all"
+                              ? "bg-white font-semibold text-gray-900"
+                              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                          }`}
+                        >
+                          All ({allCount})
+                        </button>
+                        <button
+                          onClick={() => setActiveFilter("unused")}
+                          className={`px-4 py-2 rounded-b-[30px] rounded-t-[8px] font-medium text-sm whitespace-nowrap transition-all ${
+                            activeFilter === "unused"
+                              ? "bg-white font-semibold text-gray-900"
+                              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                          }`}
+                        >
+                          Unused ({unusedCount})
+                        </button>
+                        <button
+                          onClick={() => setActiveFilter("expired")}
+                          className={`px-4 py-2 rounded-b-[30px] rounded-t-[8px] font-medium text-sm whitespace-nowrap transition-all ${
+                            activeFilter === "expired"
+                              ? "bg-white font-semibold text-gray-900"
+                              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                          }`}
+                        >
+                          Expired ({expiredCount})
+                        </button>
+                        <button
+                          onClick={() => setActiveFilter("damaged")}
+                          className={`px-4 py-2 rounded-b-[30px] rounded-t-[8px] font-medium text-sm whitespace-nowrap transition-all ${
+                            activeFilter === "damaged"
+                              ? "bg-white font-semibold text-gray-900"
+                              : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                          }`}
+                        >
+                          Damaged ({damagedCount})
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Waste List */}
+                  <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                    {filteredWaste.map((waste) => (
+                      <WasteItemCard
+                        key={waste.id}
+                        waste={waste}
+                        onVerify={handleVerify}
+                        onViewDetails={(id) => console.log("View details:", id)}
+                      />
+                    ))}
+
+                    {filteredWaste.length === 0 && (
+                      <div className="text-center py-16">
+                        <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <Trash2 className="w-8 h-8 lg:w-10 lg:h-10 text-gray-400" />
+                        </div>
+                        <h4 className="text-base lg:text-lg font-semibold text-gray-700 mb-2">
+                          No Waste Records Found
+                        </h4>
+                        <p className="text-sm lg:text-base text-gray-600 mb-4">
+                          {selectedPatientId
+                            ? "This patient hasn't returned any waste yet"
+                            : "Select a patient or change filter"}
+                        </p>
+                        {selectedPatientId && (
+                          <button
+                            onClick={() => setShowAddModal(true)}
+                            className="px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primaryDark transition-colors font-medium text-sm"
+                          >
+                            Record First Return
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+
+              {activeTab === "rewards" && userRewards && (
+                <RewardsDashboard userRewards={userRewards} />
+              )}
+
+              {activeTab === "history" && userRewards && (
+                <RewardsHistory transactions={userRewards.rewards_history} />
+              )}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Add Waste Modal */}
+      {showAddModal && selectedPatient && (
+        <AddWasteModal
+          isOpen={showAddModal}
+          onClose={() => setShowAddModal(false)}
+          patientId={selectedPatientId!}
+          patientName={selectedPatient.full_name}
+          onSubmit={handleAddWaste}
+        />
+      )}
     </div>
   );
 };
