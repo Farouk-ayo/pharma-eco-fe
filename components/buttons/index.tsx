@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const disabledStyles =
-    "bg-gray-400 text-gray-600 cursor-not-allowed opacity-50";
+    "bg-gray-400 text-gray-600 cursor-not-allowed opacity-50 hover:bg-gray-400 hover:scale-100 !hover:bg-gray-400 !hover:scale-100 pointer-events-none";
 
   const sizeClasses = {
     sm: "px-6 py-2 text-base",
@@ -44,9 +44,13 @@ const Button: React.FC<ButtonProps> = ({
     actionBtn: "px-10 py-4 text-lg",
   };
 
-  const combinedStyles = `${baseStyles} ${sizeClasses[size]} ${
-    variantStyles[variant] || ""
-  } ${className || ""} ${isDisabled || isLoading ? disabledStyles : ""}`;
+  const combinedStyles = `
+  ${baseStyles} 
+  ${sizeClasses[size]} 
+  ${variantStyles[variant] || ""} 
+  ${isDisabled || isLoading ? disabledStyles : ""} 
+  ${className || ""}
+`;
 
   const handleClick = (event: React.MouseEvent) => {
     if (isDisabled || isLoading) {

@@ -108,6 +108,7 @@ const EMRSignIn = () => {
           variant="primary"
           type="submit"
           size="actionBtn"
+          isLoading={isSubmitting}
           isDisabled={isSubmitting}
           className="w-full text-white !rounded-b-[30px] !rounded-t-[8px]"
         >
