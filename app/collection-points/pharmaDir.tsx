@@ -138,7 +138,7 @@ const PharmacyDirectory = () => {
                     <div className="flex items-start gap-2">
                       <p className="text-gray-600">{pharmacy.city}</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    {/* <div className="flex items-center gap-2">
                       <p className="text-gray-600  ">
                         <span className="font-semibold"> Phone No:</span>{" "}
                         <span> {pharmacy.phoneNumber}</span>
@@ -149,7 +149,7 @@ const PharmacyDirectory = () => {
                         <span className="font-semibold"> Email:</span>{" "}
                         <span>{pharmacy.emailAddress}</span>
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}
