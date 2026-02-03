@@ -2,7 +2,7 @@
 
 import Button from "@/components/buttons";
 import React from "react";
-import { showToast } from "@/lib/util";
+import { getErrorMessage, showToast } from "@/lib/util";
 import { useForm } from "react-hook-form";
 import { LoginFormmInputs, loginSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,7 +19,7 @@ const AdminLogin = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormmInputs>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -29,26 +29,29 @@ const AdminLogin = () => {
   });
 
   const onSubmit = async (data: LoginInputsPayload) => {
+    if (postCustomer.isPending || isSubmitting) return;
+
     try {
       await postCustomer.mutateAsync(data, {
         onSuccess: (response) => {
-          router.push("/dashboard");
           reset();
           if (response?.data?.data?.token) {
             Cookies.set("authToken", response.data.data.token, { expires: 1 });
             showToast.success("Login successful");
             router.push("/dashboard");
-            reset();
           } else {
             showToast.error("Invalid login credentials");
           }
         },
       });
     } catch (error) {
-      console.error("Mutation error:", error);
-      showToast.error("An error occurred during login");
+      showToast.error(
+        getErrorMessage(error, "An error occurred. Please try again."),
+      );
     }
   };
+
+  const isLoading = postCustomer.isPending || isSubmitting;
 
   return (
     <section className="w-full bg-white py-8">
@@ -65,7 +68,8 @@ const AdminLogin = () => {
                 type="email"
                 {...register("email")}
                 placeholder="Enter email address"
-                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]  h-16 "
+                disabled={isLoading}
+                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] h-16 disabled:bg-gray-100 disabled:cursor-not-allowed"
               />
               {errors.email && (
                 <span className="text-red-600">{errors.email.message}</span>
@@ -78,7 +82,8 @@ const AdminLogin = () => {
                 type="password"
                 {...register("password")}
                 placeholder="Enter Password"
-                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]  h-16 "
+                disabled={isLoading}
+                className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] h-16 disabled:bg-gray-100 disabled:cursor-not-allowed"
               />
               {errors.password && (
                 <span className="text-red-600">{errors.password.message}</span>
@@ -90,9 +95,10 @@ const AdminLogin = () => {
               type="submit"
               size="actionBtn"
               className="w-full text-white"
-              isLoading={postCustomer.isPending}
+              isLoading={isLoading}
+              isDisabled={isLoading}
             >
-              {postCustomer.isPending ? "Submitting..." : "Submit"}
+              {isLoading ? "Submitting..." : "Submit"}
             </Button>
           </form>
         </div>
