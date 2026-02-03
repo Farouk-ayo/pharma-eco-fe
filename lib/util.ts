@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toast } from "sonner";
 
 interface ToastOptions {
@@ -67,7 +68,7 @@ export const showToast = {
       success?: string | ((data: T) => string);
       error?: string | ((error: Error) => string);
     },
-    options?: ToastOptions
+    options?: ToastOptions,
   ) => {
     return toast.promise(promise, {
       loading,
@@ -84,13 +85,61 @@ export const showToast = {
 
   custom: (
     message: string | React.ReactNode,
-    options?: ToastOptions & { icon?: React.ReactNode }
+    options?: ToastOptions & { icon?: React.ReactNode },
   ) => {
     toast(message, {
       ...defaultOptions,
       ...options,
     });
   },
+};
+
+export const getErrorMessage = (
+  error?: any,
+  fallbackMessage?: string,
+): string => {
+  if (!error) {
+    return fallbackMessage || "An unexpected error occurred";
+  }
+
+  if (error?.response?.data?.message) {
+    return error.response.data.message;
+  }
+
+  if (error?.response?.data?.error) {
+    return error.response.data.error;
+  }
+
+  if (error?.response?.data?.errors) {
+    if (Array.isArray(error.response.data.errors)) {
+      return error.response.data.errors[0] || "Validation error occurred";
+    }
+    if (typeof error.response.data.errors === "object") {
+      const firstError = Object.values(error.response.data.errors)[0];
+      if (Array.isArray(firstError)) {
+        return firstError[0] as string;
+      }
+      return firstError as string;
+    }
+  }
+
+  if (error?.response?.data?.data?.message) {
+    return error.response.data.data.message;
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (
+    error?.message &&
+    !error.message.includes("status code") &&
+    !error.message.includes("Network Error")
+  ) {
+    return error.message;
+  }
+
+  return fallbackMessage || "An unexpected error occurred";
 };
 
 export function formatDateToString(dateString: string): string {

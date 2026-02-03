@@ -31,7 +31,7 @@ const CallToAction = () => {
                     ? isLargeScreen
                       ? "polygon(0 0, 100% 0, 80% 80%, 80% 100%, 0 100%)"
                       : "polygon(0 0, 100% 0, 85% 80%, 85% 100%, 0 100%)"
-                    : "none",
+                    : "",
               }}
             >
               <div className="flex flex-col gap-4 lg:gap-6 lg:w-[80%] relative">

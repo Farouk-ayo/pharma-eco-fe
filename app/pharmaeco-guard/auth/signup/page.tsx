@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { EMRSignUpInputs, emrSignUpSchema } from "@/lib/validation";
 import Button from "@/components/buttons";
 import { useEMRSignUp } from "@/lib/api/mutations";
-import { showToast } from "@/lib/util";
+import { getErrorMessage, showToast } from "@/lib/util";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -26,6 +26,8 @@ const EMRSignUp = () => {
   });
 
   const onSubmit = (data: EMRSignUpInputs) => {
+    if (signUpMutation.isPending || isSubmitting) return;
+
     signUpMutation.mutate(data, {
       onSuccess: (response) => {
         const { token } = response.data.data;
@@ -33,15 +35,18 @@ const EMRSignUp = () => {
         showToast.success("Account created successfully");
         router.push("/pharmaeco-guard/dashboard");
       },
-      onError: (error: Error) => {
-        showToast.error(error.message || "Registration failed");
+      onError: (error) => {
+        showToast.error(
+          getErrorMessage(error, "Registration failed. Please try again."),
+        );
       },
     });
   };
 
+  const isLoading = signUpMutation.isPending || isSubmitting;
+
   return (
     <div className="w-full">
-      {/* Form Title */}
       <div className="mb-6">
         <h1 className="text-2xl text-center lg:text-left mb-2 text-primaryDark font-semibold lg:text-3xl">
           Create Account
@@ -59,7 +64,8 @@ const EMRSignUp = () => {
           <input
             {...register("firstName")}
             placeholder="Enter first name"
-            className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+            disabled={isLoading}
+            className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] disabled:bg-gray-100 disabled:cursor-not-allowed"
           />
           {errors.firstName && (
             <span className="text-sm text-red-500 mt-1 block">
@@ -75,7 +81,8 @@ const EMRSignUp = () => {
           <input
             {...register("lastName")}
             placeholder="Enter last name"
-            className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+            disabled={isLoading}
+            className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] disabled:bg-gray-100 disabled:cursor-not-allowed"
           />
           {errors.lastName && (
             <span className="text-sm text-red-500 mt-1 block">
@@ -92,7 +99,8 @@ const EMRSignUp = () => {
             {...register("emailAddress")}
             type="email"
             placeholder="Enter email address"
-            className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+            disabled={isLoading}
+            className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] disabled:bg-gray-100 disabled:cursor-not-allowed"
           />
           {errors.emailAddress && (
             <span className="text-sm text-red-500 mt-1 block">
@@ -110,12 +118,14 @@ const EMRSignUp = () => {
               {...register("password")}
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
-              className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+              disabled={isLoading}
+              className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] disabled:bg-gray-100 disabled:cursor-not-allowed"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+              disabled={isLoading}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 disabled:opacity-50"
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -136,12 +146,14 @@ const EMRSignUp = () => {
               {...register("confirmPassword")}
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Enter confirm password"
-              className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px]"
+              disabled={isLoading}
+              className="w-full border border-gray-300 px-4 py-2 h-14 focus:outline-none focus:ring-1 focus:ring-primary rounded-b-[30px] rounded-t-[8px] disabled:bg-gray-100 disabled:cursor-not-allowed"
             />
             <button
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+              disabled={isLoading}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 disabled:opacity-50"
             >
               {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -157,8 +169,8 @@ const EMRSignUp = () => {
           variant="primary"
           type="submit"
           size="actionBtn"
-          isLoading={isSubmitting}
-          isDisabled={isSubmitting}
+          isLoading={isLoading}
+          isDisabled={isLoading}
           className="w-full text-white !rounded-b-[30px] !rounded-t-[8px]"
         >
           Create Account

@@ -33,6 +33,8 @@ const Page = () => {
   };
 
   const handleStepTwoSubmit = async (data: StepTwoInputs) => {
+    if (postRegister.isPending) return;
+
     setFormData((prev) => ({
       ...prev,
       ...data,
@@ -46,12 +48,13 @@ const Page = () => {
 
     postRegister.mutate(completeFormData, {
       onSuccess: () => {
-        showToast.success("User registered successfully");
+        showToast.success("Registration successful");
         setStep(3);
       },
       onError: (error: Error) => {
-        console.log(error);
-        showToast.error(error.message);
+        const errorMessage =
+          error.message || "Registration failed. Please try again.";
+        showToast.error(errorMessage);
       },
     });
   };
@@ -105,8 +108,8 @@ const Page = () => {
                   currentStep === step
                     ? "bg-primaryDark text-white  "
                     : currentStep < step
-                    ? "bg-primaryDark text-white"
-                    : "bg-[#33333340] text-black "
+                      ? "bg-primaryDark text-white"
+                      : "bg-[#33333340] text-black "
                 }
               `}
               style={{

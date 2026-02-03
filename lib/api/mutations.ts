@@ -168,9 +168,6 @@ export const useEMRSignUp = () => {
     mutationFn: (signupDetails: EMRSignUpInputs) => {
       return axiosInstance.post("/emr/auth/register", signupDetails);
     },
-    onError: (error: Error) => {
-      showToast.error(error.message);
-    },
   });
 };
 
@@ -179,9 +176,6 @@ export const useEMRSignIn = () => {
     mutationKey: ["emr-signin"],
     mutationFn: (signinDetails: EMRSignInInputs) => {
       return axiosInstance.post("/emr/auth/login", signinDetails);
-    },
-    onError: (error: Error) => {
-      showToast.error(error.message);
     },
   });
 };
