@@ -8,14 +8,18 @@ import { getErrorMessage, showToast } from "@/lib/util";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSignUp } from "@clerk/nextjs";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
 
 const EMRSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const router = useRouter();
   const signUpMutation = useEMRSignUp();
+  const { signUp, isLoaded } = useSignUp();
 
   const {
     register,
@@ -43,7 +47,38 @@ const EMRSignUp = () => {
     });
   };
 
-  const isLoading = signUpMutation.isPending || isSubmitting;
+  const handleGoogleSignUp = async () => {
+    if (!isLoaded) return;
+
+    setIsGoogleLoading(true);
+
+    try {
+      await signUp.authenticateWithRedirect({
+        strategy: "oauth_google",
+        redirectUrl: "/pharmaeco-guard/auth/sso-callback",
+        redirectUrlComplete: "/pharmaeco-guard/auth/sso-callback",
+      });
+    } catch (err) {
+      const error = err as {
+        errors?: Array<{ code?: string; message?: string }>;
+      };
+      console.error("Google sign-up error:", error);
+
+      if (error.errors?.[0]?.code === "form_identifier_exists") {
+        showToast.error(
+          "An account with this Google email already exists. Please sign in instead.",
+        );
+      } else if (error.errors?.[0]?.message) {
+        showToast.error(error.errors[0].message);
+      } else {
+        showToast.error("Google sign-up failed. Please try again.");
+      }
+
+      setIsGoogleLoading(false);
+    }
+  };
+
+  const isLoading = signUpMutation.isPending || isSubmitting || isGoogleLoading;
 
   return (
     <div className="w-full">
@@ -54,6 +89,27 @@ const EMRSignUp = () => {
         <p className="text-base text-primaryDark">
           Join PharmaEcoGuard EMR To Streamline Your Practice
         </p>
+      </div>
+
+      <button
+        type="button"
+        onClick={handleGoogleSignUp}
+        disabled={isLoading}
+        className="w-full flex items-center justify-center gap-3 h-14 border border-gray-300 rounded-b-[30px] rounded-t-[8px] bg-white hover:bg-gray-50 text-gray-700 font-medium mb-5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      >
+        <FcGoogle className="h-5 w-5" />
+        {isGoogleLoading ? "Connecting..." : "Continue with Google"}
+      </button>
+
+      <div className="relative mb-5">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-300" />
+        </div>
+        <div className="relative flex justify-center text-sm">
+          <span className="px-3 bg-white text-gray-500">
+            Or continue with email
+          </span>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 w-full">
@@ -169,7 +225,7 @@ const EMRSignUp = () => {
           variant="primary"
           type="submit"
           size="actionBtn"
-          isLoading={isLoading}
+          isLoading={signUpMutation.isPending || isSubmitting}
           isDisabled={isLoading}
           className="w-full text-white !rounded-b-[30px] !rounded-t-[8px]"
         >

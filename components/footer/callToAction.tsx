@@ -26,12 +26,9 @@ const CallToAction = () => {
             <div
               className="relative bg-primary/10 xl:xl:w-[125%] xl:2xl:w-[120%] py-8 px-6 sm:py-12 sm:px-8 xl:py-20 xl:px-16"
               style={{
-                clipPath:
-                  typeof window !== "undefined" && window.innerWidth >= 1280
-                    ? isLargeScreen
-                      ? "polygon(0 0, 100% 0, 80% 80%, 80% 100%, 0 100%)"
-                      : "polygon(0 0, 100% 0, 85% 80%, 85% 100%, 0 100%)"
-                    : "",
+                clipPath: isLargeScreen
+                  ? "polygon(0 0, 100% 0, 80% 80%, 80% 100%, 0 100%)"
+                  : "polygon(0 0, 100% 0, 85% 80%, 85% 100%, 0 100%)",
               }}
             >
               <div className="flex flex-col gap-4 lg:gap-6 lg:w-[80%] relative">

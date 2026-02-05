@@ -19,10 +19,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <section>
       <Navbar />
       <section className="h-full w-full mb-40 top-24 relative md:px-4 lg:px-16">
-        <div className="flex flex-col lg:flex-row-reverse h-full">
+        <div className="flex flex-col lg:flex-row-reverse h-full relative">
           {/* Right Side - Form */}
-          <div className="w-full lg:w-1/2 bg-white px-4 md:px-10 p-10">
-            <div className="">
+          <div className="w-full lg:w-1/2 bg-white px-4 md:px-10 p-10 h-full">
+            <div className="h-full">
               <div className="flex flex-col gap-4 mb-5 ">
                 <Link href="/innovations">
                   <div className="relative w-48 md:w-52 h-20 hidden lg:inline-block">
@@ -36,7 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </div>
                 </Link>
               </div>
-              <div className="w-full relative">{children}</div>
+              <div className="w-full h-full relative">{children}</div>
             </div>{" "}
           </div>
           {/* Left Side - Info */}
