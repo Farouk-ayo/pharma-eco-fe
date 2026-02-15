@@ -11,7 +11,17 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import { googleErrorMessages } from "../google/callback/page";
+
+const googleErrorMessages: Record<string, string> = {
+  email_password_exists:
+    "This email is already registered. Please sign in with your email and password instead.",
+  no_email:
+    "Google account does not have an email address. Please try another account.",
+  google_mismatch: "Account verification failed. Please contact support.",
+  auth_failed: "Google sign-in failed. Please try again.",
+  no_user: "Unable to create account. Please try again.",
+  server_error: "Server error occurred. Please try again later.",
+};
 
 const EMRSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
