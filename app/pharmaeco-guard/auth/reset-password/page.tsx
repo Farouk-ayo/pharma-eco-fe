@@ -1,11 +1,11 @@
 import { Suspense } from "react";
-import EMRSignInContent from "./EMRSignInContent";
+import ResetPasswordContent from "./ResetPasswordContent";
 import SuspenseLoader from "@/components/loadingSkeleton/suspenseLoader";
 
-export default function SignInPage() {
+export default function ResetPasswordPage() {
   return (
     <Suspense fallback={<SuspenseLoader />}>
-      <EMRSignInContent />
+      <ResetPasswordContent />
     </Suspense>
   );
 }
