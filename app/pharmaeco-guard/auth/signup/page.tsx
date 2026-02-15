@@ -6,20 +6,31 @@ import Button from "@/components/buttons";
 import { useEMRSignUp } from "@/lib/api/mutations";
 import { getErrorMessage, showToast } from "@/lib/util";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useSignUp } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { googleErrorMessages } from "../google/callback/page";
 
 const EMRSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const signUpMutation = useEMRSignUp();
-  const { signUp, isLoaded } = useSignUp();
+
+  useEffect(() => {
+    const error = searchParams.get("error");
+    if (error) {
+      const errorMessage =
+        googleErrorMessages[error] ||
+        "Authentication failed. Please try again.";
+      showToast.error(errorMessage);
+
+      router.replace("/pharmaeco-guard/auth/signup");
+    }
+  }, [searchParams, router]);
 
   const {
     register,
@@ -47,38 +58,11 @@ const EMRSignUp = () => {
     });
   };
 
-  const handleGoogleSignUp = async () => {
-    if (!isLoaded) return;
-
-    setIsGoogleLoading(true);
-
-    try {
-      await signUp.authenticateWithRedirect({
-        strategy: "oauth_google",
-        redirectUrl: "/pharmaeco-guard/auth/sso-callback",
-        redirectUrlComplete: "/pharmaeco-guard/auth/sso-callback",
-      });
-    } catch (err) {
-      const error = err as {
-        errors?: Array<{ code?: string; message?: string }>;
-      };
-      console.error("Google sign-up error:", error);
-
-      if (error.errors?.[0]?.code === "form_identifier_exists") {
-        showToast.error(
-          "An account with this Google email already exists. Please sign in instead.",
-        );
-      } else if (error.errors?.[0]?.message) {
-        showToast.error(error.errors[0].message);
-      } else {
-        showToast.error("Google sign-up failed. Please try again.");
-      }
-
-      setIsGoogleLoading(false);
-    }
+  const handleGoogleSignUp = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/emr/auth/google`;
   };
 
-  const isLoading = signUpMutation.isPending || isSubmitting || isGoogleLoading;
+  const isLoading = signUpMutation.isPending || isSubmitting;
 
   return (
     <div className="w-full">
@@ -98,7 +82,7 @@ const EMRSignUp = () => {
         className="w-full flex items-center justify-center gap-3 h-14 border border-gray-300 rounded-b-[30px] rounded-t-[8px] bg-white hover:bg-gray-50 text-gray-700 font-medium mb-5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         <FcGoogle className="h-5 w-5" />
-        {isGoogleLoading ? "Connecting..." : "Continue with Google"}
+        Continue with Google
       </button>
 
       <div className="relative mb-5">

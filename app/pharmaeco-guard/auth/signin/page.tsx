@@ -6,19 +6,30 @@ import Button from "@/components/buttons";
 import { useEMRSignIn } from "@/lib/api/mutations";
 import { getErrorMessage, showToast } from "@/lib/util";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useSignIn } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { googleErrorMessages } from "../google/callback/page";
 
 const EMRSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const signInMutation = useEMRSignIn();
-  const { signIn, isLoaded } = useSignIn();
+
+  useEffect(() => {
+    const error = searchParams.get("error");
+    if (error) {
+      const errorMessage =
+        googleErrorMessages[error] ||
+        "Authentication failed. Please try again.";
+      showToast.error(errorMessage);
+
+      router.replace("/pharmaeco-guard/auth/signin");
+    }
+  }, [searchParams, router]);
 
   const {
     register,
@@ -50,35 +61,11 @@ const EMRSignIn = () => {
     });
   };
 
-  const handleGoogleSignIn = async () => {
-    if (!isLoaded) return;
-
-    setIsGoogleLoading(true);
-
-    try {
-      const ss = await signIn.authenticateWithRedirect({
-        strategy: "oauth_google",
-        redirectUrl: "/pharmaeco-guard/auth/sso-callback",
-        redirectUrlComplete: "/pharmaeco-guard/auth/sso-callback",
-      });
-      console.log(ss, "ss");
-    } catch (err) {
-      const error = err as {
-        errors?: Array<{ code?: string; message?: string }>;
-      };
-      console.error("Google sign-in error:", error);
-
-      if (error.errors?.[0]?.message) {
-        showToast.error(error.errors[0].message);
-      } else {
-        showToast.error("Google sign-in failed. Please try again.");
-      }
-
-      setIsGoogleLoading(false);
-    }
+  const handleGoogleSignIn = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/emr/auth/google`;
   };
 
-  const isLoading = signInMutation.isPending || isSubmitting || isGoogleLoading;
+  const isLoading = signInMutation.isPending || isSubmitting;
 
   return (
     <div className="w-full">
@@ -96,7 +83,7 @@ const EMRSignIn = () => {
         className="w-full flex items-center justify-center gap-3 h-14 border border-gray-300 rounded-b-[30px] rounded-t-[8px] bg-white hover:bg-gray-50 text-gray-700 font-medium mb-5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         <FcGoogle className="h-5 w-5" />
-        {isGoogleLoading ? "Connecting..." : "Continue with Google"}
+        Continue with Google
       </button>
 
       <div className="relative mb-5">
